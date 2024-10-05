@@ -5,26 +5,16 @@ using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.UIElements;
 
-public class WindowController : MonoBehaviour
+public class WindowController :  BaseWindowClass
 {
-    private bool m_bHeld;
+    public bool m_bHeld;
     private Vector3 m_vec3MousePos;
-    private Vector2 WorldUnitsInCamera;
-    private Vector2 WorldToPixelAmount;
-    public Camera Camera;
+    [SerializeField] private GameObject self;
     public GameObject ComputerScreen;
     public GameObject Background;
     public SpriteRenderer Content;
     public SpriteRenderer TitleBar;
-    void Awake ()
-    {
-        //Finding Pixel To World Unit Conversion Based On Orthographic Size Of Camera
-        WorldUnitsInCamera.y = Camera.GetComponent<Camera>().orthographicSize * 2;
-        WorldUnitsInCamera.x = WorldUnitsInCamera.y * Screen.width / Screen.height;
-
-        WorldToPixelAmount.x = Screen.width / WorldUnitsInCamera.x;
-        WorldToPixelAmount.y = Screen.height / WorldUnitsInCamera.y;
-    }
+    
     private void OnMouseDown()
     {
         m_bHeld = true;
@@ -35,9 +25,25 @@ public class WindowController : MonoBehaviour
     {
         m_bHeld = false;
     }
+    public override void Click(ClickType _clickType)
+    {
+        switch (_clickType)
+        {
+            case ClickType.Minimise:
+                self.SetActive(false);
+                break;
+        }
+    }
 
     private void Update()
     {
+        if (m_bHeld && (ConvertToWorldUnitsX(Input.mousePosition.x) > ComputerScreen.transform.position.x + Background.GetComponent<SpriteRenderer>().bounds.size.x
+            || ConvertToWorldUnitsX(Input.mousePosition.x) < ComputerScreen.transform.position.x
+            || ConvertToWorldUnitsY(Input.mousePosition.y) > ComputerScreen.transform.position.y
+            || ConvertToWorldUnitsY(Input.mousePosition.y) < ComputerScreen.transform.position.y - Background.GetComponent<SpriteRenderer>().bounds.size.y))
+        {
+            m_bHeld = false;
+        }
         if (m_bHeld)
         {
             Vector3 moveVec;
@@ -49,15 +55,5 @@ public class WindowController : MonoBehaviour
             m_vec3MousePos = Input.mousePosition;
         }
     }
-    public float ConvertToWorldUnitsX(float _InputX)
-    {
-        return ((_InputX / WorldToPixelAmount.x) - (WorldUnitsInCamera.x / 2)) +
-               Camera.transform.position.x;
-    }
-
-    public float ConvertToWorldUnitsY(float _InputY)
-    {
-        return ((_InputY / WorldToPixelAmount.y) - (WorldUnitsInCamera.y / 2)) +
-               Camera.transform.position.y;
-    }
+    
 }
