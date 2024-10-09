@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 enum CameraPos
@@ -16,93 +17,95 @@ public class CameraClass : MonoBehaviour
 
     bool m_bMoving;
 
+
     public Vector3 m_v3CentrePos;
     public Vector3 m_v3LeftPeekPos;
     public Vector3 m_v3RightBoardPos;
     public Vector3 m_v3UpPeekPos;
 
+    private Vector3 m_v3TargetPosition;
+
     public float m_fCameraMoveSpeed;
 
     void Start()
     {
-        gameObject.transform.Translate(m_v3CentrePos, Space.World);//move the camera to the centre position
+        gameObject.transform.position = m_v3CentrePos;//Set the camera to the centre position
         CurrentCamPosition = CameraPos.Centre;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (m_bMoving)
+        var Step = m_fCameraMoveSpeed * Time.deltaTime; // calculate distance to move towards destination
+
+        //if we are almost there, set position and stop moving
+        if(Vector3.Distance(gameObject.transform.position, m_v3TargetPosition) <= Step)
         {
+            gameObject.transform.position = m_v3TargetPosition;
+            m_bMoving = false; //reset moving so can move again
+        }
+
+        if (m_bMoving)//if moving, then loop the movement, else take an input and update
+        {
+            transform.position = Vector3.MoveTowards(transform.position, m_v3TargetPosition, Step); //move towards the destination
+        }
+        else
+        {
+            //detect Player Input and set target positions
             switch (CurrentCamPosition)
             {
-                    case CameraPos.Centre:
+                case CameraPos.Centre: //if the camera is currently at the centre position
                 {
+                    if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey("a"))//Look Left down the Row
+                    {
+                        CurrentCamPosition = CameraPos.Left;
+                        m_v3TargetPosition = m_v3LeftPeekPos;
+                        m_bMoving = true;
+                    }
+                    else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey("d"))//Look Right At the Board
+                    {
+                        CurrentCamPosition = CameraPos.Right;
+                        m_v3TargetPosition = m_v3RightBoardPos;
+                        m_bMoving = true;
+                    }
+                    else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey("w"))//Look Up over the Top of the screen
+                    {
+                        CurrentCamPosition = CameraPos.Up;
+                        m_v3TargetPosition = m_v3UpPeekPos;
+                        m_bMoving = true;
+                    }
                     break;
                 }
                 case CameraPos.Left:
                 {
+                    if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey("d"))//Press to go back to centre
+                    {
+                        CurrentCamPosition = CameraPos.Centre;
+                        m_v3TargetPosition = m_v3CentrePos;
+                        m_bMoving = true;
+                    }
                     break;
                 }
                 case CameraPos.Up: 
                 {
+                    if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey("s"))//Press to go back to the centre
+                    {
+                        CurrentCamPosition = CameraPos.Centre;
+                        m_v3TargetPosition = m_v3CentrePos;
+                        m_bMoving = true;
+                    }
                     break;
                 }
                 case CameraPos.Right:
                 {
+                    if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey("a"))//Press left to go back to centre
+                    {
+                        CurrentCamPosition = CameraPos.Centre;
+                        m_v3TargetPosition = m_v3CentrePos;
+                        m_bMoving = true;
+                    }
                     break;
                 }
-            }
-        }
-        var Step = m_fCameraMoveSpeed * Time.deltaTime; // calculate distance to move towards destination
-
-        switch (CurrentCamPosition)
-        {
-            case CameraPos.Centre:
-            {
-                if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey("a"))//Look Left down the Row
-                {
-                    transform.position = Vector3.MoveTowards(transform.position, m_v3LeftPeekPos, Step); //move towards the destination
-                    CurrentCamPosition = CameraPos.Left;
-                }
-                else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey("d"))//Look Right At the Board
-                {
-                    transform.position = Vector3.MoveTowards(transform.position, m_v3RightBoardPos, Step); //move towards the destination
-                    CurrentCamPosition = CameraPos.Right;
-                }
-                else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey("w"))//Look Up over the Top of the screen
-                {
-                    transform.position = Vector3.MoveTowards(transform.position, m_v3UpPeekPos, Step); //move towards the destination
-                    CurrentCamPosition = CameraPos.Up;
-                }
-                break;
-            }
-            case CameraPos.Left:
-            {
-                if (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey("a"))//Not holding any of the look buttons
-                {
-                    transform.position = Vector3.MoveTowards(transform.position, m_v3CentrePos, Step); //move towards the destination
-                    CurrentCamPosition = CameraPos.Centre;
-                }
-                break;
-            }
-            case CameraPos.Up: 
-            {
-                if (!Input.GetKey(KeyCode.RightArrow) && !Input.GetKey("d"))//Not Holding any of the directional buttons
-                {
-                    transform.position = Vector3.MoveTowards(transform.position, m_v3CentrePos, Step); //move towards the destination
-                    CurrentCamPosition = CameraPos.Centre;
-                }
-                break;
-            }
-            case CameraPos.Right:
-            {
-                if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey("a"))//Hit the button to bo back to the centre
-                {
-                    transform.position = Vector3.MoveTowards(transform.position, m_v3CentrePos, Step); //move towards the destination
-                    CurrentCamPosition = CameraPos.Centre;
-                }
-                break;
             }
         }
     }
