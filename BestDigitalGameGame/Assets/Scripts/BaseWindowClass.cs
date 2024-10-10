@@ -21,11 +21,6 @@ public class BaseWindowClass : MonoBehaviour
         WorldToPixelAmount.x = Screen.width / WorldUnitsInCamera.x;
         WorldToPixelAmount.y = Screen.height / WorldUnitsInCamera.y;
     }
-
-    public virtual void Click(ClickType _clickType)
-    {
-        
-    }
     public float ConvertToWorldUnitsX(float _InputX)
     {
         return ((_InputX / WorldToPixelAmount.x) - (WorldUnitsInCamera.x / 2)) +
