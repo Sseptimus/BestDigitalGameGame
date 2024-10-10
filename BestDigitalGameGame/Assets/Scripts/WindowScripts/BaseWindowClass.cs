@@ -26,6 +26,7 @@ public class BaseWindowClass : MonoBehaviour
     {
         
     }
+
     public float ConvertToWorldUnitsX(float _InputX)
     {
         return ((_InputX / WorldToPixelAmount.x) - (WorldUnitsInCamera.x / 2)) +
