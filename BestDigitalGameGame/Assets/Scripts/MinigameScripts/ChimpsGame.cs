@@ -14,29 +14,39 @@ public class ChimpsGame : MonoBehaviour
     public GameObject[] arrChimpSquaresToLoad;
     public GameObject[] arrChimpSquares;
     public BaseWindowClass GameWindow;
-    public SpriteRenderer GameWindowContent;
+    public GameObject GameWindowContent;
+    public Canvas GameCanvas;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        Random.InitState((int)System.DateTime.Now.Ticks);
+
+
         arrChimpSquares = new GameObject[arrChimpSquaresToLoad.Length];
        for (int i = 0; i < arrChimpSquaresToLoad.Length; i++)
         {
+            //Debug.Log(GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x);
+            //Debug.Log(GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y);
             arrChimpSquaresToLoad[i] = Instantiate(arrChimpSquaresToLoad[i], 
-                new Vector3((int)Random.Range(GameWindowContent.transform.position.x, GameWindowContent.size.x + GameWindowContent.transform.position.x), 
-                            (int)Random.Range(GameWindowContent.transform.position.y, GameWindowContent.size.y + GameWindowContent.transform.position.y), -2), 
-                Quaternion.identity, GameWindowContent.transform) as GameObject;
+                new Vector3((int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x), 
+                            (-(int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y)), -2), 
+                Quaternion.identity, GameCanvas.transform) as GameObject;
             for (int j = 0; j < i; j++)
             {
                 bool placedCorrectly = false;
                 while (!placedCorrectly)
                 {
+                    // replace with correct trigger overlap
+                    Debug.Log("Collision Detected" + i);
+
                     if (arrChimpSquaresToLoad[i].GetComponent<BoxCollider2D>().transform.position.x == arrChimpSquaresToLoad[j].GetComponent<BoxCollider2D>().transform.position.x
                         && arrChimpSquaresToLoad[i].GetComponent<BoxCollider2D>().transform.position.y == arrChimpSquaresToLoad[j].GetComponent<BoxCollider2D>().transform.position.y)
                     {
-                        arrChimpSquaresToLoad[i].transform.position = new Vector3((int)Random.Range(GameWindowContent.transform.position.x, GameWindowContent.size.x + GameWindowContent.transform.position.x),
-                            (int)Random.Range(GameWindowContent.transform.position.y, GameWindowContent.size.y + GameWindowContent.transform.position.y), -2);
+                        arrChimpSquaresToLoad[i].transform.position = new Vector3((int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x),
+                            (-(int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y)), -2);
+                        Debug.Log(arrChimpSquaresToLoad[i].transform.position);
                     }
                     else {
                         placedCorrectly = true; break; }
