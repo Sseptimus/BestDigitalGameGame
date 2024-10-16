@@ -14,7 +14,7 @@ public class WindowController :  BaseWindowClass
     public GameObject Background;
     public SpriteRenderer Content;
     public SpriteRenderer TitleBar;
-    
+
     private void OnMouseDown()
     {
         m_bHeld = true;

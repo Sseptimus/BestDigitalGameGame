@@ -32,7 +32,9 @@ public class ChimpsGame : MonoBehaviour
             arrChimpSquaresToLoad[i] = Instantiate(arrChimpSquaresToLoad[i], 
                 new Vector3((int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x), 
                             (-(int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y)), -2), 
-                Quaternion.identity, GameCanvas.transform) as GameObject;
+                Quaternion.identity, GameWindowContent.transform) as GameObject;
+            arrChimpSquaresToLoad[i].GetComponent<ChimpsSquaresScript>().setNumber(i+1);
+
             for (int j = 0; j < i; j++)
             {
                 bool placedCorrectly = false;
