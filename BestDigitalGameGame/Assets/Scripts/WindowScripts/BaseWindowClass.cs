@@ -14,6 +14,7 @@ public class BaseWindowClass : MonoBehaviour
     
     void Awake ()
     {
+        Camera = FindObjectOfType<Camera>();
         //Finding Pixel To World Unit Conversion Based On Orthographic Size Of Camera
         WorldUnitsInCamera.y = Camera.GetComponent<Camera>().orthographicSize * 2;
         WorldUnitsInCamera.x = WorldUnitsInCamera.y * Screen.width / Screen.height;

@@ -129,3 +129,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ccd59ffe281fe48b4a6a5820e9639f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arrChimpSquaresToLoad:
+  - {fileID: 47946333835779785, guid: dc5061988a2de2040872060262a04c6a, type: 3}
+  - {fileID: 47946333835779785, guid: dc5061988a2de2040872060262a04c6a, type: 3}
+  - {fileID: 47946333835779785, guid: dc5061988a2de2040872060262a04c6a, type: 3}
+  - {fileID: 47946333835779785, guid: dc5061988a2de2040872060262a04c6a, type: 3}
+  - {fileID: 47946333835779785, guid: dc5061988a2de2040872060262a04c6a, type: 3}
+  - {fileID: 47946333835779785, guid: dc5061988a2de2040872060262a04c6a, type: 3}
+  - {fileID: 47946333835779785, guid: dc5061988a2de2040872060262a04c6a, type: 3}
+  arrChimpSquares:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  GameWindow: {fileID: 0}
+  GameWindowContent: {fileID: 8276768681586384581}
+  GameCanvas: {fileID: 0}
