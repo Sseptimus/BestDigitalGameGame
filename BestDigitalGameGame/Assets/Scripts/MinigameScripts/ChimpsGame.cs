@@ -16,17 +16,24 @@ public class ChimpsGame : MonoBehaviour
     public BaseWindowClass GameWindow;
     public GameObject GameWindowContent;
 
+    public int[][] possiblePositions;
+
     // Start is called before the first frame update
     void Start()
     {
-        Random.InitState((int)System.DateTime.Now.Ticks);
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                possiblePositions[i][j] = 0;
+            }
+        }
 
+        Random.InitState((int)System.DateTime.Now.Ticks);
 
         arrChimpSquares = new GameObject[arrChimpSquaresToLoad.Length];
        for (int i = 0; i < arrChimpSquaresToLoad.Length; i++)
         {
-            //Debug.Log(GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x);
-            //Debug.Log(GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y);
             arrChimpSquaresToLoad[i] = Instantiate(arrChimpSquaresToLoad[i], 
                 new Vector3(GameWindowContent.transform.position.x+(int)Random.Range(1,GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x)-GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x/2, 
                     GameWindowContent.transform.position.y+(int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y)-GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y/2, -2),   
