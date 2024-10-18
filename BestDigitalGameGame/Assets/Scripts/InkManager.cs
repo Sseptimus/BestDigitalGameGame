@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine.UI;
 using UnityEngine;
 using Ink.Runtime;
@@ -18,16 +20,35 @@ public class InkManager : MonoBehaviour
 
     [SerializeField]
     private Button _choiceButtonPrefab;
+
+    private Queue<string> PrintQueue;
+    private string CurrentText;
+    private string CurrentWord;
+    private int CurrentLetter;
     
     void Start()
     {
         StartStory();
     }
 
+    private void FixedUpdate()
+    {
+        
+    }
+
     private void StartStory()
     {
         _story = new Story(_inkJsonAsset.text);
         DisplayNextLine();
+    }
+
+    private void PrintText(string _text)
+    {
+       string[] tempStrArr = _text.Split(' ');
+       for (int i = 0; i < tempStrArr.Length; i++)
+       {
+           PrintQueue.Enqueue(tempStrArr[i]);
+       }
     }
   
     public void DisplayNextLine()
@@ -38,7 +59,7 @@ public class InkManager : MonoBehaviour
     
             text = text?.Trim(); // removes white space from text
     
-            _textField.text = text; // displays new text
+            PrintText(text); // displays new text
         }
         else if (_story.currentChoices.Count > 0)
         {
