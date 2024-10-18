@@ -15,8 +15,6 @@ public class ChimpsGame : MonoBehaviour
     public GameObject[] arrChimpSquares;
     public BaseWindowClass GameWindow;
     public GameObject GameWindowContent;
-    public Canvas GameCanvas;
-
 
     // Start is called before the first frame update
     void Start()
@@ -46,8 +44,8 @@ public class ChimpsGame : MonoBehaviour
                     if (arrChimpSquaresToLoad[i].GetComponent<BoxCollider2D>().transform.position.x == arrChimpSquaresToLoad[j].GetComponent<BoxCollider2D>().transform.position.x
                         && arrChimpSquaresToLoad[i].GetComponent<BoxCollider2D>().transform.position.y == arrChimpSquaresToLoad[j].GetComponent<BoxCollider2D>().transform.position.y)
                     {
-                        arrChimpSquaresToLoad[i].transform.position = new Vector3((int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x),
-                            (-(int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y)), -2);
+                        arrChimpSquaresToLoad[i].transform.position = new Vector3(GameWindowContent.transform.position.x+(int)Random.Range(1,GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x)-GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x/2, 
+                            GameWindowContent.transform.position.y+(int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y)-GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y/2, -2);
                         Debug.Log(arrChimpSquaresToLoad[i].transform.position);
                     }
                     else {
@@ -62,9 +60,5 @@ public class ChimpsGame : MonoBehaviour
     {
         
     }
-
-    void PlaceSquares()
-    {
-
-    }
+    
 }
