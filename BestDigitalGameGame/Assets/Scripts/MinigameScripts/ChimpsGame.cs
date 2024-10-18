@@ -30,8 +30,8 @@ public class ChimpsGame : MonoBehaviour
             //Debug.Log(GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x);
             //Debug.Log(GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y);
             arrChimpSquaresToLoad[i] = Instantiate(arrChimpSquaresToLoad[i], 
-                new Vector3((int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x), 
-                            (-(int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y)), -2), 
+                new Vector3(GameWindowContent.transform.position.x+(int)Random.Range(1,GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x)-GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x/2, 
+                    GameWindowContent.transform.position.y+(int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y)-GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y/2, -2),   
                 Quaternion.identity, GameWindowContent.transform) as GameObject;
             arrChimpSquaresToLoad[i].GetComponent<ChimpsSquaresScript>().setNumber(i+1);
 
