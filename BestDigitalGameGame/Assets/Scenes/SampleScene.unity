@@ -122,8 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &293097478
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +228,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3193863f6c474d6c83d3f10e290aaa0, type: 3}
->>>>>>> Stashed changes
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,11 +239,8 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-<<<<<<< Updated upstream
-=======
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
->>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -328,8 +322,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!114 &519420033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,14 +1022,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3193863f6c474d6c83d3f10e290aaa0, type: 3}
->>>>>>> Stashed changes
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 950421392}
   - {fileID: 519420032}
-<<<<<<< Updated upstream
-=======
   - {fileID: 293097480}
   - {fileID: 1789068416}
   - {fileID: 3756548223438995322}
@@ -1046,4 +1036,3 @@ SceneRoots:
   - {fileID: 326261860}
   - {fileID: 1124675901}
   - {fileID: 787257472}
->>>>>>> Stashed changes
