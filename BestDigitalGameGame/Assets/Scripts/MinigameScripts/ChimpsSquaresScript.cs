@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro; // namespace for text mesh pro, for changing text on squares
 
+
 // class for the squares in the'CHIMPS' number pattern task
 // Author: Charli Jones @CharliSIO
+
 public class ChimpsSquaresScript : MonoBehaviour
 {
     public GameObject self;
     private TMP_Text m_displayNumber;
     private int m_ButtonNumber;
     static int m_currentScore = 0;
+
     static int m_mistakesMade = 0;
     static bool m_numbersVisible = true;
 
@@ -20,6 +23,7 @@ public class ChimpsSquaresScript : MonoBehaviour
     private void Awake()
     {
         m_displayNumber = GetComponent<TMP_Text>();
+        
         anim = transform.GetChild(0).GetComponent<Animation>();
     }
 
