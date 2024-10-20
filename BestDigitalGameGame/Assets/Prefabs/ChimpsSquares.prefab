@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 47946333835779785}
+  m_number: {fileID: 0}
 --- !u!61 &-1601861781341347993
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -321,7 +322,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!111 &2423884652956669982
+  --- !u!111 &2423884652956669982
 Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -42,3 +42,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Vingette
+    uniqueID: 146404183
+    locked: 0
