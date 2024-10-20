@@ -24,12 +24,7 @@ public class ChimpsGame : MonoBehaviour
     private int totalWins = 0;
 
     public int[,] possiblePositions = new int[5, 4];
-
-    public GameObject ownWindow;
-
-    private int totalWins = 0;
-
-    public int[,] possiblePositions = new int[5, 4];
+    
     public BaseWindowClass GameWindow;
     public Canvas GameCanvas;
 
