@@ -137,6 +137,8 @@ MonoBehaviour:
   - {fileID: 47946333835779785, guid: dc5061988a2de2040872060262a04c6a, type: 3}
   - {fileID: 47946333835779785, guid: dc5061988a2de2040872060262a04c6a, type: 3}
   - {fileID: 47946333835779785, guid: dc5061988a2de2040872060262a04c6a, type: 3}
+  - {fileID: 47946333835779785, guid: dc5061988a2de2040872060262a04c6a, type: 3}
+  - {fileID: 47946333835779785, guid: dc5061988a2de2040872060262a04c6a, type: 3}
   arrChimpSquares:
   - {fileID: 0}
   - {fileID: 0}
@@ -145,6 +147,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  GameWindow: {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   GameWindowContent: {fileID: 8276768681586384581}
-  GameCanvas: {fileID: 0}
+
