@@ -424,13 +424,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3703839117369826643, guid: a3193863f6c474d6c83d3f10e290aaa0, type: 3}
       propertyPath: m_LocalPosition.x
-
-      value: -5.35
+      value: -3.45
       objectReference: {fileID: 0}
     - target: {fileID: 3703839117369826643, guid: a3193863f6c474d6c83d3f10e290aaa0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.79
-
+      value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 3703839117369826643, guid: a3193863f6c474d6c83d3f10e290aaa0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -468,7 +466,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChimpsGameWindow Variant
       objectReference: {fileID: 0}
-
     - target: {fileID: 4997860621816199212, guid: a3193863f6c474d6c83d3f10e290aaa0, type: 3}
       propertyPath: Camera
       value: 
@@ -476,11 +473,11 @@ PrefabInstance:
     - target: {fileID: 7467321766287425567, guid: a3193863f6c474d6c83d3f10e290aaa0, type: 3}
       propertyPath: self
       value: 
-      objectReference: {fileID: 385023401}
+      objectReference: {fileID: 0}
     - target: {fileID: 7467321766287425567, guid: a3193863f6c474d6c83d3f10e290aaa0, type: 3}
       propertyPath: ownWindow
       value: 
-      objectReference: {fileID: 385023401}
+      objectReference: {fileID: 0}
     - target: {fileID: 7467321766287425567, guid: a3193863f6c474d6c83d3f10e290aaa0, type: 3}
       propertyPath: arrChimpSquares.Array.size
       value: 9
@@ -497,7 +494,6 @@ PrefabInstance:
       propertyPath: arrChimpSquaresToLoad.Array.data[8]
       value: 
       objectReference: {fileID: 47946333835779785, guid: dc5061988a2de2040872060262a04c6a, type: 3}
-
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
