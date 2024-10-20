@@ -17,22 +17,49 @@ public class ChimpsGame : MonoBehaviour
     public GameObject[] arrChimpSquares;
     public GameObject GameWindowContent;
 
+    public GameObject ownWindow;
+
+    private int totalWins = 0;
+
     public int[,] possiblePositions = new int[5, 4];
 
     // Start is called before the first frame update
     void Start()
     {
-        setupGame();
+        setupGame(5);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // check whether the player has made too many mistakes
+        if (arrChimpSquares[0].GetComponent<ChimpsSquaresScript>().getMistakes() >= 3)
+        {
+            Debug.Log("Task Failed.");
+            Destroy(ownWindow);
+            // insert other consqequence here
+        }
+
+        // if score is equal to total amount of squares (game is compelte) then destroy game and reset
+        if (arrChimpSquares[0].GetComponent<ChimpsSquaresScript>().getScore() == arrChimpSquares.Length)
+        {
+            if (totalWins >= 2)
+            {
+                Debug.Log("Task Complete.");
+                Destroy(ownWindow);
+                // hooray task complete reflect this in dialogue etc
+            }
+            else
+            {
+                deleteGame();
+                totalWins++;
+                setupGame(arrChimpSquares.Length + 2);
+            }
+        }
     }
 
     // function to set up the game
-    void setupGame()
+    void setupGame( int _totalSquares)
     {
         // reset the array so all positons are empty
         for (int i = 0; i < 4; i++)
@@ -45,10 +72,11 @@ public class ChimpsGame : MonoBehaviour
 
         Random.InitState((int)System.DateTime.Now.Ticks);
 
-        arrChimpSquares = new GameObject[arrChimpSquaresToLoad.Length];
+        // set the length of the array to be the same as the total amount of squares needed
+        arrChimpSquares = new GameObject[_totalSquares];
 
         // iterate through and instantiate each square
-        for (int i = 0; i < arrChimpSquaresToLoad.Length; i++)
+        for (int i = 0; i < _totalSquares; i++)
         {
             // choose a position
             int x = (int)Mathf.Floor(Random.Range(1.0f, 4.99f));
@@ -61,22 +89,32 @@ public class ChimpsGame : MonoBehaviour
                 y = (int)Mathf.Floor(Random.Range(1.0f, 3.99f));
             }
 
-            arrChimpSquaresToLoad[i] = Instantiate(arrChimpSquaresToLoad[i],
+            // instantiate the sqaures based on position taken from array and adjusted to be within bounds of the window
+            arrChimpSquares[i] = Instantiate(arrChimpSquaresToLoad[i],
                     new Vector3(GameWindowContent.transform.position.x + x - GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x / 2,
                         GameWindowContent.transform.position.y + y - GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y / 2, -2),
                     Quaternion.identity, GameWindowContent.transform) as GameObject;
 
             // increments number that is displayed on the squares and sets the position as taken
-            arrChimpSquaresToLoad[i].GetComponent<ChimpsSquaresScript>().setNumber(i + 1);
+            arrChimpSquares[i].GetComponent<ChimpsSquaresScript>().setNumber(i + 1);
             possiblePositions[x, y] = 1;
         }
+
+        // make sure the numbers are visible
+        arrChimpSquares[0].GetComponent<ChimpsSquaresScript>().setNumbersVisible(true);
     }
 
+    // delete the squares ready for new set of squares to be instantiated
     void deleteGame()
     {
-        for (int i = 0; i < arrChimpSquaresToLoad.Length; i++)
+        // reset static valuyes score and mistake counter
+        arrChimpSquares[0].GetComponent<ChimpsSquaresScript>().setScore(0);
+        arrChimpSquares[0].GetComponent<ChimpsSquaresScript>().setMistakes(0);
+
+        // iterate through array and destroy each object
+        for (int i = 0; i < arrChimpSquares.Length; i++)
         {
-            Destroy(arrChimpSquaresToLoad[i]);
+            Destroy(arrChimpSquares[i]);
         }
     }
 }
