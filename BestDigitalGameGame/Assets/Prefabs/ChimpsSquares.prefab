@@ -243,6 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2909621659941194426}
   - component: {fileID: 3934770015522158406}
+  - component: {fileID: 2423884652956669982}
   m_Layer: 0
   m_Name: 9-Sliced
   m_TagString: Untagged
@@ -321,3 +322,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+  --- !u!111 &2423884652956669982
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4883402415183513320}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b2a348e1d8f99a54abe8bf052e4173f4, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b2a348e1d8f99a54abe8bf052e4173f4, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
