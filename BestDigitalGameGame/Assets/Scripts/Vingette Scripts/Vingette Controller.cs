@@ -33,7 +33,7 @@ public class VingetteController : MonoBehaviour
      public Vector3 LeftPeek;
      public Vector3 UpPeek;
      public Vector3 Pinboard;
-     TargetScene m_TargetScene;
+     public TargetScene m_TargetScene;
 
     [Header ("Fade Variables")]//speed and end size of the mask. No Z coor, because we dont fade it
      public float FadeSpeed;
@@ -43,24 +43,17 @@ public class VingetteController : MonoBehaviour
     //these are variables for the Scene moving
     private float m_CurrentLerp;
     private State m_State;
-    private bool m_Fading;
+    public bool m_Fading;
     private float xScale;
     private float yScale;
 
     void Update()
     {
-
-        if(Input.GetKeyDown(KeyCode.Space))//for testing
-        {
-            m_Fading = true;
-        }
-
         if(m_Fading)//if meant to be fading, run the transition
         {
             Transition(m_TargetScene);
         }
     }
-
 
     // Transition runs the fade out of the scene, then changes the background scene, then fades in the scene.
     void Transition(TargetScene _TargetScene)
