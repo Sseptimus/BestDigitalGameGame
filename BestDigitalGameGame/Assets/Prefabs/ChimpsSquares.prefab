@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 47946333835779785}
+  m_number: {fileID: 0}
 --- !u!61 &-1601861781341347993
 BoxCollider2D:
   m_ObjectHideFlags: 0

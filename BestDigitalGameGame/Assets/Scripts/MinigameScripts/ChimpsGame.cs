@@ -22,6 +22,8 @@ public class ChimpsGame : MonoBehaviour
     private int totalWins = 0;
 
     public int[,] possiblePositions = new int[5, 4];
+    public BaseWindowClass GameWindow;
+    public Canvas GameCanvas;
 
     // Start is called before the first frame update
     void Start()
