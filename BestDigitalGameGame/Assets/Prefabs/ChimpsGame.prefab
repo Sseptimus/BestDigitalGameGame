@@ -147,6 +147,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  GameWindow: {fileID: 0}
   GameWindowContent: {fileID: 8276768681586384581}
-  GameCanvas: {fileID: 0}
+

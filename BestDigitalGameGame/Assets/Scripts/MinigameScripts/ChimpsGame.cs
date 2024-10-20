@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 // class for running the 'CHIMPS' number pattern task
 // Author: Charli Jones @CharliSIO
 public class ChimpsGame : MonoBehaviour
@@ -15,7 +16,14 @@ public class ChimpsGame : MonoBehaviour
     // array for squares
     public GameObject[] arrChimpSquaresToLoad;
     public GameObject[] arrChimpSquares;
+
     public GameObject GameWindowContent;
+
+    public GameObject ownWindow;
+
+    private int totalWins = 0;
+
+    public int[,] possiblePositions = new int[5, 4];
 
     public GameObject ownWindow;
 
