@@ -2385,10 +2385,6 @@ PrefabInstance:
     - target: {fileID: 7467321766287425567, guid: a3193863f6c474d6c83d3f10e290aaa0, type: 3}
       propertyPath: ownWindow
       value: 
-      objectReference: {fileID: 184088949}
-    - target: {fileID: 7467321766287425567, guid: a3193863f6c474d6c83d3f10e290aaa0, type: 3}
-      propertyPath: arrChimpSquares.Array.size
-      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7467321766287425567, guid: a3193863f6c474d6c83d3f10e290aaa0, type: 3}
       propertyPath: arrChimpSquaresToLoad.Array.size
