@@ -41,15 +41,7 @@ public class InkManager : MonoBehaviour
         _story = new Story(_inkJsonAsset.text);
         DisplayNextLine();
     }
-
-    private void PrintText(string _text)
-    {
-       string[] tempStrArr = _text.Split(' ');
-       for (int i = 0; i < tempStrArr.Length; i++)
-       {
-           PrintQueue.Enqueue(tempStrArr[i]);
-       }
-    }
+    
   
     public void DisplayNextLine()
     {
@@ -58,8 +50,8 @@ public class InkManager : MonoBehaviour
             string text = _story.Continue(); // gets next line
     
             text = text?.Trim(); // removes white space from text
-    
-            PrintText(text); // displays new text
+
+            _textField.text = text; // displays new text
         }
         else if (_story.currentChoices.Count > 0)
         {
