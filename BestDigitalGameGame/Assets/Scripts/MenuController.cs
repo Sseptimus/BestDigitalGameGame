@@ -6,13 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    void StartGame() // Starts game by loading main scene
+
+    public void StartGame() // Starts game by loading main scene
     {
+        Debug.Log("Staring Game");
         SceneManager.LoadScene("SampleScene");
     }
 
-    void ExitGame() // Quits Application, and editor if still editing
+    public void ExitGame() // Quits Application, and editor if still editing
     {
+        Debug.Log("Quitting Game");
         Application.Quit();
         EditorApplication.Exit(0);
     }
