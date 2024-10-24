@@ -1,12 +1,11 @@
 ﻿VAR BossInView = false
-
-
 -> start // this tells ink where to start the story
 
 === start ===
 This is LIVE how can I help you today?
-->when BossInView == false->NeedHelpNoBoss
-->when BossInView == true ->NeedHelpBoss
+* {BossInView} [Hi] ->NeedHelpBoss
+* {not BossInView} [Hi] ->NeedHelpNoBoss
+
 
 === NeedHelpBoss ===
 Hey buddy I need your help

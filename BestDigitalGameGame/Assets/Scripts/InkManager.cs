@@ -24,7 +24,7 @@ public class InkManager : MonoBehaviour
     private ChatController ChatController;
     
     private string sOutputText;
-    private string sQueuedText;
+    private string sQueuedText = "";
     private int iAlternate = 0;
     private char[] cPossibleLetters =
     {
@@ -69,12 +69,11 @@ public class InkManager : MonoBehaviour
         if (_story.canContinue)
         {
             string text = _story.Continue(); // gets next line
-    
-            text = text?.Trim(); // removes white space from text
 
-            PrintToScreen(text); // displays new text
+            text = text?.Trim(); // removes white space from text
+            PrintToScreen(text);
         }
-        else if (_story.currentChoices.Count > 0)
+        else if(_story.currentChoices.Count>0)
         {
             DisplayChoices();
         }
@@ -100,7 +99,7 @@ public class InkManager : MonoBehaviour
     
     private void DisplayChoices()
     {
-        // checks if choices are already being displaye
+        // checks if choices are already being displayed
         if (_choiceButtonContainer.GetComponentsInChildren<Button>().Length > 0) return;
 
         for (int i = 0; i < _story.currentChoices.Count; i++) // iterates through all choices
@@ -128,7 +127,6 @@ public class InkManager : MonoBehaviour
         _story.ChooseChoiceIndex(choice.index); // tells ink which choice was selected
         RefreshChoiceView(); // removes choices from the screen
         DisplayNextLine();
-
     }
     void RefreshChoiceView()
     {
