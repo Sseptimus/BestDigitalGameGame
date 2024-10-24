@@ -48,6 +48,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 0}
+  m_bHeld: 0
+  self: {fileID: 0}
+  ComputerScreen: {fileID: 0}
+  Background: {fileID: 0}
+  Content: {fileID: 0}
+  TitleBar: {fileID: 0}
 --- !u!61 &1044997430244915351
 BoxCollider2D:
   m_ObjectHideFlags: 0
