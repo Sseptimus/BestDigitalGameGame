@@ -261,8 +261,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0053000147, y: -0.3136798}
-  m_SizeDelta: {x: 0.9785, y: 0.6417}
+  m_AnchoredPosition: {x: -1.2205, y: -0.0000023246}
+  m_SizeDelta: {x: 0.48819, y: 0.9997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &342125600
 MonoBehaviour:
@@ -281,7 +281,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 3
+  m_ChildAlignment: 6
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
@@ -743,7 +743,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 2107569877}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -1130,8 +1130,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0053000147, y: -0.3136798}
-  m_SizeDelta: {x: 0.9785, y: 0.6417}
+  m_AnchoredPosition: {x: 1.2258, y: 0.0000025034}
+  m_SizeDelta: {x: 0.4903, y: 0.99965}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1926628210
 MonoBehaviour:
@@ -1150,7 +1150,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 5
+  m_ChildAlignment: 8
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
@@ -1167,6 +1167,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 342125599}
     m_Modifications:
+    - target: {fileID: 2286270132544496246, guid: e0af5847c59b3e14f8e885e3544fcdcc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2496419411250300553, guid: e0af5847c59b3e14f8e885e3544fcdcc, type: 3}
       propertyPath: m_Name
       value: ChatMessage
@@ -1201,7 +1205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9142437978190371521, guid: e0af5847c59b3e14f8e885e3544fcdcc, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1
+      value: 0.1225
       objectReference: {fileID: 0}
     - target: {fileID: 9142437978190371521, guid: e0af5847c59b3e14f8e885e3544fcdcc, type: 3}
       propertyPath: m_LocalPosition.x
