@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Linq;
 using UnityEngine.UI;
 using UnityEngine;
@@ -61,6 +62,7 @@ public class InkManager : MonoBehaviour
         _story = new Story(_inkJsonAsset.text);
         DisplayNextLine();
     }
+    
   
     public void DisplayNextLine()
     {

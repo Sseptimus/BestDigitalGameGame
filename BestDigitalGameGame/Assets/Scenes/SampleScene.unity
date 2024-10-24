@@ -797,7 +797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f86276da9c8f9e45af78b30ed72f784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inkJsonAsset: {fileID: 4900000, guid: 6cf48bb6d89824cc69e35b43f9a1aca6, type: 3}
+  _inkJsonAsset: {fileID: 4900000, guid: 5fe835a75621ad14cab18aa6afc5cc1c, type: 3}
   _choiceButtonContainer: {fileID: 481958729}
   _choiceButtonPrefab: {fileID: 6192818354376701437, guid: 1b61a8707312f3d489582937245d853d, type: 3}
   ChatController: {fileID: 2134325778}
