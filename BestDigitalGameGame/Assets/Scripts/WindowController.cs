@@ -13,12 +13,14 @@ public class WindowController :  BaseWindowClass
     private SpriteRenderer m_sprTitleBar;
     private GameManager m_GameManager;
     private Canvas m_WindowCanvas;
+    private BoxCollider2D m_ColTitleBar;
 
     private void Start()
     {
         m_sprContent = gameObject.transform.Find("Content").GetComponent<SpriteRenderer>();
         m_sprTitleBar = gameObject.transform.Find("TitleBar").GetComponent<SpriteRenderer>();
         m_GameManager = FindObjectOfType<GameManager>();
+        m_ColTitleBar = transform.GetComponent<BoxCollider2D>();
         
         if (!Camera)
         {
@@ -30,6 +32,7 @@ public class WindowController :  BaseWindowClass
     {
         m_bHeld = true;
         m_vec3MousePos = Input.mousePosition;
+        OnGrabFocus();
     }
 
     public void OnGrabFocus()
@@ -37,12 +40,14 @@ public class WindowController :  BaseWindowClass
         m_GameManager.WindowInFocus.LoseFocus();
         
         m_GameManager.WindowInFocus = this;
-        SpriteRenderer[] ChildRenderers = GetComponents<SpriteRenderer>();
+        m_ColTitleBar.size = new Vector2(5,0.5f);
+        m_ColTitleBar.offset = new Vector2(2.5f, -0.25f);
+        SpriteRenderer[] ChildRenderers = GetComponentsInChildren<SpriteRenderer>();
         foreach (var Renderer in ChildRenderers)
         {
              Renderer.sortingLayerName = "FocusedWindow";
         }
-        Canvas[] ChildCanvas = GetComponents<Canvas>();
+        Canvas[] ChildCanvas = GetComponentsInChildren<Canvas>();
         foreach (var Canvas in ChildCanvas)
         {
            Canvas.sortingLayerName = "FocusedWindow";
@@ -51,12 +56,17 @@ public class WindowController :  BaseWindowClass
 
     public void LoseFocus()
     {
-        SpriteRenderer[] ChildRenderers = GetComponents<SpriteRenderer>();
+        m_ColTitleBar.size = new Vector2(5,4.5f);
+        m_ColTitleBar.offset = new Vector2(2.5f, -2.25f);
+        SpriteRenderer[] ChildRenderers = GetComponentsInChildren<SpriteRenderer>();
+        Debug.Log(ChildRenderers.Length);
         foreach (var Renderer in ChildRenderers)
         {
             Renderer.sortingLayerName = "NonFocusedWindows";
+            Debug.Log(Renderer.name);
         }
-        Canvas[] ChildCanvas = GetComponents<Canvas>();
+        
+        Canvas[] ChildCanvas = GetComponentsInChildren<Canvas>();
         foreach (var Canvas in ChildCanvas)
         {
             Canvas.sortingLayerName = "NonFocusedWindows";
