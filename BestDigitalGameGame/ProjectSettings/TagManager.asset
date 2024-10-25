@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ChimpsNumberSquare
   layers:
   - Default
   - TransparentFX
@@ -46,4 +47,6 @@ TagManager:
     locked: 0
   - name: FocusedWindow
     uniqueID: 209069043
+  - name: Vingette
+    uniqueID: 146404183
     locked: 0
