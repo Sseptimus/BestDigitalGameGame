@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 {
     public GameObject ComputerScreen;
     public GameObject Background;
+
+    public WindowController WindowInFocus;
+    
     // Start is called before the first frame update
     void Start()
     {
