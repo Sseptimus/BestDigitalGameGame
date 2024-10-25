@@ -2215,8 +2215,8 @@ Transform:
   m_GameObject: {fileID: 1551845480}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.098, y: -0.018, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4041667, z: 0.4166667}
+  m_LocalPosition: {x: 0.04, y: -0.008, z: 0}
+  m_LocalScale: {x: 0.099999994, y: 0.101041675, z: 0.10416667}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1963297877}
@@ -2945,7 +2945,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.64, y: 2.6572, z: 3.64}
+  m_LocalScale: {x: 5.74, y: 4.1902, z: 5.74}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1551845481}
@@ -3066,6 +3066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxMoveTimer: 1000
   MinMoveTimer: 100
+  BOSS_IS_WATCHING: 0
   UpPeek: {fileID: 1305448780}
   LeftPeek: {fileID: 353022303}
   _sprIn_Office: {fileID: 21300000, guid: 554b507c0ae048f4983f2dc4747e4d0e, type: 3}
@@ -3261,6 +3262,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 411484048}
     m_Modifications:
+    - target: {fileID: 1367057120693928007, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.82
+      objectReference: {fileID: 0}
     - target: {fileID: 5296065905511976146, guid: 83a1e266afc824aa5ae88fbf876797f2, type: 3}
       propertyPath: MainCamera
       value: 
@@ -3316,14 +3325,6 @@ PrefabInstance:
     - target: {fileID: 8778399253896003397, guid: 83a1e266afc824aa5ae88fbf876797f2, type: 3}
       propertyPath: m_Name
       value: Exit Arrow
-      objectReference: {fileID: 0}
-    - target: {fileID: 1367057120693928007, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.82
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
