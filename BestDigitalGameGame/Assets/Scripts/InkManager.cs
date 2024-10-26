@@ -2,30 +2,37 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Linq;
 using UnityEngine.UI;
 using UnityEngine;
 using Ink.Runtime;
 using TMPro;
+using Random = UnityEngine.Random;
 
 public class InkManager : MonoBehaviour
 {
     [SerializeField]
     private TextAsset _inkJsonAsset;
     private Story _story;
-
-    [SerializeField]
-    private TextMeshProUGUI _textField;
+    
     [SerializeField]
     private VerticalLayoutGroup _choiceButtonContainer;
 
     [SerializeField]
     private Button _choiceButtonPrefab;
-
-    private Queue<string> PrintQueue;
-    private string CurrentText;
-    private string CurrentWord;
-    private int CurrentLetter;
+    [SerializeField]
+    private ChatController ChatController;
     
+    private string sOutputText;
+    private string sQueuedText;
+    private int iAlternate = 0;
+    private char[] cPossibleLetters =
+    {
+        'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+        'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
+    };
+
+
     void Start()
     {
         StartStory();
@@ -33,7 +40,21 @@ public class InkManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (sQueuedText.Length == 0)
+        {
+            ChatController.CurrentMessage = null;
+        }
+        if (iAlternate % 3 == 0 && sQueuedText.Length != 0)
+        {
+            sOutputText += sQueuedText[0];
+            sQueuedText = sQueuedText.TrimStart(sQueuedText[0]);
+        }
+        if (ChatController.CurrentMessage)
+        {
+            ChatController.CurrentMessage.text = sOutputText;
+        }
         
+        iAlternate++;
     }
 
     private void StartStory()
@@ -41,15 +62,7 @@ public class InkManager : MonoBehaviour
         _story = new Story(_inkJsonAsset.text);
         DisplayNextLine();
     }
-
-    private void PrintText(string _text)
-    {
-       string[] tempStrArr = _text.Split(' ');
-       for (int i = 0; i < tempStrArr.Length; i++)
-       {
-           PrintQueue.Enqueue(tempStrArr[i]);
-       }
-    }
+    
   
     public void DisplayNextLine()
     {
@@ -58,13 +71,31 @@ public class InkManager : MonoBehaviour
             string text = _story.Continue(); // gets next line
     
             text = text?.Trim(); // removes white space from text
-    
-            PrintText(text); // displays new text
+
+            PrintToScreen(text); // displays new text
         }
         else if (_story.currentChoices.Count > 0)
         {
             DisplayChoices();
         }
+    }
+
+    private void PrintToScreen(string newText)
+    {
+        sQueuedText = newText;
+        sOutputText = "";
+        if (ChatController.NPCMessages.Count == 0||ChatController.NPCMessages[ChatController.NPCMessages.Count - 1] ==
+            ChatController.CurrentMessage)
+        {
+            ChatController.CurrentMessage = Instantiate(ChatController.MessagePrefab, ChatController.PlayerMessageContainer.transform, false);
+            ChatController.PlayerMessages.Append(ChatController.CurrentMessage);
+        }
+        else
+        {
+            ChatController.CurrentMessage = Instantiate(ChatController.MessagePrefab, ChatController.NPCMessageContainer.transform, false);
+            ChatController.NPCMessages.Append(ChatController.CurrentMessage);
+        }
+
     }
     
     private void DisplayChoices()
