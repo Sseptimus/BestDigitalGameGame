@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossManager : MonoBehaviour
 {
-    enum BossLocation
+    public enum BossLocation
     {
         In_Office,
         Up_Pos1,
@@ -20,7 +20,7 @@ public class BossManager : MonoBehaviour
     public float MaxMoveTimer;
     public float MinMoveTimer;
     float CurrentMoveTimer;
-    BossLocation CurrentLocation = BossLocation.In_Office;
+    public BossLocation CurrentLocation = BossLocation.In_Office;
     public bool BOSS_IS_WATCHING = false;
 
 

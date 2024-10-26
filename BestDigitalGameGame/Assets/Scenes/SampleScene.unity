@@ -1189,6 +1189,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8493877665102779084, guid: 83a1e266afc824aa5ae88fbf876797f2, type: 3}
   m_PrefabInstance: {fileID: 197105950069029268}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &706974938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 706974940}
+  - component: {fileID: 706974939}
+  m_Layer: 0
+  m_Name: Observer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &706974939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706974938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee711693260967418e6edadfc78c21f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossManager: {fileID: 0}
+  CrossFadeController: {fileID: 0}
+--- !u!4 &706974940
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706974938}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.04703008, y: -1.9709605, z: 0.55213434}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &781331633
 GameObject:
   m_ObjectHideFlags: 0
@@ -3066,6 +3112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxMoveTimer: 1000
   MinMoveTimer: 100
+  CurrentLocation: 0
   BOSS_IS_WATCHING: 0
   UpPeek: {fileID: 1305448780}
   LeftPeek: {fileID: 353022303}
@@ -3422,3 +3469,4 @@ SceneRoots:
   - {fileID: 950856091}
   - {fileID: 1961179505}
   - {fileID: 2027303093}
+  - {fileID: 706974940}
