@@ -1,6 +1,6 @@
-﻿VAR BossWatching = false
+﻿VAR BeingWatched= false
 VAR BossSuspicionCounter = 0
-EXTERNAL runTask
+EXTERNAL runTask(taskType);
 
 
 -> start // this tells ink where to start the story
@@ -10,7 +10,7 @@ Hey buddy I've got a problem. I need you to fix it.
 * [What's your problem, sir?]
 -> ExplainProblem
 * [I need your help.]
-when BossWatching = true 
+when BeingWatched= true 
      BossSuspicionCounter++
 -> NeedHelp
 
@@ -31,7 +31,23 @@ Important things. Assets. I don't have to tell you that.
 - <> Fine. It's Bitcoin, I need you to recover it. It was very expensive. I spent a lot of money. 
 
 * [How did you lose your laptop?]
+That's irrelevent. Just get me my bitcoin back. 
 * [Do you have an account you would be able to sign in to?]
+Yes, I have an OSOS account.
+
+- I need you to sign into my account for me. I can't complete the login sequence.
+~ runTask("imagePuzzle");
+
+=== TaskDialogue ===
+= dialogue_one
+That square goes in the top right corner.
+
+= dialogue_two
+That square goes in the bottom left corner.
+
+= dialogue_three
+I don't know where that square goes.
+
 
 
 -> END // this marks the end of the story
