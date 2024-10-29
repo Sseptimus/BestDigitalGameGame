@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header ("Things to Referance")]
     public GameObject ComputerScreen;
     public GameObject Background;
 
