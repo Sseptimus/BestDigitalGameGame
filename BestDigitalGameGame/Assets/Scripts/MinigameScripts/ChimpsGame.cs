@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// class for running the 'CHIMPS' number pattern task
+// Author: Charli Jones @CharliSIO + minor alterations by Nick
 public class ChimpsGame : MonoBehaviour
 {
     // Need 7 squares, one with each number
@@ -13,58 +16,142 @@ public class ChimpsGame : MonoBehaviour
     // array for squares
     public GameObject[] arrChimpSquaresToLoad;
     public GameObject[] arrChimpSquares;
-    public BaseWindowClass GameWindow;
-    public GameObject GameWindowContent;
-    public Canvas GameCanvas;
 
+    public GameObject GameWindowContent;
+
+    public GameObject ownWindow;
+
+    private int totalWins = 0;
+
+    public int[,] possiblePositions = new int[5, 4];
+    
+    public BaseWindowClass GameWindow;
+    public Canvas GameCanvas;
+    private int m_currentScore = 0; 
+    private int m_mistakesMade = 0;
+    private bool m_numbersVisible = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        Random.InitState((int)System.DateTime.Now.Ticks);
-
-
-        arrChimpSquares = new GameObject[arrChimpSquaresToLoad.Length];
-       for (int i = 0; i < arrChimpSquaresToLoad.Length; i++)
-        {
-            //Debug.Log(GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x);
-            //Debug.Log(GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y);
-            arrChimpSquaresToLoad[i] = Instantiate(arrChimpSquaresToLoad[i], 
-                new Vector3((int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x), 
-                            (-(int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y)), -2), 
-                Quaternion.identity, GameWindowContent.transform) as GameObject;
-            arrChimpSquaresToLoad[i].GetComponent<ChimpsSquaresScript>().setNumber(i+1);
-
-            for (int j = 0; j < i; j++)
-            {
-                bool placedCorrectly = false;
-                while (!placedCorrectly)
-                {
-                    // replace with correct trigger overlap
-                    Debug.Log("Collision Detected" + i);
-
-                    if (arrChimpSquaresToLoad[i].GetComponent<BoxCollider2D>().transform.position.x == arrChimpSquaresToLoad[j].GetComponent<BoxCollider2D>().transform.position.x
-                        && arrChimpSquaresToLoad[i].GetComponent<BoxCollider2D>().transform.position.y == arrChimpSquaresToLoad[j].GetComponent<BoxCollider2D>().transform.position.y)
-                    {
-                        arrChimpSquaresToLoad[i].transform.position = new Vector3((int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x),
-                            (-(int)Random.Range(1, GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y)), -2);
-                        Debug.Log(arrChimpSquaresToLoad[i].transform.position);
-                    }
-                    else {
-                        placedCorrectly = true; break; }
-                }
-            }
-        }
+        setupGame(5);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // check whether the player has made too many mistakes
+        if (m_mistakesMade >= 3)
+        {
+            Debug.Log("Task Failed.");
+            Destroy(ownWindow);
+            // insert other consequence here
+        }
+
+        // if score is equal to total amount of squares (game is compelte) then destroy game and reset
+        if (m_currentScore == arrChimpSquares.Length)
+        {
+            if (totalWins >= 2)
+            {
+                Debug.Log("Task Complete.");
+                Destroy(ownWindow);
+                // hooray task complete reflect this in dialogue etc
+            }
+            else
+            {
+                deleteGame();
+                totalWins++;
+                setupGame(arrChimpSquares.Length + 2);
+            }
+        }
     }
 
-    void PlaceSquares()
+    // function to set up the game
+    void setupGame( int _totalSquares)
     {
+        // reset the array so all positons are empty
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                possiblePositions[i, j] = 0;
+            }
+        }
 
+        Random.InitState((int)System.DateTime.Now.Ticks);
+
+        // set the length of the array to be the same as the total amount of squares needed
+        arrChimpSquares = new GameObject[_totalSquares];
+
+        // iterate through and instantiate each square
+        for (int i = 0; i < _totalSquares; i++)
+        {
+            // choose a position
+            int x = (int)Mathf.Floor(Random.Range(1.0f, 4.99f));
+            int y = (int)Mathf.Floor(Random.Range(1.0f, 3.99f));
+
+            // if position is already taken choose another position
+            while (possiblePositions[x, y] != 0)
+            {
+                x = (int)Mathf.Floor(Random.Range(1.0f, 4.99f));
+                y = (int)Mathf.Floor(Random.Range(1.0f, 3.99f));
+            }
+
+            // instantiate the sqaures based on position taken from array and adjusted to be within bounds of the window
+            arrChimpSquares[i] = Instantiate(arrChimpSquaresToLoad[i],
+                    new Vector3(GameWindowContent.transform.position.x + x - GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.x / 2,
+                        GameWindowContent.transform.position.y + y - GameWindowContent.GetComponent<SpriteRenderer>().bounds.size.y / 2, -2),
+                    Quaternion.identity, GameWindowContent.transform) as GameObject;
+
+            // increments number that is displayed on the squares and sets the position as taken
+            arrChimpSquares[i].GetComponent<ChimpsSquaresScript>().setNumber(i + 1);
+            possiblePositions[x, y] = 1;
+        }
+
+        // make sure the numbers are visible
+        m_numbersVisible = true;
+    }
+
+    // delete the squares ready for new set of squares to be instantiated
+    void deleteGame()
+    {
+        // reset static valuyes score and mistake counter
+        m_currentScore = 0;
+        m_mistakesMade = 0;
+
+        // iterate through array and destroy each object
+        for (int i = 0; i < arrChimpSquares.Length; i++)
+        {
+            Destroy(arrChimpSquares[i]);
+        }
+    }
+    
+    //Getters and Setters\\
+    
+    public void setScore(int _score)
+    {
+        m_currentScore = _score;
+    }
+    public int getScore()
+    {
+        return m_currentScore;
+    }
+
+    public void setMistakes(int _mistakes)
+    {
+        m_mistakesMade = _mistakes;
+    }
+    public int getMistakes()
+    {
+        return m_mistakesMade;
+    }
+
+    public void setNumbersVisible(bool _setting)
+    {
+        m_numbersVisible = _setting;
+    }
+    public bool getNumbersVisible()
+    {
+        return m_numbersVisible;
     }
 }
