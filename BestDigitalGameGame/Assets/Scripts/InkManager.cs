@@ -32,6 +32,9 @@ public class InkManager : MonoBehaviour
         'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
     };
 
+    // game windows to be instantiated
+    public GameObject chimpsGameWindow;
+
 
     void Start()
     {
@@ -64,6 +67,14 @@ public class InkManager : MonoBehaviour
     private void StartStory()
     {
         _story = new Story(_inkJsonAsset.text);
+
+        _story.BindExternalFunction("runTask", (string taskName) => {
+            if (taskName == "chimps")
+            {
+                Instantiate(chimpsGameWindow);
+            }
+        });
+
         DisplayNextLine();
     }
     
