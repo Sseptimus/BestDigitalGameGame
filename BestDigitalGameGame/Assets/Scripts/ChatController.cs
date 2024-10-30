@@ -4,6 +4,7 @@ using System.Numerics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 // class for chat window management
 // Author: Nick Lees
 public class ChatController : MonoBehaviour
