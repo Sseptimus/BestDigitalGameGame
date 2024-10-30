@@ -33,16 +33,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7509351419637882825, guid: f649a247761ef7d45bda1717f636886a, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7509351419637882825, guid: f649a247761ef7d45bda1717f636886a, type: 3}
       propertyPath: m_SortingOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7509351419637882825, guid: f649a247761ef7d45bda1717f636886a, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1144362615
       objectReference: {fileID: 0}
     - target: {fileID: -1300652895720520598, guid: f649a247761ef7d45bda1717f636886a, type: 3}
       propertyPath: GameCanvas
@@ -170,7 +162,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1367057120693928007, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_Name
-      value: ChimpsGameWindow Variant
+      value: GameWindow Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_LocalPosition.x
