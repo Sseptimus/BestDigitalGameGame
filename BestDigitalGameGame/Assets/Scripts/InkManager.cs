@@ -9,8 +9,6 @@ using Ink.Runtime;
 using TMPro;
 using Random = UnityEngine.Random;
 
-// class for reading and writing to story files and outputting to ChatController Class
-// Author: Nick Lees
 public class InkManager : MonoBehaviour
 {
     [SerializeField]
