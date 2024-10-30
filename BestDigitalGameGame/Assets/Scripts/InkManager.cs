@@ -16,7 +16,7 @@ public class InkManager : MonoBehaviour
     private Story _story;
     
     [SerializeField]
-    private VerticalLayoutGroup _choiceButtonContainer;
+    private HorizontalLayoutGroup _choiceButtonContainer;
 
     [SerializeField]
     private Button _choiceButtonPrefab;
@@ -24,7 +24,7 @@ public class InkManager : MonoBehaviour
     private ChatController ChatController;
     
     private string sOutputText;
-    private string sQueuedText;
+    private string sQueuedText = "";
     private int iAlternate = 0;
     private char[] cPossibleLetters =
     {
@@ -47,7 +47,7 @@ public class InkManager : MonoBehaviour
         if (iAlternate % 3 == 0 && sQueuedText.Length != 0)
         {
             sOutputText += sQueuedText[0];
-            sQueuedText = sQueuedText.TrimStart(sQueuedText[0]);
+            sQueuedText = sQueuedText.Remove(0, 1);
         }
         if (ChatController.CurrentMessage)
         {
@@ -55,6 +55,10 @@ public class InkManager : MonoBehaviour
         }
         
         iAlternate++;
+        if (sQueuedText.Length == 0)
+        {
+            DisplayNextLine();
+        }
     }
 
     private void StartStory()
@@ -69,38 +73,41 @@ public class InkManager : MonoBehaviour
         if (_story.canContinue)
         {
             string text = _story.Continue(); // gets next line
-    
-            text = text?.Trim(); // removes white space from text
 
-            PrintToScreen(text); // displays new text
+            text = text?.Trim(); // removes white space from text
+            PrintToScreen(text);
         }
-        else if (_story.currentChoices.Count > 0)
+        else if(_story.currentChoices.Count>0)
         {
             DisplayChoices();
         }
     }
 
-    private void PrintToScreen(string newText)
+    private void PrintToScreen(string newText,bool _bIsPlayer = false)
     {
         sQueuedText = newText;
         sOutputText = "";
-        if (ChatController.NPCMessages.Count == 0||ChatController.NPCMessages[ChatController.NPCMessages.Count - 1] ==
-            ChatController.CurrentMessage)
+        if (_bIsPlayer)
         {
             ChatController.CurrentMessage = Instantiate(ChatController.MessagePrefab, ChatController.PlayerMessageContainer.transform, false);
             ChatController.PlayerMessages.Append(ChatController.CurrentMessage);
+            ChatController.CurrentMessage.text = newText;
+            ChatController.NPCMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.NPCMessageContainer.transform, false));
+            ChatController.CurrentMessage.alignment = TextAlignmentOptions.Right;
         }
         else
         {
             ChatController.CurrentMessage = Instantiate(ChatController.MessagePrefab, ChatController.NPCMessageContainer.transform, false);
             ChatController.NPCMessages.Append(ChatController.CurrentMessage);
+            ChatController.PlayerMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.PlayerMessageContainer.transform, false));
+            ChatController.CurrentMessage.alignment = TextAlignmentOptions.Left;
         }
 
     }
     
     private void DisplayChoices()
     {
-        // checks if choices are already being displaye
+        // checks if choices are already being displayed
         if (_choiceButtonContainer.GetComponentsInChildren<Button>().Length > 0) return;
 
         for (int i = 0; i < _story.currentChoices.Count; i++) // iterates through all choices
@@ -125,10 +132,10 @@ public class InkManager : MonoBehaviour
     }
     void OnClickChoiceButton(Choice choice)
     {
+        PrintToScreen(choice.text,true);
         _story.ChooseChoiceIndex(choice.index); // tells ink which choice was selected
         RefreshChoiceView(); // removes choices from the screen
         DisplayNextLine();
-
     }
     void RefreshChoiceView()
     {
