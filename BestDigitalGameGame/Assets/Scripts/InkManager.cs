@@ -132,8 +132,14 @@ public class InkManager : MonoBehaviour
     }
     void OnClickChoiceButton(Choice choice)
     {
-        PrintToScreen(choice.text,true);
         _story.ChooseChoiceIndex(choice.index); // tells ink which choice was selected
+        if (_story.canContinue)
+        {
+            string text = _story.Continue(); // gets next line
+
+            text = text?.Trim(); // removes white space from text
+            PrintToScreen(text,true);
+        }
         RefreshChoiceView(); // removes choices from the screen
         DisplayNextLine();
     }
