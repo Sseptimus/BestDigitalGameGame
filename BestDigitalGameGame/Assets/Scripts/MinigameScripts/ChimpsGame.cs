@@ -25,8 +25,6 @@ public class ChimpsGame : MonoBehaviour
 
     public int[,] possiblePositions = new int[5, 4];
     
-    public BaseWindowClass GameWindow;
-    public Canvas GameCanvas;
     private int m_currentScore = 0; 
     private int m_mistakesMade = 0;
     private bool m_numbersVisible = true;
