@@ -7,8 +7,12 @@ using UnityEngine.UI;
 using UnityEngine;
 using Ink.Runtime;
 using TMPro;
-using Random = UnityEngine.Random;
+using Ink.UnityIntegration;
+using Vector2 = UnityEngine.Vector2;
 
+// Main author: Nick @Sseptimus
+// Secondary author: Charli @CharliSIO
+// Manages the INK files and stories running
 public class InkManager : MonoBehaviour
 {
     [SerializeField]
@@ -16,22 +20,36 @@ public class InkManager : MonoBehaviour
     private Story _story;
     
     [SerializeField]
-    private VerticalLayoutGroup _choiceButtonContainer;
+    private HorizontalLayoutGroup _choiceButtonContainer;
 
     [SerializeField]
     private Button _choiceButtonPrefab;
     [SerializeField]
     private ChatController ChatController;
-    
+
+    [Header("Globals Ink File")]
+    [SerializeField] private InkFile globalsInkFile;
+
     private string sOutputText;
     private string sQueuedText = "";
     private int iAlternate = 0;
+    private bool m_bPlayerIsTalking = false;
     private char[] cPossibleLetters =
     {
         'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
         'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
     };
 
+    // game windows to be instantiated
+    public GameObject chimpsGameWindow;
+
+    // dialogue observer
+    private DialogueObserver dialogueVariablesObserver;
+
+    private void Awake()
+    {
+        dialogueVariablesObserver = new DialogueObserver(globalsInkFile.filePath);
+    }
 
     void Start()
     {
@@ -47,7 +65,7 @@ public class InkManager : MonoBehaviour
         if (iAlternate % 3 == 0 && sQueuedText.Length != 0)
         {
             sOutputText += sQueuedText[0];
-            sQueuedText = sQueuedText.TrimStart(sQueuedText[0]);
+            sQueuedText = sQueuedText.Remove(0, 1);
         }
         if (ChatController.CurrentMessage)
         {
@@ -55,11 +73,46 @@ public class InkManager : MonoBehaviour
         }
         
         iAlternate++;
+        if (sQueuedText.Length == 0)
+        {
+            DisplayNextLine();
+        }
+
+        //Making sure padding messages are the same height as their corresponding message
+        if (ChatController.CurrentMessage != null && m_bPlayerIsTalking && ChatController.NPCMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()))
+        {
+            ChatController.NPCMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()).GetComponent<RectTransform>().sizeDelta = new Vector2(ChatController.NPCMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()).GetComponent<RectTransform>().sizeDelta.x,ChatController.CurrentMessage.rectTransform.sizeDelta.y);
+        }
+        else if(ChatController.CurrentMessage != null && ChatController.PlayerMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()))
+        {
+            ChatController.PlayerMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()).GetComponent<RectTransform>().sizeDelta = new Vector2(ChatController.PlayerMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()).GetComponent<RectTransform>().sizeDelta.x,ChatController.CurrentMessage.rectTransform.sizeDelta.y);
+        }
+
+        if (ChatController.PlayerMessageContainer.transform.childCount > 5 || ChatController.NPCMessageContainer.transform.childCount > 5)
+        {
+            //When window is full removes the top message
+            Destroy(ChatController.PlayerMessageContainer.transform.GetChild(0).gameObject);
+            Destroy(ChatController.NPCMessageContainer.transform.GetChild(0).gameObject);
+        }
     }
 
     private void StartStory()
     {
         _story = new Story(_inkJsonAsset.text);
+
+        dialogueVariablesObserver.StartListening(_story);
+
+        _story.BindExternalFunction("runTask", (string taskName) => {
+            if (taskName == "chimps")
+            {
+                Instantiate(chimpsGameWindow);
+            }
+            if (taskName == "numberPuzzle")
+            {
+                // instatiate Game #3 number puzzle
+            }
+        });
+
         DisplayNextLine();
     }
     
@@ -79,20 +132,26 @@ public class InkManager : MonoBehaviour
         }
     }
 
-    private void PrintToScreen(string newText)
+    private void PrintToScreen(string newText,bool _bIsPlayer = false)
     {
         sQueuedText = newText;
         sOutputText = "";
-        if (ChatController.NPCMessages.Count == 0||ChatController.NPCMessages[ChatController.NPCMessages.Count - 1] ==
-            ChatController.CurrentMessage)
+        if (_bIsPlayer)
         {
             ChatController.CurrentMessage = Instantiate(ChatController.MessagePrefab, ChatController.PlayerMessageContainer.transform, false);
             ChatController.PlayerMessages.Append(ChatController.CurrentMessage);
+            ChatController.CurrentMessage.text = newText;
+            ChatController.NPCMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.NPCMessageContainer.transform, false));
+            ChatController.CurrentMessage.alignment = TextAlignmentOptions.Right;
+            m_bPlayerIsTalking = true;
         }
         else
         {
             ChatController.CurrentMessage = Instantiate(ChatController.MessagePrefab, ChatController.NPCMessageContainer.transform, false);
             ChatController.NPCMessages.Append(ChatController.CurrentMessage);
+            ChatController.PlayerMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.PlayerMessageContainer.transform, false));
+            ChatController.CurrentMessage.alignment = TextAlignmentOptions.Left;
+            m_bPlayerIsTalking = false;
         }
 
     }
@@ -125,6 +184,13 @@ public class InkManager : MonoBehaviour
     void OnClickChoiceButton(Choice choice)
     {
         _story.ChooseChoiceIndex(choice.index); // tells ink which choice was selected
+        if (_story.canContinue)
+        {
+            string text = _story.Continue(); // gets next line
+
+            text = text?.Trim(); // removes white space from text
+            PrintToScreen(text,true);
+        }
         RefreshChoiceView(); // removes choices from the screen
         DisplayNextLine();
     }
@@ -137,5 +203,22 @@ public class InkManager : MonoBehaviour
                 Destroy(button.gameObject);
             }
         }
+    }
+
+    void ExitDialogue()
+    {
+        dialogueVariablesObserver.StopListening(_story);
+    }
+
+    public Ink.Runtime.Object GetVariableState(string variableName)
+    {
+        Ink.Runtime.Object variablevalue = null;
+        dialogueVariablesObserver.variables.TryGetValue(variableName, out variablevalue);
+        if (variablevalue == null)
+        {
+            Debug.LogWarning("Ink variable was found to be null: " + variablevalue);
+        }
+
+        return variablevalue;
     }
 }

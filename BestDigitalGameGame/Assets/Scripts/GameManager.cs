@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header ("Things to Referance")]
     public GameObject ComputerScreen;
     public GameObject Background;
 
@@ -14,7 +15,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (!WindowInFocus)
+        {
+            WindowInFocus = FindObjectOfType<WindowController>();
+        }
     }
 
     // Update is called once per frame
