@@ -7,8 +7,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using Ink.Runtime;
 using TMPro;
-using Random = UnityEngine.Random;
-using Ink.UnityIntegration;
+using Vector2 = UnityEngine.Vector2;
 
 public class InkManager : MonoBehaviour
 {
@@ -73,6 +72,15 @@ public class InkManager : MonoBehaviour
         {
             DisplayNextLine();
         }
+
+        if (ChatController.CurrentMessage != null && m_bPlayerIsTalking && ChatController.NPCMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()))
+        {
+            ChatController.NPCMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()).GetComponent<RectTransform>().sizeDelta = new Vector2(ChatController.NPCMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()).GetComponent<RectTransform>().sizeDelta.x,ChatController.CurrentMessage.rectTransform.sizeDelta.y);
+        }
+        else if(ChatController.CurrentMessage != null && ChatController.PlayerMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()))
+        {
+            ChatController.PlayerMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()).GetComponent<RectTransform>().sizeDelta = new Vector2(ChatController.PlayerMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()).GetComponent<RectTransform>().sizeDelta.x,ChatController.CurrentMessage.rectTransform.sizeDelta.y);
+        }
     }
 
     private void StartStory()
@@ -118,6 +126,7 @@ public class InkManager : MonoBehaviour
             ChatController.CurrentMessage.text = newText;
             ChatController.NPCMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.NPCMessageContainer.transform, false));
             ChatController.CurrentMessage.alignment = TextAlignmentOptions.Right;
+            m_bPlayerIsTalking = true;
         }
         else
         {
@@ -125,6 +134,7 @@ public class InkManager : MonoBehaviour
             ChatController.NPCMessages.Append(ChatController.CurrentMessage);
             ChatController.PlayerMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.PlayerMessageContainer.transform, false));
             ChatController.CurrentMessage.alignment = TextAlignmentOptions.Left;
+            m_bPlayerIsTalking = false;
         }
 
     }
