@@ -105,7 +105,9 @@ public class InkManager : MonoBehaviour
         _story.BindExternalFunction("runTask", (string taskName) => {
             if (taskName == "chimps")
             {
-                Instantiate(chimpsGameWindow);
+                GameObject newgame = Instantiate(chimpsGameWindow);
+                newgame.GetComponent<ChimpsGame>().m_currentStory = _story;
+                
             }
             if (taskName == "numberPuzzle")
             {
