@@ -1,5 +1,3 @@
-VAR BeingWatched = false
-
 
 -> start // this tells ink where to start the story
 

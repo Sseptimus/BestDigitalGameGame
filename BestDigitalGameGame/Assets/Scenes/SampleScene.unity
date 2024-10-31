@@ -1932,6 +1932,18 @@ MonoBehaviour:
   _choiceButtonContainer: {fileID: 481958729}
   _choiceButtonPrefab: {fileID: 6192818354376701437, guid: 1b61a8707312f3d489582937245d853d, type: 3}
   ChatController: {fileID: 2134325778}
+  globalsInkFile:
+    inkAsset: {fileID: 102900000, guid: 422c27ef396b8044f9dace804909ac22, type: 3}
+    jsonAssetDirectory: {fileID: 0}
+    jsonAsset: {fileID: 0}
+    unhandledCompileErrors: []
+    recursiveIncludeErrorPaths: []
+    errors: []
+    warnings: []
+    todos: []
+    masterInkAssets: []
+    localIncludePaths: []
+    includes: []
   chimpsGameWindow: {fileID: 4197330799103552596, guid: a3193863f6c474d6c83d3f10e290aaa0, type: 3}
 --- !u!1 &1551845480
 GameObject:

@@ -1,5 +1,4 @@
-﻿VAR BeingWatched= false
-VAR BossSuspicionCounter = 0
+﻿INCLUDE globals.ink
 EXTERNAL runTask(taskType)
 
 
@@ -17,7 +16,7 @@ What are you talking about? I'm the one who needs help. I have a problem and you
 * Yes, sir.
 -> ExplainProblem
 * No.
-->ExplainProblem
+-> GunnerAngry
 
 === ExplainProblem ===
 I've lost my laptop. I have some important assets that I need you to recover.
@@ -36,7 +35,7 @@ Yes, I have an OSOS account.
 - I need you to sign into my account for me. I can't complete the login sequence.
 ~ temp gameType = "chimps"
 ~ runTask("chimps")
-{ gameType = "numberPuzzle"
+{ gameType == "numberPuzzle":
 	->TaskDialogueNumberPuzzle
 }
 -> END
@@ -50,7 +49,17 @@ That square goes in the bottom left corner.
 -> END
 = dialogue_three
 I don't know where that square goes.
+-> END
 
+=== GunnerAngry ===
+Why aren't you going to help me? That's your job. Do your job or I will report you.
+ * Please help me[]. I have to escape my job. I can't do this any longer. 
+Well, I'll certainly help you! Get fired! You're supposed to fix my problem, not beg to me!
+~BossSuspicionCounter += 1
+-> END
+* Fine, I'll help you.
+Great, see, that wasn't so hard. 
+-> ExplainProblem
 
 
 -> END // this marks the end of the story

@@ -8,6 +8,7 @@ using UnityEngine;
 using Ink.Runtime;
 using TMPro;
 using Random = UnityEngine.Random;
+using Ink.UnityIntegration;
 
 public class InkManager : MonoBehaviour
 {
@@ -22,7 +23,10 @@ public class InkManager : MonoBehaviour
     private Button _choiceButtonPrefab;
     [SerializeField]
     private ChatController ChatController;
-    
+
+    [Header("Globals Ink File")]
+    [SerializeField] private InkFile globalsInkFile;
+
     private string sOutputText;
     private string sQueuedText = "";
     private int iAlternate = 0;
@@ -35,6 +39,13 @@ public class InkManager : MonoBehaviour
     // game windows to be instantiated
     public GameObject chimpsGameWindow;
 
+    // dialogue observer
+    private DialogueObserver dialogueVariablesObserver;
+
+    private void Awake()
+    {
+        dialogueVariablesObserver = new DialogueObserver(globalsInkFile.filePath);
+    }
 
     void Start()
     {
@@ -67,6 +78,8 @@ public class InkManager : MonoBehaviour
     private void StartStory()
     {
         _story = new Story(_inkJsonAsset.text);
+
+        dialogueVariablesObserver.StartListening(_story);
 
         _story.BindExternalFunction("runTask", (string taskName) => {
             if (taskName == "chimps")
@@ -163,5 +176,22 @@ public class InkManager : MonoBehaviour
                 Destroy(button.gameObject);
             }
         }
+    }
+
+    void ExitDialogue()
+    {
+        dialogueVariablesObserver.StopListening(_story);
+    }
+
+    public Ink.Runtime.Object GetVariableState(string variableName)
+    {
+        Ink.Runtime.Object variablevalue = null;
+        dialogueVariablesObserver.variables.TryGetValue(variableName, out variablevalue);
+        if (variablevalue == null)
+        {
+            Debug.LogWarning("Ink variable was found to be null: " + variablevalue);
+        }
+
+        return variablevalue;
     }
 }
