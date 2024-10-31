@@ -12,6 +12,7 @@ public class WindowController :  BaseWindowClass
     private SpriteRenderer m_sprContent;
     private SpriteRenderer m_sprTitleBar;
     private GameManager m_GameManager;
+    private BoxCollider2D m_ColTitleBar;
 
     private void Start()
     {
