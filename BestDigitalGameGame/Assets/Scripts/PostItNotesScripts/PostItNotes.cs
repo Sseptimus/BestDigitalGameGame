@@ -21,10 +21,6 @@ public class PostItNotes :  BaseWindowClass
         m_sprContent = gameObject.transform.Find("Content").GetComponent<SpriteRenderer>();
         m_GameManager = FindObjectOfType<GameManager>();
         m_ColTitleBar = transform.GetComponent<BoxCollider2D>();
-
-        //Changing collision box to whole window
-        m_ColTitleBar.size = new Vector2(5,4.5f);
-        m_ColTitleBar.offset = new Vector2(2.5f, -2.25f);
         
         if (!Camera)
         {
