@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using Ink.Runtime;
 using TMPro;
+using Ink.UnityIntegration;
 using Vector2 = UnityEngine.Vector2;
 
 public class InkManager : MonoBehaviour
@@ -29,6 +30,7 @@ public class InkManager : MonoBehaviour
     private string sOutputText;
     private string sQueuedText = "";
     private int iAlternate = 0;
+    private bool m_bPlayerIsTalking = false;
     private char[] cPossibleLetters =
     {
         'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
