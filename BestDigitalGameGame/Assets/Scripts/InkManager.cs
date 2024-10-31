@@ -10,7 +10,9 @@ using TMPro;
 using Ink.UnityIntegration;
 using Vector2 = UnityEngine.Vector2;
 
-
+// Main author: Nick @Sseptimus
+// Secondary author: Charli @CharliSIO
+// Manages the INK files and stories running
 public class InkManager : MonoBehaviour
 {
     [SerializeField]
@@ -104,6 +106,10 @@ public class InkManager : MonoBehaviour
             if (taskName == "chimps")
             {
                 Instantiate(chimpsGameWindow);
+            }
+            if (taskName == "numberPuzzle")
+            {
+                // instatiate Game #3 number puzzle
             }
         });
 

@@ -4,6 +4,8 @@ using UnityEngine;
 using Ink.Runtime;
 using System.IO;
 
+// Author: Charli @CharliSIO
+// Observes for variables changes in the INK stories 
 public class DialogueObserver
 {
     public Dictionary<string, Ink.Runtime.Object> variables { get; private set;}
@@ -15,7 +17,7 @@ public class DialogueObserver
         Ink.Compiler compiler = new Ink.Compiler(inkFileContents);
         Story globalVariablesStory = compiler.Compile();
 
-        //initialise dictionary
+        //initialise dictionary of variables to be watched
         variables = new Dictionary<string, Ink.Runtime.Object>();
         foreach (string name in globalVariablesStory.variablesState)
         {
@@ -26,6 +28,7 @@ public class DialogueObserver
 
     }
 
+    // start listening for variable changes in the story
     public void StartListening(Story story)
     {
         VariablesToStory(story);
@@ -37,14 +40,13 @@ public class DialogueObserver
         story.variablesState.variableChangedEvent -= VariableChanged;
     }
 
-
-
+    // if a variable has changed update it in the global file
     private void VariableChanged(string variableName, Ink.Runtime.Object value)
     {
         Debug.Log("Variable changed: " + variableName + " = " + value);
         // only maintain variables that were initialised from the global file
         variables.Remove(variableName);
-        variables.Add(variableName, value);
+        variables.Add(variableName, value); // remove and readd the variable to update it
     }
 
     private void VariablesToStory(Story story)

@@ -34,7 +34,7 @@ Yes, I have an OSOS account.
 
 - I need you to sign into my account for me. I can't complete the login sequence.
 ~ temp gameType = "chimps"
-~ runTask("chimps")
+~ runTask(gameType)
 { gameType == "numberPuzzle":
 	->TaskDialogueNumberPuzzle
 }
