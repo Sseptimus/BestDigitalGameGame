@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Ink.Runtime;
 
 
 // class for running the 'CHIMPS' number pattern task
@@ -29,6 +30,9 @@ public class ChimpsGame : MonoBehaviour
     private int m_mistakesMade = 0;
     private bool m_numbersVisible = true;
 
+    public Story m_currentStory;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +48,7 @@ public class ChimpsGame : MonoBehaviour
             Debug.Log("Task Failed.");
             Destroy(ownWindow);
             // insert other consequence here
+            m_currentStory.ChoosePathString("TaskFailed");
         }
 
         // if score is equal to total amount of squares (game is compelte) then destroy game and reset
