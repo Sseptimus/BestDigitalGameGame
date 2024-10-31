@@ -19,7 +19,6 @@ public class PostItNotes :  BaseWindowClass
     {
         //Initialising variables
         m_sprContent = gameObject.transform.Find("Content").GetComponent<SpriteRenderer>();
-        m_sprTitleBar = gameObject.transform.Find("TitleBar").GetComponent<SpriteRenderer>();
         m_GameManager = FindObjectOfType<GameManager>();
         m_ColTitleBar = transform.GetComponent<BoxCollider2D>();
 

@@ -24,11 +24,6 @@ public class WindowController :  BaseWindowClass
         m_sprTitleBar = gameObject.transform.Find("TitleBar").GetComponent<SpriteRenderer>();
         m_GameManager = FindObjectOfType<GameManager>();
         m_ColTitleBar = transform.GetComponent<BoxCollider2D>();
-        
-        if (!Camera)
-        {
-            Camera = Camera.main;
-        }
     }
 
     private void OnMouseDown()
