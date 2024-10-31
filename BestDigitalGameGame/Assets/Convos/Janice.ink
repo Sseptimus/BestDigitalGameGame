@@ -1,5 +1,7 @@
 INCLUDE globals.ink
 EXTERNAL runTask(taskType)
+VAR bTaskFail = false
+VAR bTaskSuccess = false
 
 -> start // this tells ink where to start the story
 
@@ -54,5 +56,12 @@ How is my email coming along?
 ~ temp gameType = "chimps"
 ~ runTask(gameType)
 
-
 -> END // this marks the end of the story
+
+=== TaskFailed ===
+Oh! That didn't look good.
+Did you manage to complete it?
+* No.[] I'm sorry. I failed the task. I won't be able to get rid of your spam emails.
+That's okay dear. You tried your best, and that's all that matters.
+BossSuspicionCounter += 1
+-> END
