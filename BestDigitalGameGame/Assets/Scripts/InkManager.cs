@@ -10,6 +10,7 @@ using TMPro;
 using Ink.UnityIntegration;
 using Vector2 = UnityEngine.Vector2;
 
+
 public class InkManager : MonoBehaviour
 {
     [SerializeField]
@@ -75,6 +76,7 @@ public class InkManager : MonoBehaviour
             DisplayNextLine();
         }
 
+        //Making sure padding messages are the same height as their corresponding message
         if (ChatController.CurrentMessage != null && m_bPlayerIsTalking && ChatController.NPCMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()))
         {
             ChatController.NPCMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()).GetComponent<RectTransform>().sizeDelta = new Vector2(ChatController.NPCMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()).GetComponent<RectTransform>().sizeDelta.x,ChatController.CurrentMessage.rectTransform.sizeDelta.y);
@@ -82,6 +84,13 @@ public class InkManager : MonoBehaviour
         else if(ChatController.CurrentMessage != null && ChatController.PlayerMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()))
         {
             ChatController.PlayerMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()).GetComponent<RectTransform>().sizeDelta = new Vector2(ChatController.PlayerMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()).GetComponent<RectTransform>().sizeDelta.x,ChatController.CurrentMessage.rectTransform.sizeDelta.y);
+        }
+
+        if (ChatController.PlayerMessageContainer.transform.childCount > 5 || ChatController.NPCMessageContainer.transform.childCount > 5)
+        {
+            //When window is full removes the top message
+            Destroy(ChatController.PlayerMessageContainer.transform.GetChild(0).gameObject);
+            Destroy(ChatController.NPCMessageContainer.transform.GetChild(0).gameObject);
         }
     }
 
