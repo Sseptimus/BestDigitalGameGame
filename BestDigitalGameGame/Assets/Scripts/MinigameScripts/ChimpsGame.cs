@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 // class for running the 'CHIMPS' number pattern task
-// Author: Charli Jones @CharliSIO
+// Author: Charli Jones @CharliSIO + minor alterations by Nick
 public class ChimpsGame : MonoBehaviour
 {
     // Need 7 squares, one with each number
@@ -25,8 +25,9 @@ public class ChimpsGame : MonoBehaviour
 
     public int[,] possiblePositions = new int[5, 4];
     
-    public BaseWindowClass GameWindow;
-    public Canvas GameCanvas;
+    private int m_currentScore = 0; 
+    private int m_mistakesMade = 0;
+    private bool m_numbersVisible = true;
 
     // Start is called before the first frame update
     void Start()
@@ -38,15 +39,15 @@ public class ChimpsGame : MonoBehaviour
     void Update()
     {
         // check whether the player has made too many mistakes
-        if (arrChimpSquares[0].GetComponent<ChimpsSquaresScript>().getMistakes() >= 3)
+        if (m_mistakesMade >= 3)
         {
             Debug.Log("Task Failed.");
             Destroy(ownWindow);
-            // insert other consqequence here
+            // insert other consequence here
         }
 
         // if score is equal to total amount of squares (game is compelte) then destroy game and reset
-        if (arrChimpSquares[0].GetComponent<ChimpsSquaresScript>().getScore() == arrChimpSquares.Length)
+        if (m_currentScore == arrChimpSquares.Length)
         {
             if (totalWins >= 2)
             {
@@ -106,20 +107,49 @@ public class ChimpsGame : MonoBehaviour
         }
 
         // make sure the numbers are visible
-        arrChimpSquares[0].GetComponent<ChimpsSquaresScript>().setNumbersVisible(true);
+        m_numbersVisible = true;
     }
 
     // delete the squares ready for new set of squares to be instantiated
     void deleteGame()
     {
         // reset static valuyes score and mistake counter
-        arrChimpSquares[0].GetComponent<ChimpsSquaresScript>().setScore(0);
-        arrChimpSquares[0].GetComponent<ChimpsSquaresScript>().setMistakes(0);
+        m_currentScore = 0;
+        m_mistakesMade = 0;
 
         // iterate through array and destroy each object
         for (int i = 0; i < arrChimpSquares.Length; i++)
         {
             Destroy(arrChimpSquares[i]);
         }
+    }
+    
+    //Getters and Setters\\
+    
+    public void setScore(int _score)
+    {
+        m_currentScore = _score;
+    }
+    public int getScore()
+    {
+        return m_currentScore;
+    }
+
+    public void setMistakes(int _mistakes)
+    {
+        m_mistakesMade = _mistakes;
+    }
+    public int getMistakes()
+    {
+        return m_mistakesMade;
+    }
+
+    public void setNumbersVisible(bool _setting)
+    {
+        m_numbersVisible = _setting;
+    }
+    public bool getNumbersVisible()
+    {
+        return m_numbersVisible;
     }
 }

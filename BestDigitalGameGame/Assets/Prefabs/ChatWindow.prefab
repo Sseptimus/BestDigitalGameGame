@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f86276da9c8f9e45af78b30ed72f784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inkJsonAsset: {fileID: 4900000, guid: 5fe835a75621ad14cab18aa6afc5cc1c, type: 3}
+  _inkJsonAsset: {fileID: 4900000, guid: 4c43f09953280934cab11c3156b50f24, type: 3}
   _choiceButtonContainer: {fileID: 9007865352178567361}
   _choiceButtonPrefab: {fileID: 6192818354376701437, guid: 1b61a8707312f3d489582937245d853d, type: 3}
   ChatController: {fileID: 1128697437838265279}
@@ -365,7 +365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.89
+      value: -5.27
       objectReference: {fileID: 0}
     - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_LocalPosition.y
