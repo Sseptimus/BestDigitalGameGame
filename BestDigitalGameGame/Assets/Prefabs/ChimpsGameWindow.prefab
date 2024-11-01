@@ -33,9 +33,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7509351419637882825, guid: f649a247761ef7d45bda1717f636886a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7509351419637882825, guid: f649a247761ef7d45bda1717f636886a, type: 3}
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7509351419637882825, guid: f649a247761ef7d45bda1717f636886a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 209069043
+      objectReference: {fileID: 0}
+    - target: {fileID: -1300652895720520598, guid: f649a247761ef7d45bda1717f636886a, type: 3}
+      propertyPath: ownWindow
+      value: 
+      objectReference: {fileID: 4197330799103552596}
     - target: {fileID: -1300652895720520598, guid: f649a247761ef7d45bda1717f636886a, type: 3}
       propertyPath: GameCanvas
       value: 
@@ -50,11 +62,11 @@ PrefabInstance:
       objectReference: {fileID: 8687051995941231280}
     - target: {fileID: -1300652895720520598, guid: f649a247761ef7d45bda1717f636886a, type: 3}
       propertyPath: arrChimpSquares.Array.size
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -1300652895720520598, guid: f649a247761ef7d45bda1717f636886a, type: 3}
       propertyPath: arrChimpSquaresToLoad.Array.size
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -1300652895720520598, guid: f649a247761ef7d45bda1717f636886a, type: 3}
       propertyPath: arrChimpSquaresToLoad.Array.data[0]
@@ -162,7 +174,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1367057120693928007, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_Name
-      value: GameWindow Variant
+      value: ChimpsGameWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500059508339014611, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500059508339014611, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 209069043
       objectReference: {fileID: 0}
     - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -212,6 +232,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2108550932257770422, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108550932257770422, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 209069043
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566989704640524262, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 209069043
+      objectReference: {fileID: 0}
     - target: {fileID: 7898432950616364095, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: Content
       value: 
@@ -239,6 +271,11 @@ PrefabInstance:
 --- !u!212 &3856271830863439781 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2108550932257770422, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+  m_PrefabInstance: {fileID: 2938362545603275795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4197330799103552596 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1367057120693928007, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
   m_PrefabInstance: {fileID: 2938362545603275795}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &6534792034845374204 stripped
