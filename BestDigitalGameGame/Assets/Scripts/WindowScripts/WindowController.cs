@@ -36,7 +36,10 @@ public class WindowController :  BaseWindowClass
 
     public void OnGrabFocus()
     {
-        m_GameManager.WindowInFocus.LoseFocus();
+        if (m_GameManager.WindowInFocus != null)
+        {
+            m_GameManager.WindowInFocus.LoseFocus();
+        }
         
         //Reset reference to current focused window
         m_GameManager.WindowInFocus = this;

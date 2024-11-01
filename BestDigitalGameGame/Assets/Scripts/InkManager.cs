@@ -108,9 +108,8 @@ public class InkManager : MonoBehaviour
             {
                 m_bPlayingGame = true;
                 GameObject newgame = Instantiate(chimpsGameWindow);
-                newgame.GetComponentInChildren<ChimpsGame>().ownedManager = this; // TODO Remove later
-                //newgame.GetComponent<ChimpsGame>().m_currentStory = _story;
-                
+                newgame.GetComponentInChildren<ChimpsGame>().ownedManager = this;
+
             }
             if (taskName == "numberPuzzle")
             {
@@ -124,7 +123,10 @@ public class InkManager : MonoBehaviour
     public void GameEnded()
     {
         m_bPlayingGame = false;
-        _story.Continue();
+        if (_story.canContinue)
+        {
+            _story.Continue();
+        }
     }
 
     public void GameFailed()
