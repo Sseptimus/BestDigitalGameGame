@@ -14,7 +14,6 @@ public class SliderGameController : MonoBehaviour
     public GameObject m_SlideObjPrefab;
     private List<int> m_iAvailableNums = new List<int>();
     public SliderObjController m_EmptySpace;
-    public int m_iCorrectSpaces = 0;
 
     void Start()
     {
@@ -38,8 +37,26 @@ public class SliderGameController : MonoBehaviour
         m_EmptySpace.m_OwnedGame = this;
     }
 
+    public void WinCheck()
+    {
+        int iCorrectSquares = 0;
+        for (int i = 0; i < 8; i++)
+        {
+            if (transform.GetChild(i).GetComponent<SliderObjController>().m_SliderNum == i + 1)
+            {
+                iCorrectSquares++;
+            }
+        }
+        Debug.Log(iCorrectSquares);
+
+        if (iCorrectSquares == 8)
+        {
+            Win();
+        }
+    }
+
     public void Win()
     {
-        enabled = false;
+        gameObject.SetActive(false);
     }
 }

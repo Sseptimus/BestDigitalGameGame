@@ -12,10 +12,6 @@ public class SliderObjController : MonoBehaviour
     private void Start()
     {
         m_GridPosition = transform.GetSiblingIndex();
-        if (transform.GetSiblingIndex() == m_SliderNum)
-        {
-            m_OwnedGame.m_iCorrectSpaces++;
-        }
     }
 
     private void OnMouseDown()
@@ -26,14 +22,7 @@ public class SliderObjController : MonoBehaviour
             m_OwnedGame.m_EmptySpace.transform.SetSiblingIndex(transform.GetSiblingIndex());
             transform.SetSiblingIndex(tempIndex);
             m_GridPosition = transform.GetSiblingIndex();
-            if (transform.GetSiblingIndex() == m_SliderNum)
-            {
-                m_OwnedGame.m_iCorrectSpaces++;
-            }
-            else
-            {
-                m_OwnedGame.m_iCorrectSpaces--;
-            }
+            m_OwnedGame.WinCheck();
         }
         else if (m_GridPosition / 3 - Mathf.Ceil(m_GridPosition / 3) == m_OwnedGame.m_EmptySpace.transform.GetSiblingIndex() / 3 - Mathf.Ceil(m_OwnedGame.m_EmptySpace.transform.GetSiblingIndex() / 3) && (m_OwnedGame.m_EmptySpace.transform.GetSiblingIndex()+3 == m_GridPosition || m_OwnedGame.m_EmptySpace.transform.GetSiblingIndex()-3 == m_GridPosition))
         {
@@ -41,18 +30,7 @@ public class SliderObjController : MonoBehaviour
             m_OwnedGame.m_EmptySpace.transform.SetSiblingIndex(transform.GetSiblingIndex());
             transform.SetSiblingIndex(tempIndex);
             m_GridPosition = transform.GetSiblingIndex();
-            if (transform.GetSiblingIndex() == m_SliderNum)
-            {
-                m_OwnedGame.m_iCorrectSpaces++;
-                if (m_OwnedGame.m_iCorrectSpaces == 8)
-                {
-                    m_OwnedGame.Win();
-                }
-            }
-            else
-            {
-                m_OwnedGame.m_iCorrectSpaces--;
-            }
+            m_OwnedGame.WinCheck();
         }
     }
 }
