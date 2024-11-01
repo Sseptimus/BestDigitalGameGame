@@ -1783,7 +1783,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c627da6707906f48a273d027d49ec2e, type: 3}
   m_Color: {r: 0.83423173, g: 0.9323381, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1803,8 +1803,8 @@ Transform:
   m_GameObject: {fileID: 1552337371}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: -4.5, z: 0}
-  m_LocalScale: {x: 12, y: 9, z: 1}
+  m_LocalPosition: {x: 6.1132, y: -4.866, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1789068416}
@@ -1988,6 +1988,64 @@ Transform:
   m_Children:
   - {fileID: 116028456}
   m_Father: {fileID: 1305448781}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1713688803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1713688805}
+  - component: {fileID: 1713688804}
+  m_Layer: 0
+  m_Name: BossManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1713688804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713688803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5440fcb816540629515fa44332006c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxMoveTimer: 1000
+  MinMoveTimer: 100
+  CurrentLocation: 0
+  BOSS_IS_WATCHING: 0
+  UpPeek: {fileID: 0}
+  LeftPeek: {fileID: 0}
+  _sprIn_Office: {fileID: 0}
+  _sprUpPeek1: {fileID: 0}
+  _sprUpPeek2: {fileID: 0}
+  _sprUpPeekNoBoss: {fileID: 0}
+  _sprLeftPeek1: {fileID: 0}
+  _sprLeftPeek2: {fileID: 0}
+  _sprLeftPeek3: {fileID: 0}
+  _sprLeftPeekNoBoss: {fileID: 0}
+--- !u!4 &1713688805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713688803}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -34.119667, y: -7.9844065, z: -3.302854}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1789068415
 GameObject:
@@ -2418,3 +2476,4 @@ SceneRoots:
   - {fileID: 926025470}
   - {fileID: 950856091}
   - {fileID: 1961179505}
+  - {fileID: 1713688805}
