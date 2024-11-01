@@ -10,22 +10,19 @@ public class DialogueObserver
 {
     public Dictionary<string, Ink.Runtime.Object> variables { get; private set;}
 
-    public DialogueObserver(string globalsFilePath)
+    public DialogueObserver(TextAsset loadGlobalsJSON)
     {
-        // compile the story
-        string inkFileContents = File.ReadAllText(globalsFilePath);
-        Ink.Compiler compiler = new Ink.Compiler(inkFileContents);
-        Story globalVariablesStory = compiler.Compile();
+        // create the story
+        Story globalVariablesStory = new Story(loadGlobalsJSON.text);
 
-        //initialise dictionary of variables to be watched
+        // initialize the dictionary
         variables = new Dictionary<string, Ink.Runtime.Object>();
         foreach (string name in globalVariablesStory.variablesState)
         {
             Ink.Runtime.Object value = globalVariablesStory.variablesState.GetVariableWithName(name);
             variables.Add(name, value);
-            Debug.Log("Initialised global dialogue variable: " + name + " = " + value);
-        }    
-
+            Debug.Log("Initialized global dialogue variable: " + name + " = " + value);
+        }
     }
 
     // start listening for variable changes in the story

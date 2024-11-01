@@ -27,8 +27,9 @@ public class InkManager : MonoBehaviour
     [SerializeField]
     private ChatController ChatController;
 
-    [Header("Globals Ink File")]
-    [SerializeField] private InkFile globalsInkFile;
+    // variable for the load_globals.ink JSON
+    [Header("Load Globals JSON")]
+    [SerializeField] private TextAsset loadGlobalsJSON;
 
     private string sOutputText;
     private string sQueuedText = "";
@@ -49,7 +50,7 @@ public class InkManager : MonoBehaviour
 
     private void Awake()
     {
-        dialogueVariablesObserver = new DialogueObserver(globalsInkFile.filePath);
+        dialogueVariablesObserver = new DialogueObserver(loadGlobalsJSON);
     }
 
     void Start()
