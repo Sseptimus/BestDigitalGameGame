@@ -25,12 +25,15 @@ public class ArrowScripts : MonoBehaviour
 
     void OnMouseOver()
     {
-        HoverTimeCurrent += HoverTimeScalar * Time.deltaTime;
-        if(HoverTimeCurrent >= HoverTimeRequired)
+        if(Input.GetMouseButtonDown(0))
         {
-            HoverTimeCurrent = 0.0f;
-            MainCamera.GetComponentInChildren<VingetteController>().m_TargetScene = TargetScene;
-            MainCamera.GetComponentInChildren<VingetteController>().m_Fading = true;
+            HoverTimeCurrent += HoverTimeScalar * Time.deltaTime;
+            if(HoverTimeCurrent >= HoverTimeRequired)
+            {
+                HoverTimeCurrent = 0.0f;
+                MainCamera.GetComponentInChildren<VingetteController>().m_TargetScene = TargetScene;
+                MainCamera.GetComponentInChildren<VingetteController>().m_Fading = true;
+            }
         }
     }
 }
