@@ -7,7 +7,8 @@ VAR bTaskSuccess = false
 
 === start ===
 Oh, good morning, my name is Janice, and, and I've got a little bit of a problem with my emails. Can you help me by any chance?
-
+~ temp gameType = "chimps"
+~ runTask(gameType)
 * Of course I can help you ma'am
 Oh thank you my dear, I do really appreciate it.
 ** [Ask for help] Ma'am, I need your help.
@@ -53,7 +54,7 @@ How is my email coming along?
 *** That's okay[], I just need to complete this sequence. I won't be long...
 
 - Oh thank you so much my dear, I'll be so glad to get rid of these emails!
-~ temp gameType = "chimps"
+//~ temp gameType = "chimps"
 ~ runTask(gameType)
 
 -> END // this marks the end of the story

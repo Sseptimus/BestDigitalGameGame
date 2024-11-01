@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Ink.Runtime;
 
 
 // class for running the 'CHIMPS' number pattern task
@@ -25,9 +26,13 @@ public class ChimpsGame : MonoBehaviour
 
     public int[,] possiblePositions = new int[5, 4];
     
-    private int m_currentScore = 0; 
+    public int m_currentScore = 0; //TODO Make private
     private int m_mistakesMade = 0;
     private bool m_numbersVisible = true;
+
+    //public Story m_currentStory;
+    public InkManager ownedManager; //TODO Remove was used for testing
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +47,7 @@ public class ChimpsGame : MonoBehaviour
         if (m_mistakesMade >= 3)
         {
             Debug.Log("Task Failed.");
+            ownedManager.GameFailed();
             Destroy(ownWindow);
             // insert other consequence here
         }
@@ -52,7 +58,9 @@ public class ChimpsGame : MonoBehaviour
             if (totalWins >= 2)
             {
                 Debug.Log("Task Complete.");
+                ownedManager.GameEnded();
                 Destroy(ownWindow);
+                Destroy(this);
                 // hooray task complete reflect this in dialogue etc
             }
             else

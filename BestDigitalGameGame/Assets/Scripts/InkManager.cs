@@ -45,6 +45,7 @@ public class InkManager : MonoBehaviour
 
     // dialogue observer
     private DialogueObserver dialogueVariablesObserver;
+    private bool m_bPlayingGame = false;
 
     private void Awake()
     {
@@ -73,7 +74,7 @@ public class InkManager : MonoBehaviour
         }
         
         iAlternate++;
-        if (sQueuedText.Length == 0)
+        if (sQueuedText.Length == 0 && !m_bPlayingGame)
         {
             DisplayNextLine();
         }
@@ -105,8 +106,10 @@ public class InkManager : MonoBehaviour
         _story.BindExternalFunction("runTask", (string taskName) => {
             if (taskName == "chimps")
             {
+                m_bPlayingGame = true;
                 GameObject newgame = Instantiate(chimpsGameWindow);
-                newgame.GetComponent<ChimpsGame>().m_currentStory = _story;
+                newgame.GetComponentInChildren<ChimpsGame>().ownedManager = this; // TODO Remove later
+                //newgame.GetComponent<ChimpsGame>().m_currentStory = _story;
                 
             }
             if (taskName == "numberPuzzle")
@@ -117,8 +120,19 @@ public class InkManager : MonoBehaviour
 
         DisplayNextLine();
     }
-    
-  
+
+    public void GameEnded()
+    {
+        m_bPlayingGame = false;
+        _story.Continue();
+    }
+
+    public void GameFailed()
+    {
+        _story.ChoosePathString("TaskFailed");
+        DisplayNextLine();
+        m_bPlayingGame = false;
+    }
     public void DisplayNextLine()
     {
         if (_story.canContinue)
