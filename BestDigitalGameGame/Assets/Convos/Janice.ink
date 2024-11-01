@@ -7,7 +7,6 @@ VAR bTaskSuccess = false
 
 === start ===
 Oh, good morning, my name is Janice, and, and I've got a little bit of a problem with my emails. Can you help me by any chance?
-
 * Of course I can help you ma'am
 Oh thank you my dear, I do really appreciate it.
 ** [Ask for help] Ma'am, I need your help.
@@ -63,5 +62,5 @@ Oh! That didn't look good.
 Did you manage to complete it?
 * No.[] I'm sorry. I failed the task. I won't be able to get rid of your spam emails.
 That's okay dear. You tried your best, and that's all that matters.
-BossSuspicionCounter += 1
+~ BossSuspicionCounter += 1
 -> END

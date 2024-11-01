@@ -27,8 +27,9 @@ public class InkManager : MonoBehaviour
     [SerializeField]
     private ChatController ChatController;
 
-    [Header("Globals Ink File")]
-    [SerializeField] private InkFile globalsInkFile;
+    // variable for the load_globals.ink JSON
+    [Header("Load Globals JSON")]
+    [SerializeField] private TextAsset loadGlobalsJSON;
 
     private string sOutputText;
     private string sQueuedText = "";
@@ -45,10 +46,11 @@ public class InkManager : MonoBehaviour
 
     // dialogue observer
     private DialogueObserver dialogueVariablesObserver;
+    private bool m_bPlayingGame = false;
 
     private void Awake()
     {
-        dialogueVariablesObserver = new DialogueObserver(globalsInkFile.filePath);
+        dialogueVariablesObserver = new DialogueObserver(loadGlobalsJSON);
     }
 
     void Start()
@@ -73,7 +75,7 @@ public class InkManager : MonoBehaviour
         }
         
         iAlternate++;
-        if (sQueuedText.Length == 0)
+        if (sQueuedText.Length == 0 && !m_bPlayingGame)
         {
             DisplayNextLine();
         }
@@ -105,9 +107,10 @@ public class InkManager : MonoBehaviour
         _story.BindExternalFunction("runTask", (string taskName) => {
             if (taskName == "chimps")
             {
+                m_bPlayingGame = true;
                 GameObject newgame = Instantiate(chimpsGameWindow);
-                newgame.GetComponent<ChimpsGame>().m_currentStory = _story;
-                
+                newgame.GetComponentInChildren<ChimpsGame>().ownedManager = this;
+
             }
             if (taskName == "numberPuzzle")
             {
@@ -117,8 +120,22 @@ public class InkManager : MonoBehaviour
 
         DisplayNextLine();
     }
-    
-  
+
+    public void GameEnded()
+    {
+        m_bPlayingGame = false;
+        if (_story.canContinue)
+        {
+            _story.Continue();
+        }
+    }
+
+    public void GameFailed()
+    {
+        _story.ChoosePathString("TaskFailed");
+        DisplayNextLine();
+        m_bPlayingGame = false;
+    }
     public void DisplayNextLine()
     {
         if (_story.canContinue)
