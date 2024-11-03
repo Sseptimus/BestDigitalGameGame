@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// class for root window functionality
+// Author: Nick Lees
 public class BaseWindowClass : MonoBehaviour
 {
-    public enum ClickType
-    {
-        Minimise
-    }
+    
     private Vector2 WorldUnitsInCamera;
     private Vector2 WorldToPixelAmount;
     public Camera Camera;
     
     void Awake ()
     {
-        Camera = FindObjectOfType<Camera>();
+        if (!Camera)
+        {
+            Camera = Camera.main;
+        }
+        
         //Finding Pixel To World Unit Conversion Based On Orthographic Size Of Camera
         WorldUnitsInCamera.y = Camera.GetComponent<Camera>().orthographicSize * 2;
         WorldUnitsInCamera.x = WorldUnitsInCamera.y * Screen.width / Screen.height;
@@ -23,11 +26,8 @@ public class BaseWindowClass : MonoBehaviour
         WorldToPixelAmount.y = Screen.height / WorldUnitsInCamera.y;
     }
 
-    public virtual void Click(ClickType _clickType)
-    {
-        
-    }
-
+    
+    //Functions to change MousePos to World Units
     public float ConvertToWorldUnitsX(float _InputX)
     {
         return ((_InputX / WorldToPixelAmount.x) - (WorldUnitsInCamera.x / 2)) +

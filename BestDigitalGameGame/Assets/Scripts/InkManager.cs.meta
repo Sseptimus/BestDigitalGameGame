@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4f86276da9c8f9e45af78b30ed72f784
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _inkJsonAsset: {instanceID: 0}
+  - _choiceButtonContainer: {instanceID: 0}
+  - _choiceButtonPrefab: {instanceID: 0}
+  - ChatController: {instanceID: 0}
+  - chimpsGameWindow: {fileID: 4197330799103552596, guid: a3193863f6c474d6c83d3f10e290aaa0, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
