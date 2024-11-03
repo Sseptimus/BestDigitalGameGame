@@ -41,8 +41,15 @@ public class InkManager : MonoBehaviour
         'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
     };
 
+    [Header("Game Windows")]
     // game windows to be instantiated
     public GameObject chimpsGameWindow;
+
+    [Header("Popup Windows")]
+    public GameObject TaskFailed1;
+    public GameObject TaskFailed2;
+    public GameObject TaskFailed3;
+    private List<GameObject> TaskFailPopups = new List<GameObject>();
 
     // dialogue observer
     private DialogueObserver dialogueVariablesObserver;
@@ -56,6 +63,11 @@ public class InkManager : MonoBehaviour
     void Start()
     {
         StartStory();
+
+        // add the popups to list
+        TaskFailPopups.Add(TaskFailed1);
+        TaskFailPopups.Add(TaskFailed2);
+        TaskFailPopups.Add(TaskFailed3);
     }
 
     private void FixedUpdate()
@@ -132,6 +144,8 @@ public class InkManager : MonoBehaviour
 
     public void GameFailed()
     {
+        int popUpNum = UnityEngine.Random.Range(0, TaskFailPopups.Count() - 1);
+        GameObject newPopup = Instantiate(TaskFailPopups[popUpNum]);
         _story.ChoosePathString("TaskFailed");
         DisplayNextLine();
         m_bPlayingGame = false;
