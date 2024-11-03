@@ -17,6 +17,5 @@ public class MenuController : MonoBehaviour
     {
         Debug.Log("Quitting Game");
         Application.Quit();
-        EditorApplication.Exit(0);
     }
 }
