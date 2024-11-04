@@ -64,3 +64,16 @@ Did you manage to complete it?
 That's okay dear. You tried your best, and that's all that matters.
 ~ BossSuspicionCounter += 1
 -> END
+
+=== TaskSuccess ===
+Hi dear, how is it coming along? I don't want to rush you or anything, but are you doing alright?
+* Yes[], everything should be fine now. You shouldn't get any more of those emails.
+Oh thank you my dear, I really appreciate it. Well, I will let you know if I have any more problems. 
+
+* No, everything is awful[].
+Oh no, what's wrong dear? Are you struggling to complete it? If you can't do it that's okay, I can call someone else.
+** It should be okay now.[] You shouldn't get any more emails. I just thought perhaps you cared to ask how I was. I need your help, I'm sorry, I really need help. 
+Of course I care, dear. I don't know who you are but I think everyone is important. You keep asking for help, I'm not sure what you want, but I'll give you another call soon, okay? Everything will be fine, my dear.
+
+- Thank you for all your help. I'll let you keep going with your work, thank you dear. Goodbye.
+-> END

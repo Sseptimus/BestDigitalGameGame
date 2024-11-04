@@ -1,6 +1,7 @@
 ﻿INCLUDE globals.ink
 EXTERNAL runTask(taskType)
-
+VAR bTaskFail = false
+VAR bTaskSuccess = false
 
 -> start // this tells ink where to start the story
 
@@ -61,5 +62,8 @@ Well, I'll certainly help you! Get fired! You're supposed to fix my problem, not
 Great, see, that wasn't so hard. 
 -> ExplainProblem
 
+=== TaskFailed ===
+-> END 
 
--> END // this marks the end of the story
+=== TaskSuccess ===
+-> END
