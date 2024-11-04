@@ -14,10 +14,18 @@ using Vector2 = UnityEngine.Vector2;
 // Manages the INK files and stories running
 public class InkManager : MonoBehaviour
 {
+    [Header("Dialogue Assets")]
     [SerializeField]
-    private TextAsset _inkJsonAsset;
+    private TextAsset JaniceJsonAsset;
+    [SerializeField]
+    private TextAsset GunnerJsonAsset;
+    private List<TextAsset> DialogueJsons = new List<TextAsset>();
+    private TextAsset currentDialogue;
+    private int dialogueListIndex = 0;
+
     private Story _story;
     
+    [Header ("Buttons and Prefabs")]
     [SerializeField]
     private HorizontalLayoutGroup _choiceButtonContainer;
 
@@ -53,6 +61,7 @@ public class InkManager : MonoBehaviour
     // dialogue observer
     private DialogueObserver dialogueVariablesObserver;
     private bool m_bPlayingGame = false;
+    private bool m_bWaitingBetweenPeople = false;
 
     private void Awake()
     {
@@ -61,12 +70,11 @@ public class InkManager : MonoBehaviour
 
     void Start()
     {
-        StartStory();
+        DialogueJsons.Add(JaniceJsonAsset);
+        DialogueJsons.Add(GunnerJsonAsset);
 
-        // add the popups to list
-        TaskFailPopups.Add(TaskFailed1);
-        TaskFailPopups.Add(TaskFailed2);
-        TaskFailPopups.Add(TaskFailed3);
+        currentDialogue = DialogueJsons[dialogueListIndex];
+        StartStory();
     }
 
     private void FixedUpdate()
@@ -111,7 +119,8 @@ public class InkManager : MonoBehaviour
 
     private void StartStory()
     {
-        _story = new Story(_inkJsonAsset.text);
+        m_bWaitingBetweenPeople = false;
+        _story = new Story(currentDialogue.text);
 
         dialogueVariablesObserver.StartListening(_story);
 
@@ -130,6 +139,11 @@ public class InkManager : MonoBehaviour
         });
 
         DisplayNextLine();
+
+        // add the popups to list
+        TaskFailPopups.Add(TaskFailed1);
+        TaskFailPopups.Add(TaskFailed2);
+        TaskFailPopups.Add(TaskFailed3);
     }
 
     public void GameEnded()
@@ -149,6 +163,7 @@ public class InkManager : MonoBehaviour
         DisplayNextLine();
         m_bPlayingGame = false;
     }
+
     public void DisplayNextLine()
     {
         if (_story.canContinue)
@@ -161,6 +176,18 @@ public class InkManager : MonoBehaviour
         else if(_story.currentChoices.Count>0)
         {
             DisplayChoices();
+        }
+        else // story cannot continue and no choices available
+        {
+            if (!m_bWaitingBetweenPeople)
+            {
+                // story has ended
+                ExitDialogue();
+                dialogueListIndex++;
+                currentDialogue = DialogueJsons[dialogueListIndex];
+                Invoke("StartStory", 15);
+                m_bWaitingBetweenPeople = true;
+            }
         }
     }
 
@@ -201,6 +228,7 @@ public class InkManager : MonoBehaviour
             button.onClick.AddListener(() => OnClickChoiceButton(choice));
         }
     }
+
     Button CreateChoiceButton(string text)
     {
         // creates the button from a prefab

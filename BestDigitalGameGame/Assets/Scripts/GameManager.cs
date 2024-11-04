@@ -24,17 +24,9 @@ public class GameManager : MonoBehaviour
 
     public TaskBarController m_TaskBarController;
 
-    [Header ("Mouse Cursor Settings")]
-    public Texture2D cursorTexture; // texture for mouse
-    public CursorMode cursorMode = CursorMode.Auto; // sets hardware or software mode
-    public Vector2 hotSpot = Vector2.zero; // sets the offset for clicking
-
     // Start is called before the first frame update
     void Start()
     {
-
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode); // set mouse cursor to customer cursor when game starts
-
 
         if (!WindowInFocus)
         {
