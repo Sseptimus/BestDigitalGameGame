@@ -7,7 +7,6 @@ using UnityEngine.UI;
 using UnityEngine;
 using Ink.Runtime;
 using TMPro;
-using Ink.UnityIntegration;
 using Vector2 = UnityEngine.Vector2;
 
 // Main author: Nick @Sseptimus
