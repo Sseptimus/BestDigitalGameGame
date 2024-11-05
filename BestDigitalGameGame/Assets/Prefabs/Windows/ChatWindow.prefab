@@ -334,23 +334,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f86276da9c8f9e45af78b30ed72f784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inkJsonAsset: {fileID: 4900000, guid: 4c43f09953280934cab11c3156b50f24, type: 3}
+  JaniceJsonAsset: {fileID: 0}
+  GunnerJsonAsset: {fileID: 0}
   _choiceButtonContainer: {fileID: 9007865352178567361}
   _choiceButtonPrefab: {fileID: 6192818354376701437, guid: 1b61a8707312f3d489582937245d853d, type: 3}
   ChatController: {fileID: 1128697437838265279}
-  globalsInkFile:
-    inkAsset: {fileID: 102900000, guid: 422c27ef396b8044f9dace804909ac22, type: 3}
-    jsonAssetDirectory: {fileID: 0}
-    jsonAsset: {fileID: 0}
-    unhandledCompileErrors: []
-    recursiveIncludeErrorPaths: []
-    errors: []
-    warnings: []
-    todos: []
-    masterInkAssets: []
-    localIncludePaths: []
-    includes: []
+  loadGlobalsJSON: {fileID: 0}
   chimpsGameWindow: {fileID: 4197330799103552596, guid: a3193863f6c474d6c83d3f10e290aaa0, type: 3}
+  numberPuzzleWindow: {fileID: 0}
+  TaskFailed1: {fileID: 0}
+  TaskFailed2: {fileID: 0}
+  TaskFailed3: {fileID: 0}
 --- !u!1001 &124201579930956998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -408,7 +402,8 @@ PrefabInstance:
       value: CHAT WINDOW
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 777240238921050699, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8248087155599760111, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       insertIndex: -1
