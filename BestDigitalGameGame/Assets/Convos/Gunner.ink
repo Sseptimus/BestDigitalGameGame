@@ -34,7 +34,7 @@ That's irrelevent. Just get me my bitcoin back.
 Yes, I have an OSOS account.
 
 - I need you to sign into my account for me. I can't complete the login sequence.
-~ temp gameType = "chimps"
+~ temp gameType = "numberPuzzle"
 ~ runTask(gameType)
 { gameType == "numberPuzzle":
 	->TaskDialogueNumberPuzzle
@@ -63,7 +63,14 @@ Great, see, that wasn't so hard.
 -> ExplainProblem
 
 === TaskFailed ===
+You've taken too long! I cannot wait any longer, I have important matters to attend to. I will get someone more competent to fix this for me. 
+~ BossSuspicionCounter += 1
 -> END 
 
 === TaskSuccess ===
+Well... thanks. I can recover my Bitcoin. But I want a new laptop too. A good customer like me deserves it replaced.
+* I can't [do that] give you a new laptop.
+Why not? I've been a loyal customer and you should give me a new one. I asked nicely.
+** Unfortunately[...], sir, I can't do that. I have recovered your Bitcoin for you. Have a good day, sir.
+Fine. Thanks for your help.
 -> END

@@ -2789,7 +2789,7 @@ MonoBehaviour:
   Background: {fileID: 1552337371}
   WindowInFocus: {fileID: 1422349008}
   OpenWindows: []
-  m_TaskBarController: {fileID: 0}
+  m_TaskBarController: {fileID: 7883795298132086099, guid: 4f0bfef783046294e811610db3d7c1d2, type: 3}
   cursorTexture: {fileID: 2800000, guid: 783a2c569f35af64cb2565d361f49480, type: 3}
   cursorMode: 0
   hotSpot: {x: 0, y: 0}
@@ -3097,14 +3097,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 411484048}
     m_Modifications:
-    - target: {fileID: 1367057120693928007, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
-      propertyPath: m_IsActive
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.74
-      objectReference: {fileID: 0}
     - target: {fileID: 5296065905511976146, guid: 83a1e266afc824aa5ae88fbf876797f2, type: 3}
       propertyPath: MainCamera
       value: 
@@ -3176,6 +3168,14 @@ PrefabInstance:
     - target: {fileID: 8778399253896003397, guid: 83a1e266afc824aa5ae88fbf876797f2, type: 3}
       propertyPath: m_Name
       value: Exit Arrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367057120693928007, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_IsActive
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.74
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

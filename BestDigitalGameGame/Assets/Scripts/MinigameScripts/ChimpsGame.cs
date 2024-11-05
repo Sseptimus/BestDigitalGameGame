@@ -30,8 +30,7 @@ public class ChimpsGame : MonoBehaviour
     private int m_mistakesMade = 0;
     private bool m_numbersVisible = true;
 
-    //public Story m_currentStory;
-    public InkManager ownedManager; //TODO Remove was used for testing
+    public InkManager ownedManager; 
 
 
     // Start is called before the first frame update
@@ -60,7 +59,7 @@ public class ChimpsGame : MonoBehaviour
             if (totalWins >= 2)
             {
                 Debug.Log("Task Complete.");
-                ownedManager.GameEnded();
+                ownedManager.GameWon();
                 GameManager.WindowInFocus = null;
                 Destroy(ownWindow);
                 Destroy(this);

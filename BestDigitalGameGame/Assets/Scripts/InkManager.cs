@@ -43,6 +43,7 @@ public class InkManager : MonoBehaviour
     [Header("Game Windows")]
     // game windows to be instantiated
     public GameObject chimpsGameWindow;
+    public GameObject numberPuzzleWindow;
 
     [Header("Popup Windows")]
     public GameObject TaskFailed1;
@@ -126,19 +127,12 @@ public class InkManager : MonoBehaviour
             if (taskName == "numberPuzzle")
             {
                 // instatiate Game #3 number puzzle
+                m_bPlayingGame = true;
+                GameObject newgame = Instantiate(numberPuzzleWindow);
             }
         });
 
         DisplayNextLine();
-    }
-
-    public void GameEnded()
-    {
-        m_bPlayingGame = false;
-        if (_story.canContinue)
-        {
-            _story.Continue();
-        }
     }
 
     public void GameFailed()
@@ -149,6 +143,13 @@ public class InkManager : MonoBehaviour
         DisplayNextLine();
         m_bPlayingGame = false;
     }
+    public void GameWon()
+    {
+        _story.ChoosePathString("TaskSuccess");
+        DisplayNextLine();
+        m_bPlayingGame = false;
+    }
+
     public void DisplayNextLine()
     {
         if (_story.canContinue)
