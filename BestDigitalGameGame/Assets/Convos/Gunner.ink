@@ -42,15 +42,13 @@ Yes, I have an OSOS account.
 -> END
 
 === TaskDialogueNumberPuzzle ===
-= dialogue_one
-That square goes in the top right corner.
--> END
-= dialogue_two
-That square goes in the bottom left corner.
--> END
-= dialogue_three
-I don't know where that square goes.
--> END
+Oh, a sliding puzzle. You should be able to complete this easily. Just click on the square you want to move.
+-> random_comment
+
+= random_comment
+	{~ Move that square left. | Move that square down. | Move number 5 to the right. | Slide that one up. | You should listen to me, I know how to do this. }
+->END
+
 
 === GunnerAngry ===
 Why aren't you going to help me? That's your job. Do your job or I will report you.
@@ -68,7 +66,7 @@ You've taken too long! I cannot wait any longer, I have important matters to att
 -> END 
 
 === TaskSuccess ===
-Well... thanks. I can recover my Bitcoin. But I want a new laptop too. A good customer like me deserves it replaced.
+Well... thanks. I've just been given access. I can recover my Bitcoin. But I want a new laptop too. A good customer like me deserves it replaced.
 * I can't [do that] give you a new laptop.
 Why not? I've been a loyal customer and you should give me a new one. I asked nicely.
 ** Unfortunately[...], sir, I can't do that. I have recovered your Bitcoin for you. Have a good day, sir.

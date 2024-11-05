@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Author: Zane @Zanymacman
+// Minor alterations by Charli @CharliSIO
+
+// Controls the boss's state machine and moves him on a timer
 public class BossManager : MonoBehaviour
 {
     public enum BossLocation
@@ -16,7 +20,7 @@ public class BossManager : MonoBehaviour
     }
 
     [Header ("Move Variables")]
-    //Moving Variables
+    // Moving Variables
     public float MaxMoveTimer;
     public float MinMoveTimer;
     float CurrentMoveTimer;
@@ -25,7 +29,7 @@ public class BossManager : MonoBehaviour
 
 
     [Header ("Rendering and Sprites")]     
-    //Sprites and Renderers
+    // Sprites and Renderers
     public SpriteRenderer UpPeek;
     public SpriteRenderer LeftPeek;
     public Sprite _sprIn_Office;
@@ -36,12 +40,15 @@ public class BossManager : MonoBehaviour
     public Sprite _sprLeftPeek2;
     public Sprite _sprLeftPeek3;
     public Sprite _sprLeftPeekNoBoss;
-    
+
+    [Header("Ink Manager")]
+    [SerializeField]
+    private InkManager m_inkManager;
 
     // Update is called once per frame
     void Update()
     {
-        //if boss timer is zero, move the boss and reset the timer
+        // if boss timer is zero, move the boss and reset the timer
         if(CurrentMoveTimer <= 0)
         {
             MoveBoss();
@@ -54,20 +61,20 @@ public class BossManager : MonoBehaviour
         }
     }
 
-    void MoveBoss()//Move the boss 'woo'
+    void MoveBoss() // Move the boss 'woo'
     {
         //Random the new location
         int NewPosition = Random.Range((int)BossLocation.In_Office,(int)BossLocation.Right_Behind_YOU);
         CurrentLocation = (BossLocation)NewPosition;
 
-        //Set the old sprite back and Set the new sprite
+        // Set the old sprite back and Set the new sprite
         switch(CurrentLocation)
         {
             case BossLocation.In_Office:
             {
                 UpPeek.sprite = _sprIn_Office;
                 LeftPeek.sprite = _sprLeftPeekNoBoss;
-                BOSS_IS_WATCHING = false;
+                BOSS_IS_WATCHING = true;
                 break;
             }
             case BossLocation.Up_Pos1:
@@ -114,6 +121,9 @@ public class BossManager : MonoBehaviour
             }
         }
 
+        m_inkManager.GetStory().variablesState["BeingWatched"] = BOSS_IS_WATCHING;
+
+        Debug.Log(m_inkManager.GetStory().variablesState["BeingWatched"]);
         Debug.Log("Boss Moved! woo!!");
         Debug.Log(CurrentLocation);
     }

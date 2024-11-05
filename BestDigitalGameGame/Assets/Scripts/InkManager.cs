@@ -14,6 +14,7 @@ using Vector2 = UnityEngine.Vector2;
 // Manages the INK files and stories running
 public class InkManager : MonoBehaviour
 {
+
     [Header("Dialogue Assets")]
     [SerializeField]
     private TextAsset JaniceJsonAsset;
@@ -138,6 +139,7 @@ public class InkManager : MonoBehaviour
                 // instatiate Game #3 number puzzle
                 m_bPlayingGame = true;
                 GameObject newgame = Instantiate(numberPuzzleWindow);
+                newgame.GetComponentInChildren<SliderGameController>().ownedManager = this;
             }
         });
 
@@ -280,5 +282,10 @@ public class InkManager : MonoBehaviour
         }
 
         return variablevalue;
+    }
+
+    public Story GetStory()
+    {
+        return _story;
     }
 }
