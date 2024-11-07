@@ -45,9 +45,24 @@ public class MineCellController : MonoBehaviour
 
     private void FlagCell()
     {
-        m_bFlagged = true;
-        GetComponent<SpriteRenderer>().color = Color.green;
-        //TODO add to mine found count
+        if (!m_bFlagged)
+        {
+            m_bFlagged = true;
+            GetComponent<SpriteRenderer>().color = Color.yellow;
+            if (m_bIsMine)
+            {
+                m_OwnedGame.IncrementMinesFound();
+            }
+        }
+        else
+        {
+            m_bFlagged = false;
+            GetComponent<SpriteRenderer>().color = Color.HSVToRGB(0, 0, 51);
+            if (m_bIsMine)
+            {
+                m_OwnedGame.DecreaseMinesFound();
+            }
+        }
     }
 
     public void ClickCell()
@@ -57,28 +72,31 @@ public class MineCellController : MonoBehaviour
             GetComponent<SpriteRenderer>().color = Color.red;
             return;
         }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.green;
+        }
         m_bHidden = false;
         GetComponent<TextMeshProUGUI>().enabled = true;
         if (m_iMineCount == 0)
         {
             foreach (var CurrentCell in m_NeighbourCells)
             {
-                if (CurrentCell)
+                if (CurrentCell && CurrentCell.m_bHidden)
                 {
-                    //CurrentCell.ClickCell();
+                    CurrentCell.ClickCell();
                 }
             }
         }
     }
 
-    private void OnMouseDown()
+    private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(1))
         {
             FlagCell();
         }
-
-        if (Input.GetMouseButtonDown(0) && !m_bFlagged)
+        else if (Input.GetMouseButtonDown(0) && !m_bFlagged)
         {
             ClickCell();
         }

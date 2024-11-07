@@ -8,8 +8,9 @@ using Random = UnityEngine.Random;
 public class MineSweeperGameController : MonoBehaviour
 {
     public GameObject MineObjPrefab;
-    public int m_iGridSize = 5;
-    public int m_iDifficulty = 12;
+    public int m_iGridSize = 10;
+    public int m_iDifficulty = 14;
+    private int m_iCorrectCells = 0;
 
     private void Start()
     {
@@ -89,5 +90,20 @@ public class MineSweeperGameController : MonoBehaviour
                 transform.GetChild(i).GetComponent<MineCellController>().FindMineCount();
             }
         }
+    }
+
+    public void IncrementMinesFound()
+    {
+        m_iCorrectCells++;
+        if (m_iCorrectCells == m_iDifficulty)
+        {
+            //TODO Win Condition
+            Destroy(transform.parent.parent.transform);
+        }
+    }
+
+    public void DecreaseMinesFound()
+    {
+        m_iCorrectCells--;
     }
 }
