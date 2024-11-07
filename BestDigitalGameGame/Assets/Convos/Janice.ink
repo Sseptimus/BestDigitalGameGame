@@ -1,5 +1,6 @@
 INCLUDE globals.ink
 EXTERNAL runTask(taskType)
+EXTERNAL bossSpotted(bossSeen)
 VAR bTaskFail = false
 VAR bTaskSuccess = false
 
@@ -11,6 +12,7 @@ Oh, good morning, my name is Janice, and, and I've got a little bit of a problem
 Oh thank you my dear, I do really appreciate it.
 ** [Ask for help] Ma'am, I need your help.
 { BeingWatched == true:
+	~ bossSpotted("seen")
 	~ BossSuspicionCounter +=1
 }
 What do you mean sorry dear? I'm not sure I understand. I need help with my emails.
@@ -34,10 +36,11 @@ How do I do that?
 
 - Oh yes, I can log into my email account. Just give me one moment.
 * Can you help me?
-Help you with what, dear? I'm just trying to log in to my emails, won't be long dear.
 { BeingWatched == true:
+	~ bossSpotted("seen")
 	~ BossSuspicionCounter +=1
 }
+Help you with what, dear? I'm just trying to log in to my emails, won't be long dear.
 
 * Of course, that's no problem ma'am.
 
@@ -73,8 +76,11 @@ Oh thank you my dear, I really appreciate it. Well, I will let you know if I hav
  
 
 * No, everything is awful[].
-Oh no, what's wrong dear? Are you struggling to complete it? If you can't do it that's okay, I can call someone else.
+Oh no, what's wrong dear? Are you struggling to complete it? 
+
+If you can't do it that's okay, I can call someone else.
 ** [It should be okay now.] You shouldn't get any more emails. I just thought perhaps you cared to ask how I was. I'm sorry, I really need help. 
+
 
 Of course I care, dear. I don't know who you are but I believe everyone is important. You keep asking for help, I'm not sure what you want, but I'll give you another call soon, okay? Everything will be fine, my dear.
 
