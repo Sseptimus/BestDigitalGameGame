@@ -137,12 +137,7 @@ public class WindowController :  BaseWindowClass
             moveVec.z = 0;
             transform.SetPositionAndRotation(moveVec,Quaternion.identity);
             m_vec3MousePos = Input.mousePosition;
-       } 
-        Vector3 clampVec;
-        clampVec.x = Mathf.Clamp(transform.position.x,m_GameManager.ComputerScreen.transform.position.x,m_GameManager.ComputerScreen.transform.position.x + m_GameManager.Background.GetComponent<SpriteRenderer>().bounds.size.x-m_sprTitleBar.bounds.size.x);
-        clampVec.y = Mathf.Clamp(transform.position.y,m_GameManager.ComputerScreen.transform.position.y - m_GameManager.Background.GetComponent<SpriteRenderer>().bounds.size.y+m_sprContent.bounds.size.y+m_sprTitleBar.bounds.size.y,m_GameManager.ComputerScreen.transform.position.y);
-        clampVec.z = 0;
-        transform.SetPositionAndRotation(clampVec,Quaternion.identity);
+        }
     }
     
 }
