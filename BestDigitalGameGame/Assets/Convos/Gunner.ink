@@ -1,6 +1,5 @@
 ﻿INCLUDE globals.ink
 EXTERNAL runTask(taskType)
-EXTERNAL bossSpotted(bossSeen)
 VAR bTaskFail = false
 VAR bTaskSuccess = false
 
@@ -55,7 +54,6 @@ Oh, a sliding puzzle. You should be able to complete this easily. Just click on 
 Why aren't you going to help me? That's your job. Do your job or I will report you.
  * Please help me[]. I have to escape my job. I can't do this any longer. 
 Well, I'll certainly help you! Get fired! You're supposed to fix my problem, not beg to me!
-~ bossSpotted("seen")
 ~BossSuspicionCounter += 1
 -> END
 * Fine, I'll help you.
