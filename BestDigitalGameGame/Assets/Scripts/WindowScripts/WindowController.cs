@@ -122,7 +122,16 @@ public class WindowController :  BaseWindowClass
         //Minimise Button
         LoseFocus();
         gameObject.SetActive(false);
+        
     }
+
+    public void Close()
+    {
+        LoseFocus();
+        Destroy(gameObject);
+    }
+    
+    
     private void Update()
     {
         if (m_bHeld && (ConvertToWorldUnitsX(Input.mousePosition.x) > m_GameManager.ComputerScreen.transform.position.x + m_GameManager.Background.GetComponent<SpriteRenderer>().bounds.size.x
