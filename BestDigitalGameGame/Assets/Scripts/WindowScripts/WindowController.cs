@@ -19,6 +19,7 @@ public class WindowController :  BaseWindowClass
     private BoxCollider2D m_ColTitleBar;
 
     public WindowType m_WindowType;
+    public string m_CurrentLayer;
 
     private void Start()
     {
@@ -28,6 +29,8 @@ public class WindowController :  BaseWindowClass
         m_GameManager = FindObjectOfType<GameManager>();
         m_GameManager.AddWindow(this);
         m_ColTitleBar = transform.GetComponent<BoxCollider2D>();
+        OnGrabFocus();
+        
     }
 
     private void OnDestroy()
@@ -54,6 +57,7 @@ public class WindowController :  BaseWindowClass
         if (gameObject)
         {
             m_GameManager.WindowInFocus = this;
+            m_CurrentLayer = "FocusedWindow";
         
             //Changing collision box to just title bar
             m_ColTitleBar.size = new Vector2(5,0.5f);
@@ -81,6 +85,7 @@ public class WindowController :  BaseWindowClass
 
     public void LoseFocus()
     {
+        m_CurrentLayer = "NonFocusedWindows";
         //Changing collision box to whole window
         if (m_ColTitleBar)
         {
@@ -137,7 +142,12 @@ public class WindowController :  BaseWindowClass
             moveVec.z = 0;
             transform.SetPositionAndRotation(moveVec,Quaternion.identity);
             m_vec3MousePos = Input.mousePosition;
-        }
+       } 
+        Vector3 clampVec;
+        clampVec.x = Mathf.Clamp(transform.position.x,m_GameManager.ComputerScreen.transform.position.x,m_GameManager.ComputerScreen.transform.position.x + m_GameManager.Background.GetComponent<SpriteRenderer>().bounds.size.x-m_sprTitleBar.bounds.size.x);
+        clampVec.y = Mathf.Clamp(transform.position.y,m_GameManager.ComputerScreen.transform.position.y - m_GameManager.Background.GetComponent<SpriteRenderer>().bounds.size.y+m_sprContent.bounds.size.y+m_sprTitleBar.bounds.size.y,m_GameManager.ComputerScreen.transform.position.y);
+        clampVec.z = 0;
+        transform.SetPositionAndRotation(clampVec,Quaternion.identity);
     }
     
 }
