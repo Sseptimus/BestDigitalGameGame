@@ -3562,9 +3562,9 @@ MonoBehaviour:
   _sprUpPeek1: {fileID: 21300000, guid: e7391a34fdfc98d4c9a99a7156b003a6, type: 3}
   _sprUpPeek2: {fileID: 21300000, guid: bb338ab23e7a35e4185b415e9442c7d8, type: 3}
   _sprUpPeekNoBoss: {fileID: 21300000, guid: a2bddf3cb93dcdf438554479807ccfc8, type: 3}
-  _sprLeftPeek1: {fileID: 21300000, guid: ff8fa3be4ab3bf2479fd586f0b93f4c3, type: 3}
-  _sprLeftPeek2: {fileID: 21300000, guid: 00637dcad7817ae4d94d70bc576a22a1, type: 3}
-  _sprLeftPeek3: {fileID: 21300000, guid: 16d975c63a8b6c24cb6704125841b6c5, type: 3}
+  _sprLeftPeek1: {fileID: 21300000, guid: 63538220458bdbf43adc352ea57b297c, type: 3}
+  _sprLeftPeek2: {fileID: 21300000, guid: 85c0866f0a7249a4db61e39ee65c83aa, type: 3}
+  _sprLeftPeek3: {fileID: 21300000, guid: b3927af124f4d6343a9ffc9c24e08af8, type: 3}
   _sprLeftPeekNoBoss: {fileID: 21300000, guid: 680ef7e073d13c7458ee1929872778f3, type: 3}
   m_inkManager: {fileID: 1439482724}
 --- !u!4 &1713688805
