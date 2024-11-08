@@ -52,6 +52,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2021606357417680256, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_Spacing.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021606357417680256, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_Spacing.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021606357417680256, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_CellSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021606357417680256, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_CellSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021606357417680256, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_Constraint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108550932257770422, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108550932257770422, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 209069043
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754917956682681954, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_iGridSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754917956682681954, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_iDifficulty
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7809186849243835733, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 209069043
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

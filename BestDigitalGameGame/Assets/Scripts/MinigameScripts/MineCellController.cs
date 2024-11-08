@@ -74,7 +74,7 @@ public class MineCellController : MonoBehaviour
         }
         else
         {
-            GetComponent<SpriteRenderer>().color = Color.green;
+            //GetComponent<SpriteRenderer>().color = Color.green;
         }
         m_bHidden = false;
         GetComponent<TextMeshProUGUI>().enabled = true;
