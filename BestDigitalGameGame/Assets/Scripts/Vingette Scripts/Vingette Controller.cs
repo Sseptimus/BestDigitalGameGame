@@ -72,24 +72,29 @@ public class VingetteController : MonoBehaviour
                     switch(m_TargetScene)//if the lerp is done, move the camera to the new position
                     {   
                         case TargetScene.Cubical:
-                        MainCamera.transform.position = Cubical;
-                        break;
+                            MainCamera.transform.position = Cubical;
+                            MainCamera.orthographicSize = 5.0f;
+                            break;
 
                         case TargetScene.Screen:
-                        MainCamera.transform.position = Screen;
-                        break;
+                            MainCamera.transform.position = Screen;
+                            MainCamera.orthographicSize = 6.0f;
+                            break;
 
                         case TargetScene.LeftPeek:
-                        MainCamera.transform.position = LeftPeek;
-                        break;
+                            MainCamera.transform.position = LeftPeek;
+                            MainCamera.orthographicSize = 5.0f;
+                            break;
 
                         case TargetScene.Pinboard:
-                        MainCamera.transform.position = Pinboard;
-                        break;
+                            MainCamera.transform.position = Pinboard;
+                            MainCamera.orthographicSize = 5.0f;
+                            break;
 
                         case TargetScene.UpPeek:
-                        MainCamera.transform.position = UpPeek;
-                        break;
+                            MainCamera.transform.position = UpPeek;
+                            //MainCamera.orthographicSize = 5.0f;
+                            break;
                     }
                     m_CurrentLerp = 0;
                     m_State = State.FadingIn;
