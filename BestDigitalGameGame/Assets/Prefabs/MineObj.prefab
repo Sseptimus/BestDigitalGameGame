@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6926772189564613877}
   - component: {fileID: 4514540529955344642}
   - component: {fileID: 362264669352202944}
+  - component: {fileID: 3397474068460937104}
   m_Layer: 0
   m_Name: MineObj
   m_TagString: Untagged
@@ -30,7 +31,7 @@ RectTransform:
   m_GameObject: {fileID: 8041162980404672429}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.035, y: 0.035, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -247,3 +248,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bIsMine: 0
+--- !u!114 &3397474068460937104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8041162980404672429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294b5aa52f76fd54fb395484ef903526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

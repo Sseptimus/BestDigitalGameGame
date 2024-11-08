@@ -19,6 +19,7 @@ public class WindowController :  BaseWindowClass
     private BoxCollider2D m_ColTitleBar;
 
     public WindowType m_WindowType;
+    public string m_CurrentLayer;
 
     private void Start()
     {
@@ -28,6 +29,8 @@ public class WindowController :  BaseWindowClass
         m_GameManager = FindObjectOfType<GameManager>();
         m_GameManager.AddWindow(this);
         m_ColTitleBar = transform.GetComponent<BoxCollider2D>();
+        OnGrabFocus();
+        
     }
 
     private void OnDestroy()
@@ -54,6 +57,7 @@ public class WindowController :  BaseWindowClass
         if (gameObject)
         {
             m_GameManager.WindowInFocus = this;
+            m_CurrentLayer = "FocusedWindow";
         
             //Changing collision box to just title bar
             m_ColTitleBar.size = new Vector2(5,0.5f);
@@ -81,6 +85,7 @@ public class WindowController :  BaseWindowClass
 
     public void LoseFocus()
     {
+        m_CurrentLayer = "NonFocusedWindows";
         //Changing collision box to whole window
         if (m_ColTitleBar)
         {

@@ -18,6 +18,7 @@ public class MineCellController : MonoBehaviour
 
     private void Start()
     {
+        
     }
 
     public void SetGame(MineSweeperGameController _OwnedGame)

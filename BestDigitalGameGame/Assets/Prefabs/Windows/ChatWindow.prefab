@@ -247,7 +247,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1144362615
   m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &6247900835830703606
@@ -345,6 +345,9 @@ MonoBehaviour:
   TaskFailed1: {fileID: 5667420197828163742, guid: bbf31f5a95417604383556159c3b30c0, type: 3}
   TaskFailed2: {fileID: 9134666692400246863, guid: 98d8abb3b09339e4d88fae1edf9578c7, type: 3}
   TaskFailed3: {fileID: 6462185419355144474, guid: b97d36df2f2085742a17d4352b13e1f8, type: 3}
+  BossWatching1: {fileID: 0}
+  BossWatching2: {fileID: 0}
+  BossWatching3: {fileID: 0}
 --- !u!1001 &3839893609508243451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -355,7 +358,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1367057120693928007, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_Name
-      value: ChatWindow 1
+      value: ChatWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500059508339014611, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500059508339014611, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1144362615
       objectReference: {fileID: 0}
     - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -397,6 +408,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.163
       objectReference: {fileID: 0}
+    - target: {fileID: 2108550932257770422, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108550932257770422, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1144362615
+      objectReference: {fileID: 0}
     - target: {fileID: 2174371993517885011, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_Type
       value: 0
@@ -408,6 +427,10 @@ PrefabInstance:
     - target: {fileID: 2401295105946352784, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_text
       value: CHAT WINDOW
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566989704640524262, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1144362615
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
