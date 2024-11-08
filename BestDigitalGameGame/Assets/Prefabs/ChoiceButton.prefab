@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -93,7 +93,6 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: 6bf04d8bd24648c4bb3aec86e3ed0567, type: 3}
   cursorMode: 0
   hotSpot: {x: 0, y: 20}
-  defaultMouseTex: {fileID: 2800000, guid: 783a2c569f35af64cb2565d361f49480, type: 3}
 --- !u!114 &6192818354376701437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,11 +112,11 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
+    m_HighlightedColor: {r: 0.37597173, g: 0.509434, b: 0.19464225, a: 1}
+    m_PressedColor: {r: 0.06794051, g: 0.16981131, b: 0.002402986, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
