@@ -2598,6 +2598,14 @@ PrefabInstance:
       propertyPath: BossWatching3
       value: 
       objectReference: {fileID: 7700106647712392265, guid: fba878a54d681e34fa1583db5e70174d, type: 3}
+    - target: {fileID: 1664957401256307343, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
+      propertyPath: CarlJsonAsset
+      value: 
+      objectReference: {fileID: 4900000, guid: 50a2df1e055e66946b4e7391b31225f2, type: 3}
+    - target: {fileID: 1664957401256307343, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
+      propertyPath: minesweeperWindow
+      value: 
+      objectReference: {fileID: 8238491391272469025, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
     - target: {fileID: 2860570616990877628, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
       propertyPath: m_Name
       value: ChatWindow

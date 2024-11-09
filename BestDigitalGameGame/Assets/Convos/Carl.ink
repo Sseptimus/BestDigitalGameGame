@@ -33,3 +33,29 @@ Of course not! How could you suggest such a thing?
 Of course I've tried using a different computer. That's what I'm using currently. However, I need my normal computer to get my work done effectively. 
 
 - I did get some strange popups and screen glitches not long before the first crash. That could perhaps have been linked? I can't draw any definitive conclusions. 
+
+* Definitely sounds like malware[]. 
+Perhaps. Could you investigate? I am in quite a rush.
+
+* Please, I'm not a prank caller[]. Please help me. I need your help. 
+{ BeingWatched == true:
+	~ bossSpotted("seen")
+	~ BossSuspicionCounter +=1
+}
+What are you talking about? Is everything alright?
+	** I can't explain[]. I'm trapped. I need you to get me out.          // better answer for more help points
+	** No, I need to get out of here[]. Get me out. Get me out of here.      // Gets smaller amount of help points (TODO)
+	 I don't understand. I'll need more time to investigate. But first, I need you to fix my computer. Maybe then I can help you.
+
+- This computer is crucial to me being able to work effectively.
+* I'll try[] my best.
+
+~ temp gameType = "minesweeper"
+~ runTask(gameType)
+-> END
+
+=== TaskFailed ===
+-> END
+
+=== TaskSuccess ===
+-> END

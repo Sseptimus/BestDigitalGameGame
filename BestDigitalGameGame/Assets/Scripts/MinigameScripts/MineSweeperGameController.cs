@@ -12,6 +12,8 @@ public class MineSweeperGameController : MonoBehaviour
     public int m_iDifficulty = 14;
     private int m_iCorrectCells = 0;
 
+    public InkManager ownedManager;
+
     private void Start()
     {
         GetComponent<GridLayoutGroup>().constraintCount = m_iGridSize;

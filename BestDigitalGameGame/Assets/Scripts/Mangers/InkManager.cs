@@ -20,6 +20,9 @@ public class InkManager : MonoBehaviour
     private TextAsset JaniceJsonAsset;
     [SerializeField]
     private TextAsset GunnerJsonAsset;
+    [SerializeField]
+    private TextAsset CarlJsonAsset;
+
     private List<TextAsset> DialogueJsons = new List<TextAsset>();
     private TextAsset currentDialogue;
     private int dialogueListIndex = 0;
@@ -53,6 +56,7 @@ public class InkManager : MonoBehaviour
     // game windows to be instantiated
     public GameObject chimpsGameWindow;
     public GameObject numberPuzzleWindow;
+    public GameObject minesweeperWindow;
 
     [Header("Popup Windows")]
     public GameObject TaskFailed1;
@@ -78,6 +82,7 @@ public class InkManager : MonoBehaviour
     {
         DialogueJsons.Add(JaniceJsonAsset);
         DialogueJsons.Add(GunnerJsonAsset);
+        DialogueJsons.Add(CarlJsonAsset);
 
         currentDialogue = DialogueJsons[dialogueListIndex];
         StartStory();
@@ -144,6 +149,13 @@ public class InkManager : MonoBehaviour
                 m_bPlayingGame = true;
                 GameObject newgame = Instantiate(numberPuzzleWindow);
                 newgame.GetComponentInChildren<SliderGameController>().ownedManager = this;
+            }
+            if (taskName == "minesweeper")
+            {
+                // instatiate minesweeper puzzle
+                m_bPlayingGame = true;
+                GameObject newgame = Instantiate(minesweeperWindow);
+                newgame.GetComponentInChildren<MineSweeperGameController>().ownedManager = this;
             }
         });
 
@@ -284,6 +296,9 @@ public class InkManager : MonoBehaviour
 
     void ExitDialogue()
     {
+        Destroy(ChatController.PlayerMessageContainer.transform.GetChild(0).gameObject);
+        Destroy(ChatController.NPCMessageContainer.transform.GetChild(0).gameObject);
+
         dialogueVariablesObserver.StopListening(_story);
     }
 
