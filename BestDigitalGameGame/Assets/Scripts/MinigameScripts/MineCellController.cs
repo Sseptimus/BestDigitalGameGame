@@ -68,6 +68,8 @@ public class MineCellController : MonoBehaviour
             if (m_bIsMine && m_OwnedGame.GetFirstClickOccured())
             {
                 GetComponent<SpriteRenderer>().color = Color.red;
+                m_OwnedGame.GameFailed();
+                Debug.Log("Game failed");
                 return;
             }
             else if (m_bIsMine && !m_OwnedGame.GetFirstClickOccured())

@@ -1861,6 +1861,71 @@ Transform:
   - {fileID: 1963297877}
   m_Father: {fileID: 519420032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1128953246
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4111949165299918881, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
+      propertyPath: ownWindow
+      value: 
+      objectReference: {fileID: 1213350073}
+    - target: {fileID: 4111949165299918881, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
+      propertyPath: ownedManager
+      value: 
+      objectReference: {fileID: 1439482724}
+    - target: {fileID: 8238491391272469025, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
+      propertyPath: m_Name
+      value: MineSweeperGameWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866536908863386406, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.46106434
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866536908863386406, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.8021128
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866536908863386406, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866536908863386406, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866536908863386406, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866536908863386406, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866536908863386406, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866536908863386406, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866536908863386406, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866536908863386406, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
 --- !u!1 &1177487457
 GameObject:
   m_ObjectHideFlags: 0
@@ -2138,6 +2203,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverBackground: {fileID: 21300000, guid: 1176619a095c3b84c8693d8bdac1507b, type: 3}
   normalBackground: {fileID: 21300000, guid: 8c03d722853c54154b6a285be6229b1e, type: 3}
+--- !u!1 &1213350073 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8238491391272469025, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
+  m_PrefabInstance: {fileID: 1128953246}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1241850985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4320,3 +4390,4 @@ SceneRoots:
   - {fileID: 1713688805}
   - {fileID: 1177487458}
   - {fileID: 1735382174}
+  - {fileID: 1128953246}

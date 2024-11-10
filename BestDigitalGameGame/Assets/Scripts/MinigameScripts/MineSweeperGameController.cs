@@ -14,6 +14,7 @@ public class MineSweeperGameController : MonoBehaviour
     private bool m_bFirstClickOccured = false;
 
     public InkManager ownedManager;
+    public GameObject ownWindow;
 
     private void Start()
     {
@@ -102,13 +103,20 @@ public class MineSweeperGameController : MonoBehaviour
         if (m_iCorrectCells == m_iDifficulty)
         {
             //TODO Win Condition
-            Destroy(transform.parent.parent.transform);
+            Debug.Log("Game won!");
+            ownedManager.GameWon();
+            Destroy(ownWindow);
         }
     }
 
     public void DecreaseMinesFound()
     {
         m_iCorrectCells--;
+    }
+
+    public void GameFailed()
+    {
+        ownedManager.GameFailed();
     }
 
     public bool GetFirstClickOccured()
