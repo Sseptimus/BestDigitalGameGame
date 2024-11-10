@@ -73,7 +73,6 @@ public class MineCellController : MonoBehaviour
             else if (m_bIsMine && !m_OwnedGame.GetFirstClickOccured())
             {
                 //If lose on first click move mine to first free space
-               m_OwnedGame.SetFirstClickOccured();
                m_bIsMine = false;
                for (int i = 0; i < transform.childCount; i++)
                {
@@ -82,6 +81,12 @@ public class MineCellController : MonoBehaviour
                        transform.parent.GetChild(i).GetComponent<MineCellController>().m_bIsMine = true;
                    }
                }
+               m_OwnedGame.ResetMineCounts();
+            }
+            
+            if (!m_OwnedGame.GetFirstClickOccured())
+            {
+                m_OwnedGame.SetFirstClickOccured();
             }
             m_bHidden = false;
             GetComponent<TextMeshProUGUI>().enabled = true;

@@ -83,7 +83,11 @@ public class MineSweeperGameController : MonoBehaviour
                 }
             }
         }
+        ResetMineCounts();
+    }
 
+    public void ResetMineCounts()
+    {
         for (int i = 0; i < m_iGridSize*m_iGridSize; i++)
         {
             //Setting non bomb cell values
@@ -93,7 +97,6 @@ public class MineSweeperGameController : MonoBehaviour
             }
         }
     }
-
     public void IncrementMinesFound()
     {
         m_iCorrectCells++;
