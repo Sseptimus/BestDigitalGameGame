@@ -11,6 +11,7 @@ public class MineSweeperGameController : MonoBehaviour
     public int m_iGridSize = 10;
     public int m_iDifficulty = 14;
     private int m_iCorrectCells = 0;
+    private bool m_bFirstClickOccured = false;
 
     private void Start()
     {
@@ -106,5 +107,15 @@ public class MineSweeperGameController : MonoBehaviour
     public void DecreaseMinesFound()
     {
         m_iCorrectCells--;
+    }
+
+    public bool GetFirstClickOccured()
+    {
+        return m_bFirstClickOccured;
+    }
+
+    public void SetFirstClickOccured()
+    {
+        m_bFirstClickOccured = true;
     }
 }
