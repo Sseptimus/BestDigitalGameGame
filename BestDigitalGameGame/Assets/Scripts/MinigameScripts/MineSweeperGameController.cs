@@ -13,7 +13,6 @@ public class MineSweeperGameController : MonoBehaviour
     private int m_iCorrectCells = 0;
 
     public InkManager ownedManager;
-    public GameObject ownWindow;
 
     private void Start()
     {
@@ -101,20 +100,12 @@ public class MineSweeperGameController : MonoBehaviour
         if (m_iCorrectCells == m_iDifficulty)
         {
             //TODO Win Condition
-            Debug.Log("GAME COMPLETE!!!");
-            ownedManager.GameWon();
-            Destroy(ownWindow);
+            Destroy(transform.parent.parent.transform);
         }
     }
 
     public void DecreaseMinesFound()
     {
         m_iCorrectCells--;
-    }
-
-    public void GameFailed()
-    {
-        ownedManager.GameFailed();
-        Destroy(ownWindow);
     }
 }
