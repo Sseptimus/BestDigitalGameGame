@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2290069805599337469}
   - component: {fileID: 6926772189564613877}
   - component: {fileID: 4514540529955344642}
-  - component: {fileID: 362264669352202944}
   - component: {fileID: 3397474068460937104}
+  - component: {fileID: 7183648252804291989}
   m_Layer: 0
   m_Name: MineObj
   m_TagString: Untagged
@@ -235,19 +235,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &362264669352202944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8041162980404672429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5bda5425a8b6de4d9a819e81f87205a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_bIsMine: 0
 --- !u!114 &3397474068460937104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,3 +247,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294b5aa52f76fd54fb395484ef903526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7183648252804291989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8041162980404672429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bda5425a8b6de4d9a819e81f87205a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bIsMine: 0

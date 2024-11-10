@@ -16,11 +16,6 @@ public class MineCellController : MonoBehaviour
     private bool m_bFlagged = false;
     private bool m_bHidden = true;
 
-    private void Start()
-    {
-        
-    }
-
     public void SetGame(MineSweeperGameController _OwnedGame)
     {
         m_OwnedGame = _OwnedGame;
@@ -68,24 +63,36 @@ public class MineCellController : MonoBehaviour
 
     public void ClickCell()
     {
-        if (m_bIsMine)
+        if (!m_bFlagged)
         {
-            GetComponent<SpriteRenderer>().color = Color.red;
-            return;
-        }
-        else
-        {
-            //GetComponent<SpriteRenderer>().color = Color.green;
-        }
-        m_bHidden = false;
-        GetComponent<TextMeshProUGUI>().enabled = true;
-        if (m_iMineCount == 0)
-        {
-            foreach (var CurrentCell in m_NeighbourCells)
+            if (m_bIsMine && m_OwnedGame.GetFirstClickOccured())
             {
-                if (CurrentCell && CurrentCell.m_bHidden)
+                GetComponent<SpriteRenderer>().color = Color.red;
+                return;
+            }
+            else if (m_bIsMine && !m_OwnedGame.GetFirstClickOccured())
+            {
+                //If lose on first click move mine to first free space
+               m_OwnedGame.SetFirstClickOccured();
+               m_bIsMine = false;
+               for (int i = 0; i < transform.childCount; i++)
+               {
+                   if (!transform.parent.GetChild(i).GetComponent<MineCellController>().m_bIsMine)
+                   {
+                       transform.parent.GetChild(i).GetComponent<MineCellController>().m_bIsMine = true;
+                   }
+               }
+            }
+            m_bHidden = false;
+            GetComponent<TextMeshProUGUI>().enabled = true;
+            if (m_iMineCount == 0)
+            {
+                foreach (var CurrentCell in m_NeighbourCells)
                 {
-                    CurrentCell.ClickCell();
+                    if (CurrentCell && CurrentCell.m_bHidden)
+                    {
+                        CurrentCell.ClickCell();
+                    }
                 }
             }
         }
@@ -97,7 +104,7 @@ public class MineCellController : MonoBehaviour
         {
             FlagCell();
         }
-        else if (Input.GetMouseButtonDown(0) && !m_bFlagged)
+        else if (Input.GetMouseButtonDown(0))
         {
             ClickCell();
         }

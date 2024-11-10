@@ -36,10 +36,10 @@ public class TaskBarController : MonoBehaviour
         GameObject newIcon = Instantiate(m_TaskIconPrefab, transform);
         switch (_newWindow.GetComponent<WindowController>().m_WindowType)
         {
-            case WindowType.Chat:
+            case GameManager.WindowType.Chat:
                 newIcon.GetComponent<SpriteRenderer>().sprite = m_sprChat;
                 break;
-            case WindowType.ChimpGame:
+            case GameManager.WindowType.ChimpGame:
                 newIcon.GetComponent<SpriteRenderer>().sprite = m_sprChimpGame;
                 break;
             default:

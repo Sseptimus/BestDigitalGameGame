@@ -11,6 +11,7 @@ public class MineSweeperGameController : MonoBehaviour
     public int m_iGridSize = 10;
     public int m_iDifficulty = 14;
     private int m_iCorrectCells = 0;
+    private bool m_bFirstClickOccured = false;
 
     public InkManager ownedManager;
 
@@ -74,10 +75,11 @@ public class MineSweeperGameController : MonoBehaviour
             bool bSettingMine = true;
             while (bSettingMine)
             {
-                if (!transform.GetChild(Random.Range(0, transform.childCount)).GetComponent<MineCellController>()
+                int iNewMineIndex = Random.Range(0, transform.childCount);
+                if (!transform.GetChild(iNewMineIndex).GetComponent<MineCellController>()
                     .m_bIsMine)
                 {
-                    transform.GetChild(Random.Range(0, transform.childCount)).GetComponent<MineCellController>()
+                    transform.GetChild(iNewMineIndex).GetComponent<MineCellController>()
                         .m_bIsMine = true;
                     bSettingMine = false;
                 }
@@ -107,5 +109,15 @@ public class MineSweeperGameController : MonoBehaviour
     public void DecreaseMinesFound()
     {
         m_iCorrectCells--;
+    }
+
+    public bool GetFirstClickOccured()
+    {
+        return m_bFirstClickOccured;
+    }
+
+    public void SetFirstClickOccured()
+    {
+        m_bFirstClickOccured = true;
     }
 }
