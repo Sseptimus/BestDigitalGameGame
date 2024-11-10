@@ -71,6 +71,7 @@ public class MineCellController : MonoBehaviour
         if (m_bIsMine)
         {
             GetComponent<SpriteRenderer>().color = Color.red;
+            m_OwnedGame.GameFailed();
             return;
         }
         else
