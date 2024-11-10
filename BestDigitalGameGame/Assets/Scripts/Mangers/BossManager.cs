@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 // Author: Zane @Zanymacman
 // Minor alterations by Charli @CharliSIO
@@ -44,6 +46,15 @@ public class BossManager : MonoBehaviour
     [Header("Ink Manager")]
     [SerializeField]
     private InkManager m_inkManager;
+
+
+    private void Start()
+    {
+        if (!m_inkManager)
+        {
+            m_inkManager = FindObjectOfType<InkManager>();
+        }
+    }
 
     // Update is called once per frame
     void Update()
