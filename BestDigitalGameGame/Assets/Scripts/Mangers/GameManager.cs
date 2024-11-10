@@ -5,11 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public enum WindowType
-{
-    Chat,
-    ChimpGame
-}
+
 public class GameManager : MonoBehaviour
 {
     //Singleton Class should only be one in scene
@@ -23,6 +19,11 @@ public class GameManager : MonoBehaviour
     public List<WindowController> OpenWindows;
 
     public TaskBarController m_TaskBarController;
+    public enum WindowType
+    {
+        Chat,
+        ChimpGame
+    }
 
     // Start is called before the first frame update
     void Start()

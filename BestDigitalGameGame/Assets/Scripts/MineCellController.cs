@@ -16,11 +16,6 @@ public class MineCellController : MonoBehaviour
     private bool m_bFlagged = false;
     private bool m_bHidden = true;
 
-    private void Start()
-    {
-        
-    }
-
     public void SetGame(MineSweeperGameController _OwnedGame)
     {
         m_OwnedGame = _OwnedGame;

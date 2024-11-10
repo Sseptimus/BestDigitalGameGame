@@ -72,10 +72,11 @@ public class MineSweeperGameController : MonoBehaviour
             bool bSettingMine = true;
             while (bSettingMine)
             {
-                if (!transform.GetChild(Random.Range(0, transform.childCount)).GetComponent<MineCellController>()
+                int iNewMineIndex = Random.Range(0, transform.childCount);
+                if (!transform.GetChild(iNewMineIndex).GetComponent<MineCellController>()
                     .m_bIsMine)
                 {
-                    transform.GetChild(Random.Range(0, transform.childCount)).GetComponent<MineCellController>()
+                    transform.GetChild(iNewMineIndex).GetComponent<MineCellController>()
                         .m_bIsMine = true;
                     bSettingMine = false;
                 }
