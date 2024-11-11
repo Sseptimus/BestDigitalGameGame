@@ -18,7 +18,7 @@ public class WindowController :  BaseWindowClass
     private Canvas m_WindowCanvas;
     private BoxCollider2D m_ColTitleBar;
 
-    public WindowType m_WindowType;
+    public GameManager.WindowType m_WindowType;
     public string m_CurrentLayer;
 
     private void Start()

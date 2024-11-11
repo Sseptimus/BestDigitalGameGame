@@ -10,14 +10,15 @@ VAR bTaskSuccess = false
 Oh, good morning, my name is Janice, and, and I've got a little bit of a problem with my emails. Can you help me by any chance?
 * Of course I can help you ma'am
 Oh thank you my dear, I do really appreciate it.
-** [Ask for help] Ma'am, I need your help.
-{ BeingWatched == true:
-	~ bossSpotted("seen")
-	~ BossSuspicionCounter +=1
-}
-What do you mean sorry dear? I'm not sure I understand. I need help with my emails.
+	** [Ask for help] Ma'am, I need your help.
+	{ BeingWatched == true:
+		~ bossSpotted("seen")
+		~ BossSuspicionCounter +=1
+	}
+	What do you mean sorry dear? I'm not sure I understand. I need help with my emails.
+	~ HelpCounter += 1
 
-** [Don't ask for help] Of course, it's no problem!
+	** [Don't ask for help] Of course, it's no problem!
 
 * What's your problem?
 Oh, I'm sorry to bother you, it's just it's quite a big problem.
@@ -26,33 +27,41 @@ Oh, I'm sorry to bother you, it's just it's quite a big problem.
 
 I keep getting these emails, with different things for me to buy, and I don't want to buy them. 
 
-The emails just keep filling up and there's too many of them.
+The emails just keep piling up and there's too many of them.
 
 * Have you tried unsubscribing?
 How do I do that?
-** Log in to your email[] account and grant me access. I'll take it from there.
+	** Log in to your email[] account and grant me access. I'll take it from there.
 
 * [Can you log in to email?] I need you to log in to your email account and grant me access.
 
 - Oh yes, I can log into my email account. Just give me one moment.
+
 * Can you help me?
-{ BeingWatched == true:
-	~ bossSpotted("seen")
-	~ BossSuspicionCounter +=1
-}
+	{ BeingWatched == true:
+		~ bossSpotted("seen")
+		~ BossSuspicionCounter +=1
+	}
 Help you with what, dear? I'm just trying to log in to my emails, won't be long dear.
 
 * Of course, that's no problem ma'am.
 
 - Ah there we go, I've logged into my emails now, do you know how to help me?
+
 * Yes[], I just need to complete this sequence.
 
 * Please [help] I really need your help.
 What do you mean, dear, is everything alright? 
-** [They're watching me.] I can't say too much. They'll know.
-I'm so sorry dear, I don't think I understand. 
-How is my email coming along?
-*** That's okay[], I just need to complete this sequence. I won't be long...
+	** [They're watching me.] I can't say too much. They'll know.
+	~ HelpCounter +=2
+	{ BeingWatched == true:
+		~ bossSpotted("seen")
+		~ BossSuspicionCounter +=1
+	}
+
+	I'm so sorry dear, I don't think I understand. 
+	How is my email coming along?
+	*** I just need to complete this sequence.[] I won't be long...
 
 - Oh thank you so much my dear, I'll be so glad to get rid of these emails!
 ~ temp gameType = "chimps"
@@ -71,9 +80,8 @@ That's okay dear. You tried your best, and that's all that matters.
 === TaskSuccess ===
 Hi dear, how is it coming along? I don't want to rush you or anything, but are you doing alright?
 * Yes[], everything should be fine now. You shouldn't get any more of those emails.
-Oh thank you my dear, I really appreciate it. Well, I will let you know if I have any more problems. 
- 
- 
+Oh thank you my dear, I really appreciate it. Well, I will let you know if I have any more problems. Goodbye!
+-> END
 
 * No, everything is awful[].
 Oh no, what's wrong dear? Are you struggling to complete it? 
@@ -81,12 +89,12 @@ Oh no, what's wrong dear? Are you struggling to complete it?
 If you can't do it that's okay, I can call someone else.
 ** [It should be okay now.] You shouldn't get any more emails. I just thought perhaps you cared to ask how I was. I'm sorry, I really need help. 
 
+Of course I care, dear. I don't know who you are but I believe everyone is important. 
 
-Of course I care, dear. I don't know who you are but I believe everyone is important. You keep asking for help, I'm not sure what you want, but I'll give you another call soon, okay? Everything will be fine, my dear.
+You keep asking for help, I'm not sure what you want, but I'll give you another call soon, okay? I want to sign up to \[REDACTED SOCIAL MEDIA\] to keep in touch with my grandkids. 
 
+Everything will be fine, my dear.
+~ HelpCounter +=2
 
-- Thank you for all your help. I'll let you keep going with your work, thank you dear. Goodbye.
- 
- 
- 
+I better let you get back to work before your boss notices you're talking to old ladies, ha ha ha. Goodbye now dear!
 -> END
