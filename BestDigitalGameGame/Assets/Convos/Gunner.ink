@@ -1,6 +1,8 @@
 ﻿INCLUDE globals.ink
 EXTERNAL runTask(taskType)
-
+EXTERNAL bossSpotted(bossSeen)
+VAR bTaskFail = false
+VAR bTaskSuccess = false
 
 -> start // this tells ink where to start the story
 
@@ -33,7 +35,7 @@ That's irrelevent. Just get me my bitcoin back.
 Yes, I have an OSOS account.
 
 - I need you to sign into my account for me. I can't complete the login sequence.
-~ temp gameType = "chimps"
+~ temp gameType = "numberPuzzle"
 ~ runTask(gameType)
 { gameType == "numberPuzzle":
 	->TaskDialogueNumberPuzzle
@@ -41,25 +43,35 @@ Yes, I have an OSOS account.
 -> END
 
 === TaskDialogueNumberPuzzle ===
-= dialogue_one
-That square goes in the top right corner.
--> END
-= dialogue_two
-That square goes in the bottom left corner.
--> END
-= dialogue_three
-I don't know where that square goes.
--> END
+Oh, a sliding puzzle. You should be able to complete this easily. Just click on the square you want to move.
+-> random_comment
+
+= random_comment
+	{~ Move that square left. | Move that square down. | Move number 5 to the right. | Slide that one up. | You should listen to me, I know how to do this. }
+->END
+
 
 === GunnerAngry ===
 Why aren't you going to help me? That's your job. Do your job or I will report you.
  * Please help me[]. I have to escape my job. I can't do this any longer. 
 Well, I'll certainly help you! Get fired! You're supposed to fix my problem, not beg to me!
-~BossSuspicionCounter += 1
+	~ bossSpotted("seen")
+	~BossSuspicionCounter += 3
 -> END
 * Fine, I'll help you.
 Great, see, that wasn't so hard. 
 -> ExplainProblem
 
+=== TaskFailed ===
+You've taken too long! I cannot wait any longer, I have important matters to attend to. I will get someone more competent to fix this for me. 
+~ BossSuspicionCounter += 1
+-> END 
 
--> END // this marks the end of the story
+=== TaskSuccess ===
+Well... thanks. I've just been given access. I can recover my Bitcoin. But I want a new laptop too. A good customer like me deserves it replaced.
+* I can't [do that] give you a new laptop.
+Why not? I've been a loyal customer and you should give me a new one. I asked nicely.
+** Unfortunately[...], sir, I can't do that. I have recovered your Bitcoin for you. Have a good day, sir.
+Fine. Thanks for your help.
+~ HelpCounter += 1
+-> END
