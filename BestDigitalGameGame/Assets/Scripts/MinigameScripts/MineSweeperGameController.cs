@@ -120,6 +120,7 @@ public class MineSweeperGameController : MonoBehaviour
     public void GameFailed()
     {
         ownedManager.GameFailed();
+        Destroy(ownWindow);
     }
 
     public bool GetFirstClickOccured()

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MineSweeperGame
       objectReference: {fileID: 0}
+    - target: {fileID: 3041729963829109750, guid: fb3bb0c046e4cda4dafcac68f96277d1, type: 3}
+      propertyPath: ownWindow
+      value: 
+      objectReference: {fileID: 8238491391272469025}
     - target: {fileID: 3752140257622149126, guid: fb3bb0c046e4cda4dafcac68f96277d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -221,5 +225,10 @@ PrefabInstance:
 --- !u!4 &1358632301893113993 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8248087155599760111, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+  m_PrefabInstance: {fileID: 6966439084672254566}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8238491391272469025 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1367057120693928007, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
   m_PrefabInstance: {fileID: 6966439084672254566}
   m_PrefabAsset: {fileID: 0}
