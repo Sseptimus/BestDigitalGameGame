@@ -43,9 +43,17 @@ Perhaps. Could you investigate? I am in quite a rush.
 	~ BossSuspicionCounter +=1
 }
 What are you talking about? Is everything alright?
-	** I can't explain[]. I'm trapped. I need you to get me out.          // better answer for more help points
-	** No, I need to get out of here[]. Get me out. Get me out of here.      // Gets smaller amount of help points (TODO)
-	 I don't understand. I'll need more time to investigate. But first, I need you to fix my computer. Maybe then I can help you.
+	** I can't explain[]. I'm trapped. I need you to get me out. I can't work here any longer.         // better answer for more help points
+	~ HelpCounter += 2
+	{ BeingWatched == true:
+		~ bossSpotted("seen")
+		~ BossSuspicionCounter +=1
+	}
+	Trapped? Let me see what I can do. But first I need my data recovered.
+
+	** No, I need to get out of here[]. Get me out. Get me out of here.      // Gets smaller amount of help points 
+	~ HelpCounter +=1
+	 I don't understand... I'll need more time to investigate. But first, I need you to fix my computer. Maybe then I can help you.
 
 - This computer is crucial to me being able to work effectively.
 * I'll try[] my best.
@@ -55,7 +63,49 @@ What are you talking about? Is everything alright?
 -> END
 
 === TaskFailed ===
+{ 
+- TURNS_SINCE(-> FirstFail) >= 0:
+	I'm sorry, that's twice you haven't fixed it now... I have to call someone else. I don't have time for this.
+	-> END
+- else:
+	-> FirstFail
+}
 -> END
 
+=== FirstFail ===
+Are you kidding me? Gosh, how am I supposed to help anyone if you can't even recover my computer?
+* I'm sorry.
+I'm sorry for getting upset. I'm very stressed with all this policework. I'm going to call someone else now. I hope you get the help you need. 
+-> END
+
+* Sir, let me try again[], I need your help.
+Alright, but I don't have much time. 
+	~ temp gameType = "chimps"
+	~ runTask(gameType)
+	->END
+
+
+
 === TaskSuccess ===
+Oh thank you so much! That was intense, I could see it from the other side of the office! It seems to be logging in okay now.
+* Before you go...
+Yes?
+	** Please, please help me.[] I need to get out of here. I can't do this any longer.
+	{ BeingWatched == true:
+		~ bossSpotted("seen")
+		~ BossSuspicionCounter +=1
+	}
+	Can you expand at all? I don't have enough details to make a case.
+		*** They're keeping me here.[] They're watching me. I can't say too much.
+		Who is?
+			**** Corporate[], listen, if you call again, ask for \[REDACTED\]. 
+			I'll do my best. Thank you for your help. Carl, over and out.
+			{ BeingWatched == true:
+				~ bossSpotted("seen")
+				~ BossSuspicionCounter +=1
+			}
+			~ HelpCounter += 3
+			-> END
+* That's no problem.[] Give me a call if you have any more issues.
+Cheers.
 -> END
