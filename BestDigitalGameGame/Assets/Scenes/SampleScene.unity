@@ -2021,6 +2021,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whisperAudio: {fileID: 892045510}
+  breathingAudio: {fileID: 1933998872}
+  BossManager: {fileID: 1713688804}
 --- !u!1001 &1190444305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2924,7 +2926,7 @@ PrefabInstance:
     - target: {fileID: 1664957401256307343, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
       propertyPath: JaniceJsonAsset
       value: 
-      objectReference: {fileID: 4900000, guid: 4c43f09953280934cab11c3156b50f24, type: 3}
+      objectReference: {fileID: 4900000, guid: 50a2df1e055e66946b4e7391b31225f2, type: 3}
     - target: {fileID: 1664957401256307343, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
       propertyPath: minesweeperWindow
       value: 
@@ -3815,10 +3817,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5440fcb816540629515fa44332006c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxMoveTimer: 1000
-  MinMoveTimer: 100
+  MaxMoveTimer: 15
+  MinMoveTimer: 5
   CurrentLocation: 0
-  BOSS_IS_WATCHING: 0
+  BOSS_IS_WATCHING: 1
   UpPeek: {fileID: 1305448780}
   LeftPeek: {fileID: 353022303}
   _sprIn_Office: {fileID: 21300000, guid: 6be26f5a8206c7745b4ca70a8b90d7b3, type: 3}

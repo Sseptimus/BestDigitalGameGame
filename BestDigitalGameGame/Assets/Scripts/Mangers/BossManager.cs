@@ -68,7 +68,7 @@ public class BossManager : MonoBehaviour
         }
         else // Else, tick down the boss move timer
         {
-            CurrentMoveTimer--;
+            CurrentMoveTimer -= Time.deltaTime;
         }
     }
 
