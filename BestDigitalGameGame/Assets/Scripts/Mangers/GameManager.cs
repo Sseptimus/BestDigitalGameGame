@@ -8,6 +8,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public enum WindowType
+    {
+        Chat,
+        ChimpGame,
+        MineSweeper,
+        SliderGame,
+        PopUp
+    }
+    
     //Singleton Class should only be one in scene
     
     [Header ("Things to Referance")]
@@ -19,11 +28,6 @@ public class GameManager : MonoBehaviour
     public List<WindowController> OpenWindows;
 
     public TaskBarController m_TaskBarController;
-    public enum WindowType
-    {
-        Chat,
-        ChimpGame
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -62,5 +66,10 @@ public class GameManager : MonoBehaviour
     {
         m_TaskBarController.WindowClosed(OpenWindows.IndexOf(_removedWindow));
         OpenWindows.Remove(_removedWindow);
+    }
+
+    public void MinimiseWindow(WindowController _minimisedWindow)
+    {
+        m_TaskBarController.WindowMinimised(_minimisedWindow);
     }
 }

@@ -334,20 +334,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f86276da9c8f9e45af78b30ed72f784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JaniceJsonAsset: {fileID: 4900000, guid: 4c43f09953280934cab11c3156b50f24, type: 3}
+  JaniceJsonAsset: {fileID: 4900000, guid: 50a2df1e055e66946b4e7391b31225f2, type: 3}
   GunnerJsonAsset: {fileID: 4900000, guid: 5fe835a75621ad14cab18aa6afc5cc1c, type: 3}
+  CarlJsonAsset: {fileID: 4900000, guid: 50a2df1e055e66946b4e7391b31225f2, type: 3}
   _choiceButtonContainer: {fileID: 8172446458016683185}
   _choiceButtonPrefab: {fileID: 6192818354376701437, guid: 1b61a8707312f3d489582937245d853d, type: 3}
   ChatController: {fileID: 8629098123846182175}
   loadGlobalsJSON: {fileID: 4900000, guid: c4ef97dc71cd69e45840883473d55325, type: 3}
   chimpsGameWindow: {fileID: 4197330799103552596, guid: a3193863f6c474d6c83d3f10e290aaa0, type: 3}
   numberPuzzleWindow: {fileID: 3562102745892130570, guid: c9ea6ccb04456a542ad01cb50700276b, type: 3}
+  minesweeperWindow: {fileID: 8238491391272469025, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
   TaskFailed1: {fileID: 5667420197828163742, guid: bbf31f5a95417604383556159c3b30c0, type: 3}
   TaskFailed2: {fileID: 9134666692400246863, guid: 98d8abb3b09339e4d88fae1edf9578c7, type: 3}
   TaskFailed3: {fileID: 6462185419355144474, guid: b97d36df2f2085742a17d4352b13e1f8, type: 3}
-  BossWatching1: {fileID: 0}
-  BossWatching2: {fileID: 0}
-  BossWatching3: {fileID: 0}
+  BossWatching1: {fileID: 6198366280059824305, guid: a355ed4d0e59a02429dad894bb3e9885, type: 3}
+  BossWatching2: {fileID: 5001381564214432362, guid: 582c17339eca2c7428377f2f6f46bcc3, type: 3}
+  BossWatching3: {fileID: 7700106647712392265, guid: fba878a54d681e34fa1583db5e70174d, type: 3}
 --- !u!1001 &3839893609508243451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -370,11 +372,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.276396
+      value: -5.28
       objectReference: {fileID: 0}
     - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.672875
+      value: 3.88
       objectReference: {fileID: 0}
     - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_LocalPosition.z

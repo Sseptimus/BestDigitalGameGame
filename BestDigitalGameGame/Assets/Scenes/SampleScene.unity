@@ -2907,30 +2907,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1664957401256307343, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
-      propertyPath: BossWatching1
-      value: 
-      objectReference: {fileID: 6198366280059824305, guid: a355ed4d0e59a02429dad894bb3e9885, type: 3}
-    - target: {fileID: 1664957401256307343, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
-      propertyPath: BossWatching2
-      value: 
-      objectReference: {fileID: 5001381564214432362, guid: 582c17339eca2c7428377f2f6f46bcc3, type: 3}
-    - target: {fileID: 1664957401256307343, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
-      propertyPath: BossWatching3
-      value: 
-      objectReference: {fileID: 7700106647712392265, guid: fba878a54d681e34fa1583db5e70174d, type: 3}
-    - target: {fileID: 1664957401256307343, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
-      propertyPath: CarlJsonAsset
-      value: 
-      objectReference: {fileID: 4900000, guid: 50a2df1e055e66946b4e7391b31225f2, type: 3}
-    - target: {fileID: 1664957401256307343, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
-      propertyPath: JaniceJsonAsset
-      value: 
-      objectReference: {fileID: 4900000, guid: 50a2df1e055e66946b4e7391b31225f2, type: 3}
-    - target: {fileID: 1664957401256307343, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
-      propertyPath: minesweeperWindow
-      value: 
-      objectReference: {fileID: 8238491391272469025, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
     - target: {fileID: 2860570616990877628, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
       propertyPath: m_Name
       value: ChatWindow
@@ -3859,10 +3835,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TaskBar
       objectReference: {fileID: 0}
-    - target: {fileID: 3800115995099382854, guid: 4f0bfef783046294e811610db3d7c1d2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5720675160996006919, guid: 4f0bfef783046294e811610db3d7c1d2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3889,11 +3861,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5720675160996006919, guid: 4f0bfef783046294e811610db3d7c1d2, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0.16
+      value: 8.0804
       objectReference: {fileID: 0}
     - target: {fileID: 5720675160996006919, guid: 4f0bfef783046294e811610db3d7c1d2, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0.16
+      value: 1.3876
       objectReference: {fileID: 0}
     - target: {fileID: 5720675160996006919, guid: 4f0bfef783046294e811610db3d7c1d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3925,11 +3897,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5720675160996006919, guid: 4f0bfef783046294e811610db3d7c1d2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.33462793
+      value: 0.0091
       objectReference: {fileID: 0}
     - target: {fileID: 5720675160996006919, guid: 4f0bfef783046294e811610db3d7c1d2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -4.0151587
+      value: -3.8862
       objectReference: {fileID: 0}
     - target: {fileID: 5720675160996006919, guid: 4f0bfef783046294e811610db3d7c1d2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3943,18 +3915,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7883795298132086099, guid: 4f0bfef783046294e811610db3d7c1d2, type: 3}
-      propertyPath: m_sprChat
-      value: 
-      objectReference: {fileID: 21300000, guid: d4d157b99cbc7f7469f71f788aa13abb, type: 3}
-    - target: {fileID: 7883795298132086099, guid: 4f0bfef783046294e811610db3d7c1d2, type: 3}
-      propertyPath: m_gameManager
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7883795298132086099, guid: 4f0bfef783046294e811610db3d7c1d2, type: 3}
-      propertyPath: m_sprChimpGame
-      value: 
-      objectReference: {fileID: 21300000, guid: 3835c1fce8bbf0e4a85e3710b8447c68, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4811,11 +4771,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3311866614726865528, guid: 8fbdccd4f19bb674e8decab9681e348a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 4.9537354
+      value: 6.74
       objectReference: {fileID: 0}
     - target: {fileID: 3311866614726865528, guid: 8fbdccd4f19bb674e8decab9681e348a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.76579666
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 3311866614726865528, guid: 8fbdccd4f19bb674e8decab9681e348a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

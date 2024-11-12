@@ -27,7 +27,10 @@ public class WindowController :  BaseWindowClass
         m_sprContent = gameObject.transform.Find("Content").GetComponent<SpriteRenderer>();
         m_sprTitleBar = gameObject.transform.Find("TitleBar").GetComponent<SpriteRenderer>();
         m_GameManager = FindObjectOfType<GameManager>();
-        m_GameManager.AddWindow(this);
+        if (m_WindowType != GameManager.WindowType.PopUp)
+        {
+            m_GameManager.AddWindow(this);
+        }
         m_ColTitleBar = transform.GetComponent<BoxCollider2D>();
         OnGrabFocus();
         
@@ -35,7 +38,10 @@ public class WindowController :  BaseWindowClass
 
     private void OnDestroy()
     {
-        m_GameManager.OpenWindows.Remove(this);
+        if (m_WindowType != GameManager.WindowType.PopUp)
+        {
+            m_GameManager.OpenWindows.Remove(this);
+        }
     }
 
     private void OnMouseDown()
@@ -122,7 +128,7 @@ public class WindowController :  BaseWindowClass
         //Minimise Button
         LoseFocus();
         gameObject.SetActive(false);
-        
+        m_GameManager.MinimiseWindow(this);
     }
 
     public void Close()
