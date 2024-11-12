@@ -57,7 +57,7 @@ public class InkManager : MonoBehaviour
     public GameObject chimpsGameWindow;
     public GameObject numberPuzzleWindow;
     public GameObject minesweeperWindow;
-
+    public float fTotalChatHeight = 0;
     [Header("Popup Windows")]
     public GameObject TaskFailed1;
     public GameObject TaskFailed2;
@@ -113,14 +113,24 @@ public class InkManager : MonoBehaviour
         //Making sure padding messages are the same height as their corresponding message
         if (ChatController.CurrentMessage != null && m_bPlayerIsTalking && ChatController.NPCMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()))
         {
+            ChatController.CurrentMessage.rectTransform.sizeDelta =
+                new Vector2(ChatController.CurrentMessage.rectTransform.sizeDelta.x, (sOutputText.Length / 42)*0.13f);
             ChatController.NPCMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()).GetComponent<RectTransform>().sizeDelta = new Vector2(ChatController.NPCMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()).GetComponent<RectTransform>().sizeDelta.x,ChatController.CurrentMessage.rectTransform.sizeDelta.y);
         }
         else if(ChatController.CurrentMessage != null && ChatController.PlayerMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()))
         {
+            ChatController.CurrentMessage.rectTransform.sizeDelta =
+                new Vector2(ChatController.CurrentMessage.rectTransform.sizeDelta.x, (sOutputText.Length / 42)*0.13f);
             ChatController.PlayerMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()).GetComponent<RectTransform>().sizeDelta = new Vector2(ChatController.PlayerMessageContainer.transform.GetChild(ChatController.CurrentMessage.transform.GetSiblingIndex()).GetComponent<RectTransform>().sizeDelta.x,ChatController.CurrentMessage.rectTransform.sizeDelta.y);
         }
 
-        if (ChatController.PlayerMessageContainer.transform.childCount > 5 || ChatController.NPCMessageContainer.transform.childCount > 5)
+        fTotalChatHeight = 0;
+        for (int i = 0; i < ChatController.NPCMessageContainer.transform.childCount; i++)
+        {
+            fTotalChatHeight += ChatController.NPCMessageContainer.transform.GetChild(i).GetComponent<RectTransform>().sizeDelta.y;
+        }
+        Debug.Log(fTotalChatHeight);
+        if (fTotalChatHeight > 0.8f)
         {
             //When window is full removes the top message
             Destroy(ChatController.PlayerMessageContainer.transform.GetChild(0).gameObject);
@@ -227,17 +237,17 @@ public class InkManager : MonoBehaviour
         if (_bIsPlayer)
         {
             ChatController.CurrentMessage = Instantiate(ChatController.MessagePrefab, ChatController.PlayerMessageContainer.transform, false);
-            ChatController.PlayerMessages.Append(ChatController.CurrentMessage);
+            ChatController.PlayerMessages.Append(ChatController.CurrentMessage.GetComponent<TextMeshProUGUI>());
             ChatController.CurrentMessage.text = newText;
-            ChatController.NPCMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.NPCMessageContainer.transform, false));
+            ChatController.NPCMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.NPCMessageContainer.transform, false).GetComponent<TextMeshProUGUI>());
             ChatController.CurrentMessage.alignment = TextAlignmentOptions.Right;
             m_bPlayerIsTalking = true;
         }
         else
         {
             ChatController.CurrentMessage = Instantiate(ChatController.MessagePrefab, ChatController.NPCMessageContainer.transform, false);
-            ChatController.NPCMessages.Append(ChatController.CurrentMessage);
-            ChatController.PlayerMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.PlayerMessageContainer.transform, false));
+            ChatController.NPCMessages.Append(ChatController.CurrentMessage.GetComponent<TextMeshProUGUI>());
+            ChatController.PlayerMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.PlayerMessageContainer.transform, false).GetComponent<TextMeshProUGUI>());
             ChatController.CurrentMessage.alignment = TextAlignmentOptions.Left;
             m_bPlayerIsTalking = false;
         }
@@ -292,6 +302,26 @@ public class InkManager : MonoBehaviour
                 Destroy(button.gameObject);
             }
         }
+    }
+
+    void ClearChat()
+    {
+        for (int i = 0; i < ChatController.PlayerMessageContainer.transform.childCount; i++)
+        {
+            Destroy(ChatController.PlayerMessageContainer.transform.GetChild(0));
+            ChatController.PlayerMessages.RemoveRange(0,1);
+        }
+        ChatController.PlayerMessages.Clear();
+        
+        for (int i = 0; i < ChatController.NPCMessageContainer.transform.childCount; i++)
+        {
+            Destroy(ChatController.NPCMessageContainer.transform.GetChild(0));
+            ChatController.NPCMessages.RemoveRange(0,1);
+        }
+        ChatController.NPCMessages.Clear();
+        sQueuedText = "";
+        sOutputText = "";
+        ChatController.CurrentMessage = null;
     }
 
     void ExitDialogue()
