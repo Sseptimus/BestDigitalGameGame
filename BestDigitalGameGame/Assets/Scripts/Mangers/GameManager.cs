@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
         ChimpGame,
         MineSweeper,
         SliderGame,
-        PopUp
+        PopUp,
+        Counter
     }
     
     //Singleton Class should only be one in scene

@@ -34,6 +34,9 @@ public class InkManager : MonoBehaviour
 
     private Story _story;
     
+    public int m_CustomersLeft = 4; //TODO update with new conversations
+    private HoldCounterController m_CounterInstance;
+    
     [Header ("Buttons and Prefabs")]
     [SerializeField]
     private HorizontalLayoutGroup _choiceButtonContainer;
@@ -83,6 +86,7 @@ public class InkManager : MonoBehaviour
         dialogueVariablesObserver = new DialogueObserver(loadGlobalsJSON);
         dialogueVariablesObserver.m_GameManager = mGameManager;
         dialogueVariablesObserver.m_InkManager = this;
+        m_CounterInstance = FindObjectOfType<HoldCounterController>();
     }
 
     void Start()
@@ -149,7 +153,8 @@ public class InkManager : MonoBehaviour
     {
         m_bWaitingBetweenPeople = false;
         _story = new Story(currentDialogue.text);
-
+        m_CustomersLeft--;
+        m_CounterInstance.UpdateNumber(m_CustomersLeft);
         dialogueVariablesObserver.StartListening(_story);
 
         _story.BindExternalFunction("runTask", (string taskName) => {
