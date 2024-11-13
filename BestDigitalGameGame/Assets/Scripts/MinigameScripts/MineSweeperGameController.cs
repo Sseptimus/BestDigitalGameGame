@@ -1,135 +1,135 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class MineSweeperGameController : MonoBehaviour
+namespace MinigameScripts
 {
-    public GameObject MineObjPrefab;
-    public int m_iGridSize = 10;
-    public int m_iDifficulty = 14;
-    private int m_iCorrectCells = 0;
-    private bool m_bFirstClickOccured = false;
-
-    public InkManager ownedManager;
-    public GameObject ownWindow;
-
-    private void Start()
+    public class MineSweeperGameController : MonoBehaviour
     {
-        GetComponent<GridLayoutGroup>().constraintCount = m_iGridSize;
-        for (int i = 0; i < m_iGridSize*m_iGridSize; i++)
-        {
-            //Creating m_iGridSize^2 cells
-            GameObject newCell = Instantiate(MineObjPrefab, transform, false);
-            newCell.GetComponent<MineCellController>().SetGame(this);
-        }
+        public GameObject MineObjPrefab;
+        public int m_iGridSize = 10;
+        public int m_iDifficulty = 14;
+        private int m_iCorrectCells = 0;
+        private bool m_bFirstClickOccured = false;
 
-        for (int i = 0; i < m_iGridSize*m_iGridSize; i++)
+        public InkManager ownedManager;
+        public GameObject ownWindow;
+
+        private void Start()
         {
-            //Finding all neighbours of cells
-            MineCellController tempChild = transform.GetChild(i).GetComponent<MineCellController>();
-            if (i % m_iGridSize != 0)
+            GetComponent<GridLayoutGroup>().constraintCount = m_iGridSize;
+            for (int i = 0; i < m_iGridSize*m_iGridSize; i++)
             {
-                tempChild.AddNeighbour(transform.GetChild(i-1).GetComponent<MineCellController>());
+                //Creating m_iGridSize^2 cells
+                GameObject newCell = Instantiate(MineObjPrefab, transform, false);
+                newCell.GetComponent<MineCellController>().SetGame(this);
+            }
+
+            for (int i = 0; i < m_iGridSize*m_iGridSize; i++)
+            {
+                //Finding all neighbours of cells
+                MineCellController tempChild = transform.GetChild(i).GetComponent<MineCellController>();
+                if (i % m_iGridSize != 0)
+                {
+                    tempChild.AddNeighbour(transform.GetChild(i-1).GetComponent<MineCellController>());
                 
+                    if (i > m_iGridSize)
+                    {
+                        tempChild.AddNeighbour(transform.GetChild(i-m_iGridSize-1).GetComponent<MineCellController>());
+                    }
+
+                    if (i < m_iGridSize * (m_iGridSize - 1))
+                    {
+                        tempChild.AddNeighbour(transform.GetChild(i+m_iGridSize-1).GetComponent<MineCellController>());
+                    }
+                }
+
+                if ((i + 1) % m_iGridSize != 0)
+                {
+                    tempChild.AddNeighbour(transform.GetChild(i+1).GetComponent<MineCellController>());
+                
+                    if (i > m_iGridSize)
+                    {
+                        tempChild.AddNeighbour(transform.GetChild(i-m_iGridSize+1).GetComponent<MineCellController>());
+                    }
+
+                    if (i < m_iGridSize * (m_iGridSize - 1))
+                    {
+                        tempChild.AddNeighbour(transform.GetChild(i+m_iGridSize+1).GetComponent<MineCellController>());
+                    }
+                }
+
                 if (i > m_iGridSize)
                 {
-                    tempChild.AddNeighbour(transform.GetChild(i-m_iGridSize-1).GetComponent<MineCellController>());
+                    tempChild.AddNeighbour(transform.GetChild(i-m_iGridSize).GetComponent<MineCellController>());
                 }
 
                 if (i < m_iGridSize * (m_iGridSize - 1))
                 {
-                    tempChild.AddNeighbour(transform.GetChild(i+m_iGridSize-1).GetComponent<MineCellController>());
+                    tempChild.AddNeighbour(transform.GetChild(i+m_iGridSize).GetComponent<MineCellController>());
                 }
             }
 
-            if ((i + 1) % m_iGridSize != 0)
+            for (int i = 0; i < m_iDifficulty; i++)
             {
-                tempChild.AddNeighbour(transform.GetChild(i+1).GetComponent<MineCellController>());
-                
-                if (i > m_iGridSize)
+                bool bSettingMine = true;
+                while (bSettingMine)
                 {
-                    tempChild.AddNeighbour(transform.GetChild(i-m_iGridSize+1).GetComponent<MineCellController>());
+                    int iNewMineIndex = Random.Range(0, transform.childCount);
+                    if (!transform.GetChild(iNewMineIndex).GetComponent<MineCellController>()
+                            .m_bIsMine)
+                    {
+                        transform.GetChild(iNewMineIndex).GetComponent<MineCellController>()
+                            .m_bIsMine = true;
+                        bSettingMine = false;
+                    }
                 }
-
-                if (i < m_iGridSize * (m_iGridSize - 1))
-                {
-                    tempChild.AddNeighbour(transform.GetChild(i+m_iGridSize+1).GetComponent<MineCellController>());
-                }
             }
-
-            if (i > m_iGridSize)
-            {
-                tempChild.AddNeighbour(transform.GetChild(i-m_iGridSize).GetComponent<MineCellController>());
-            }
-
-            if (i < m_iGridSize * (m_iGridSize - 1))
-            {
-                tempChild.AddNeighbour(transform.GetChild(i+m_iGridSize).GetComponent<MineCellController>());
-            }
+            ResetMineCounts();
         }
 
-        for (int i = 0; i < m_iDifficulty; i++)
+        public void ResetMineCounts()
         {
-            bool bSettingMine = true;
-            while (bSettingMine)
+            for (int i = 0; i < m_iGridSize*m_iGridSize; i++)
             {
-                int iNewMineIndex = Random.Range(0, transform.childCount);
-                if (!transform.GetChild(iNewMineIndex).GetComponent<MineCellController>()
-                    .m_bIsMine)
+                //Setting non bomb cell values
+                if (!transform.GetChild(i).GetComponent<MineCellController>().m_bIsMine)
                 {
-                    transform.GetChild(iNewMineIndex).GetComponent<MineCellController>()
-                        .m_bIsMine = true;
-                    bSettingMine = false;
+                    transform.GetChild(i).GetComponent<MineCellController>().FindMineCount();
                 }
             }
         }
-        ResetMineCounts();
-    }
-
-    public void ResetMineCounts()
-    {
-        for (int i = 0; i < m_iGridSize*m_iGridSize; i++)
+        public void IncrementMinesFound()
         {
-            //Setting non bomb cell values
-            if (!transform.GetChild(i).GetComponent<MineCellController>().m_bIsMine)
+            m_iCorrectCells++;
+            if (m_iCorrectCells == m_iDifficulty)
             {
-                transform.GetChild(i).GetComponent<MineCellController>().FindMineCount();
+                //TODO Win Condition
+                Debug.Log("Game won!");
+                ownedManager.GameWon();
+                Destroy(ownWindow);
             }
         }
-    }
-    public void IncrementMinesFound()
-    {
-        m_iCorrectCells++;
-        if (m_iCorrectCells == m_iDifficulty)
+
+        public void DecreaseMinesFound()
         {
-            //TODO Win Condition
-            Debug.Log("Game won!");
-            ownedManager.GameWon();
+            m_iCorrectCells--;
+        }
+
+        public void GameFailed()
+        {
+            ownedManager.GameFailed();
             Destroy(ownWindow);
         }
-    }
 
-    public void DecreaseMinesFound()
-    {
-        m_iCorrectCells--;
-    }
+        public bool GetFirstClickOccured()
+        {
+            return m_bFirstClickOccured;
+        }
 
-    public void GameFailed()
-    {
-        ownedManager.GameFailed();
-        Destroy(ownWindow);
-    }
-
-    public bool GetFirstClickOccured()
-    {
-        return m_bFirstClickOccured;
-    }
-
-    public void SetFirstClickOccured()
-    {
-        m_bFirstClickOccured = true;
+        public void SetFirstClickOccured()
+        {
+            m_bFirstClickOccured = true;
+        }
     }
 }
