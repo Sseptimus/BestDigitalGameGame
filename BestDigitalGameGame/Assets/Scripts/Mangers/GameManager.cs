@@ -18,6 +18,12 @@ public class GameManager : MonoBehaviour
     }
     
     //Singleton Class should only be one in scene
+
+    [Header ("Helper Counter")]
+    public int m_iHelperCounter;
+
+    [Header ("Suspicion")]
+    public int m_iSuspicion;
     
     [Header ("Things to Referance")]
     public GameObject ComputerScreen;

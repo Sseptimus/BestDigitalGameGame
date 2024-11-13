@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEngine.UI;
 using UnityEngine;
 using Ink.Runtime;
+using MinigameScripts;
 using TMPro;
 using Vector2 = UnityEngine.Vector2;
 

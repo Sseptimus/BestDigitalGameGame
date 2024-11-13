@@ -72,6 +72,11 @@ public class SliderGameController : MonoBehaviour
             if (transform.GetChild(i).GetComponent<SliderObjController>().m_SliderNum == i + 1)
             {
                 iCorrectSquares++;
+                transform.GetChild(i).GetComponent<SpriteRenderer>().color = Color.green;
+            }
+            else
+            {
+                transform.GetChild(i).GetComponent<SpriteRenderer>().color = Color.white;
             }
         }
         Debug.Log(iCorrectSquares);

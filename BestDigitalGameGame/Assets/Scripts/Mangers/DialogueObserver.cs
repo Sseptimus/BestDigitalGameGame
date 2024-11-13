@@ -8,6 +8,7 @@ using System.IO;
 // Observes for variables changes in the INK stories 
 public class DialogueObserver
 {
+    public GameManager _GameManager;
     public Dictionary<string, Ink.Runtime.Object> variables { get; private set;}
 
     public DialogueObserver(TextAsset loadGlobalsJSON)
@@ -44,6 +45,15 @@ public class DialogueObserver
         // only maintain variables that were initialised from the global file
         variables.Remove(variableName);
         variables.Add(variableName, value); // remove and readd the variable to update it
+
+        if(variableName == BossSuspicionCounter)
+        {
+            GameManager.m_iSuspicion = value;
+        }
+        if(variableName == HelpCounter)
+        {
+            GameManager.m_iHelperCounter = value;
+        }
     }
 
     private void VariablesToStory(Story story)
