@@ -66,8 +66,16 @@ public class WindowController :  BaseWindowClass
             m_CurrentLayer = "FocusedWindow";
         
             //Changing collision box to just title bar
-            m_ColTitleBar.size = new Vector2(5,0.5f);
-            m_ColTitleBar.offset = new Vector2(2.5f, -0.25f);
+            if (m_WindowType == GameManager.WindowType.PopUp)
+            {
+                m_ColTitleBar.size = new Vector2(2.5f,-0.25f);
+                m_ColTitleBar.offset = new Vector2(2.5f, 0.5f);
+            }
+            else
+            {
+                m_ColTitleBar.size = new Vector2(5,0.5f);
+                m_ColTitleBar.offset = new Vector2(2.5f, -0.25f);
+            }
         
             //Moving window elements to FocusedWindow layout
         
@@ -95,8 +103,16 @@ public class WindowController :  BaseWindowClass
         //Changing collision box to whole window
         if (m_ColTitleBar)
         {
-            m_ColTitleBar.size = new Vector2(5,4.5f);
-            m_ColTitleBar.offset = new Vector2(2.5f, -2.25f);
+            if (m_WindowType == GameManager.WindowType.PopUp)
+            {
+                m_ColTitleBar.size = new Vector2(7,3f);
+                m_ColTitleBar.offset = new Vector2(2.5f, -1.2f);
+            }
+            else
+            {
+                m_ColTitleBar.size = new Vector2(5,4.5f);
+                m_ColTitleBar.offset = new Vector2(2.5f, -2.25f);
+            }
         }
         
         //Reset window elements to NonFocused Layer
