@@ -25,6 +25,8 @@ public class InkManager : MonoBehaviour
     private TextAsset GunnerJsonAsset;
     [SerializeField]
     private TextAsset CarlJsonAsset;
+    [SerializeField]
+    private TextAsset ChamomileJsonAsset;
 
     private List<TextAsset> DialogueJsons = new List<TextAsset>();
     private TextAsset currentDialogue;
@@ -88,6 +90,7 @@ public class InkManager : MonoBehaviour
         DialogueJsons.Add(JaniceJsonAsset);
         DialogueJsons.Add(GunnerJsonAsset);
         DialogueJsons.Add(CarlJsonAsset);
+        DialogueJsons.Add(ChamomileJsonAsset);
 
         currentDialogue = DialogueJsons[dialogueListIndex];
         StartStory();
