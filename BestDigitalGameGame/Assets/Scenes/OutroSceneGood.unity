@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 002c80fdb17444e1799867dfd897bce0, type: 2}
+  sharedProfile: {fileID: 11400000, guid: eaea42ff7948e480e9a2aa3dec670e99, type: 2}
   isGlobal: 1
   blendDistance: 0
   weight: 1
@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ada70f3bd744d219ae0ede50d9508b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OutroFadeSpeed: 0.0002
-  GrainFadeSpeed: 0.0001
+  OutroFadeSpeed: 0.002
+  GrainFadeSpeed: 0.001
   ScenePostProcessLayer: {fileID: 110388785}
 --- !u!1 &190151790
 GameObject:

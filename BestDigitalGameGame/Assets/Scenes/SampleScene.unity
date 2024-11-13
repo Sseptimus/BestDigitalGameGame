@@ -691,12 +691,12 @@ MonoBehaviour:
   MainBossManager: {fileID: 1713688804}
   ScenePostProcessLayer: {fileID: 293097479}
   VingetteIntensity: 0.16
-  BossVingetteInt: 0.163
+  BossVingetteInt: 0.28
   GrainIntentisy: 0.46
-  BossGrainInt: 0.51
+  BossGrainInt: 1.5
   GrainSize: 1.27
-  BossGrainSize: 1.29
-  FadeSpeed: 10
+  BossGrainSize: 1.68
+  FadeSpeed: 0.1
 --- !u!1001 &312643098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3815,8 +3815,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5440fcb816540629515fa44332006c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxMoveTimer: 15
-  MinMoveTimer: 5
+  MaxMoveTimer: 1000
+  MinMoveTimer: 1000
   CurrentLocation: 0
   BOSS_IS_WATCHING: 1
   UpPeek: {fileID: 1305448780}
