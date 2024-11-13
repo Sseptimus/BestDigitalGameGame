@@ -7,12 +7,15 @@ using UnityEngine.Video;
 public class IntroSceneManager : MonoBehaviour
 {
     private VideoPlayer m_introVideo;
+    public sceneCrossfade sceneCrossfade;
 
     private bool m_bHasStarted;
     // Start is called before the first frame update
     void Start()
     {
+        sceneCrossfade.ToggleFading();
         m_introVideo = GetComponent<VideoPlayer>();
+        Invoke("ChangeScene", 5);
     }
 
     // Update is called once per frame
@@ -23,9 +26,16 @@ public class IntroSceneManager : MonoBehaviour
             //To ensure it doesn't change before the video plays
             m_bHasStarted = true;
         }
-        if (!m_introVideo.isPlaying && m_bHasStarted)
-        {
-           SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
-        }
+    }
+
+    void ChangeScene()
+    {
+        Invoke("ChangeSceneForReal", 1);
+        sceneCrossfade.ToggleFading();
+    }
+
+    void ChangeSceneForReal()
+    {
+        SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
     }
 }
