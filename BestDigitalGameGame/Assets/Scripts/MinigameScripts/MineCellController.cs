@@ -11,15 +11,27 @@ public class MineCellController : MonoBehaviour
 {
     private MineSweeperGameController m_OwnedGame;
     private MineCellController[] m_NeighbourCells =new MineCellController[8];
+    private SpriteRenderer m_SpriteRenderer;
     private int m_iNeighbourCount = 0;
     private int m_iMineCount = 0;
     public bool m_bIsMine;
     private bool m_bFlagged = false;
     private bool m_bHidden = true;
+    
+    public Sprite m_sprDefault;
+    public Sprite m_sprDefaultHover;
+    public Sprite m_sprFlagged;
+    public Sprite m_sprFlaggedHover;
+    public AudioSource a;
 
+    private void Start()
+    {
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
+    }
     public void SetGame(MineSweeperGameController _OwnedGame)
     {
         m_OwnedGame = _OwnedGame;
+        a = m_OwnedGame.GetComponent<AudioSource>();
     }
 
     public void AddNeighbour(MineCellController _Cell)
@@ -45,7 +57,7 @@ public class MineCellController : MonoBehaviour
         if (!m_bFlagged)
         {
             m_bFlagged = true;
-            GetComponent<SpriteRenderer>().color = Color.yellow;
+            GetComponent<SpriteRenderer>().sprite = m_sprFlaggedHover;
             if (m_bIsMine)
             {
                 m_OwnedGame.IncrementMinesFound();
@@ -54,7 +66,7 @@ public class MineCellController : MonoBehaviour
         else
         {
             m_bFlagged = false;
-            GetComponent<SpriteRenderer>().color = Color.HSVToRGB(0, 0, 51);
+            GetComponent<SpriteRenderer>().sprite = m_sprDefaultHover;
             if (m_bIsMine)
             {
                 m_OwnedGame.DecreaseMinesFound();
@@ -76,17 +88,16 @@ public class MineCellController : MonoBehaviour
             else if (m_bIsMine && !m_OwnedGame.GetFirstClickOccured())
             {
                 //If lose on first click move mine to first free space
-               m_bIsMine = false;
-               for (int i = 0; i < transform.childCount; i++)
-               {
-                   if (!transform.parent.GetChild(i).GetComponent<MineCellController>().m_bIsMine)
-                   {
-                       transform.parent.GetChild(i).GetComponent<MineCellController>().m_bIsMine = true;
-                   }
-               }
-               m_OwnedGame.ResetMineCounts();
+                m_bIsMine = false;
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    if (!transform.parent.GetChild(i).GetComponent<MineCellController>().m_bIsMine)
+                    {
+                        transform.parent.GetChild(i).GetComponent<MineCellController>().m_bIsMine = true;
+                    }
+                }
+                m_OwnedGame.ResetMineCounts();
             }
-            
             if (!m_OwnedGame.GetFirstClickOccured())
             {
                 m_OwnedGame.SetFirstClickOccured();
@@ -108,6 +119,7 @@ public class MineCellController : MonoBehaviour
 
     private void OnMouseOver()
     {
+        
         if (Input.GetMouseButtonDown(1))
         {
             FlagCell();
@@ -116,5 +128,19 @@ public class MineCellController : MonoBehaviour
         {
             ClickCell();
         }
+    }
+
+    private void OnMouseEnter()
+    {
+        a.Stop();
+        a.Play();
+
+        m_SpriteRenderer.sprite = m_bFlagged ? m_sprFlaggedHover : m_sprDefaultHover;
+    }
+
+    private void OnMouseExit()
+    {
+        a.Stop();
+        m_SpriteRenderer.sprite = m_bFlagged ? m_sprFlagged : m_sprDefault;
     }
 }

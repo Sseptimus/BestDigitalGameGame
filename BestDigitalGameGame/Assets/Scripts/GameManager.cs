@@ -42,8 +42,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
-
-        
     }
 
     // Update is called once per frame
@@ -53,7 +51,6 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Main Menu");
         }
-
     }
 
     public void AddWindow(WindowController _newWindow)
