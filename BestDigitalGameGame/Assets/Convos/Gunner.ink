@@ -1,4 +1,4 @@
-﻿INCLUDE globals.ink
+INCLUDE globals.ink
 EXTERNAL runTask(taskType)
 EXTERNAL bossSpotted(bossSeen)
 VAR bTaskFail = false
