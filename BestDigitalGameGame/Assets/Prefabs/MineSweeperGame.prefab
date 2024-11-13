@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3752140257622149126}
   - component: {fileID: 911622711342295018}
   - component: {fileID: 9004738905456875327}
-  - component: {fileID: 3041729963829109750}
+  - component: {fileID: 4684869125508447524}
   m_Layer: 0
   m_Name: MineSweeperGame
   m_TagString: Untagged
@@ -85,7 +85,7 @@ Canvas:
   m_SortingLayerID: 209069043
   m_SortingOrder: 1
   m_TargetDisplay: 0
---- !u!114 &3041729963829109750
+--- !u!114 &4684869125508447524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5663d5c7e8d5a1c42bf04196002e24ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MineObjPrefab: {fileID: 8041162980404672429, guid: 39605ab1fc6e4ba4785344d6ccef6576, type: 3}
+  MineObjPrefab: {fileID: 0}
   m_iGridSize: 10
   m_iDifficulty: 14
+  ownedManager: {fileID: 0}
+  ownWindow: {fileID: 0}
