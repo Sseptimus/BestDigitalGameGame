@@ -32,8 +32,10 @@ public class WindowController :  BaseWindowClass
             m_GameManager.AddWindow(this);
         }
         m_ColTitleBar = transform.GetComponent<BoxCollider2D>();
-        OnGrabFocus();
-        
+        if (m_WindowType != GameManager.WindowType.Chat && m_WindowType != GameManager.WindowType.Counter)
+        {
+            OnGrabFocus();
+        }
     }
 
     private void OnDestroy()
@@ -69,8 +71,8 @@ public class WindowController :  BaseWindowClass
             switch (m_WindowType)
             {
                 case GameManager.WindowType.PopUp:
-                    m_ColTitleBar.size = new Vector2(2.5f,-0.25f);
-                    m_ColTitleBar.offset = new Vector2(2.5f, 0.5f);
+                    m_ColTitleBar.size = new Vector2(5f,0.5f);
+                    m_ColTitleBar.offset = new Vector2(2.5f, -0.25f);
                     break;
                 case GameManager.WindowType.Counter:
                     m_ColTitleBar.offset = new Vector2(2.5f,-1.5f);

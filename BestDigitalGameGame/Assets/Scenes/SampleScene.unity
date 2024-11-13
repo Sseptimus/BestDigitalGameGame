@@ -2006,6 +2006,17 @@ Transform:
   - {fileID: 1963297877}
   m_Father: {fileID: 519420032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1130565631 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2431530719776910177, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
+  m_PrefabInstance: {fileID: 402948152}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 339587c68eafd8745b850a7c879c9067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1177487457
 GameObject:
   m_ObjectHideFlags: 0
@@ -4267,7 +4278,7 @@ MonoBehaviour:
   m_iSuspicion: 0
   ComputerScreen: {fileID: 1789068415}
   Background: {fileID: 1552337371}
-  WindowInFocus: {fileID: 0}
+  WindowInFocus: {fileID: 1130565631}
   OpenWindows: []
   m_TaskBarController: {fileID: 1735382175}
 --- !u!4 &1860181518
