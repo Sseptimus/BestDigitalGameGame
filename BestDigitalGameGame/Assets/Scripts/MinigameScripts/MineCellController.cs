@@ -57,7 +57,7 @@ public class MineCellController : MonoBehaviour
         if (!m_bFlagged)
         {
             m_bFlagged = true;
-            GetComponent<SpriteRenderer>().color = Color.yellow;
+            GetComponent<SpriteRenderer>().sprite = m_sprFlaggedHover;
             if (m_bIsMine)
             {
                 m_OwnedGame.IncrementMinesFound();
@@ -66,7 +66,7 @@ public class MineCellController : MonoBehaviour
         else
         {
             m_bFlagged = false;
-            GetComponent<SpriteRenderer>().color = Color.HSVToRGB(0, 0, 51);
+            GetComponent<SpriteRenderer>().sprite = m_sprDefaultHover;
             if (m_bIsMine)
             {
                 m_OwnedGame.DecreaseMinesFound();
@@ -80,10 +80,6 @@ public class MineCellController : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = Color.red;
             return;
-        }
-        else
-        {
-            //GetComponent<SpriteRenderer>().color = Color.green;
         }
         m_bHidden = false;
         GetComponent<TextMeshProUGUI>().enabled = true;
