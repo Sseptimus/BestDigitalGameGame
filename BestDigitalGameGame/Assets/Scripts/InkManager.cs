@@ -68,6 +68,10 @@ public class InkManager : MonoBehaviour
     public GameObject TaskFailed2;
     public GameObject TaskFailed3;
     private List<GameObject> TaskFailPopups = new List<GameObject>();
+    public GameObject BossWatching1;
+    public GameObject BossWatching2;
+    public GameObject BossWatching3;
+    private List<GameObject> BossWatchingPopups = new List<GameObject>();
 
     // dialogue observer
     private DialogueObserver dialogueVariablesObserver;
@@ -172,18 +176,29 @@ public class InkManager : MonoBehaviour
             }
         });
 
-        DisplayNextLine();
+        _story.BindExternalFunction("bossSpotted", (string taskName) =>
+        {
+            int popUpNum = UnityEngine.Random.Range(0, BossWatchingPopups.Count() - 1);
+            GameObject newPopup = Instantiate(BossWatchingPopups[popUpNum], new UnityEngine.Vector3(-2, 0, 0), UnityEngine.Quaternion.identity);
+        });
+
+            DisplayNextLine();
 
         // add the popups to list
         TaskFailPopups.Add(TaskFailed1);
         TaskFailPopups.Add(TaskFailed2);
         TaskFailPopups.Add(TaskFailed3);
+
+        // add boss watching popups to list
+        BossWatchingPopups.Add(BossWatching1);
+        BossWatchingPopups.Add(BossWatching2);
+        BossWatchingPopups.Add(BossWatching3);
     }
 
     public void GameFailed()
     {
         int popUpNum = UnityEngine.Random.Range(0, TaskFailPopups.Count() - 1);
-        GameObject newPopup = Instantiate(TaskFailPopups[popUpNum]);
+        GameObject newPopup = Instantiate(TaskFailPopups[popUpNum], new UnityEngine.Vector3(-2, 0, 0), UnityEngine.Quaternion.identity);
         _story.ChoosePathString("TaskFailed");
         DisplayNextLine();
         m_bPlayingGame = false;
@@ -204,7 +219,7 @@ public class InkManager : MonoBehaviour
             text = text?.Trim(); // removes white space from text
             PrintToScreen(text);
         }
-        else if(_story.currentChoices.Count>0)
+        else if(_story.currentChoices.Count > 0)
         {
             DisplayChoices();
         }
@@ -216,7 +231,8 @@ public class InkManager : MonoBehaviour
                 ExitDialogue();
                 dialogueListIndex++;
                 currentDialogue = DialogueJsons[dialogueListIndex];
-                Invoke("StartStory", 15);
+                Invoke("ClearChat", 3);
+                Invoke("StartStory", 3);
                 m_bWaitingBetweenPeople = true;
             }
         }

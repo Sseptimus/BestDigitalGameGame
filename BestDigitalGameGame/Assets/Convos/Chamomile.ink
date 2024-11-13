@@ -12,210 +12,261 @@ Hello? Is this okay?
  
  * Hello and welcome to ASOS[] How can I help you today?
  * Is what okay?[]
- 
- My voice I mean. Can you hear me okay?
+ My voice I mean. 
 
-*Yes, I can hear you fine.[]
+- Can you hear me okay?
+
+* Yes[], I can hear you fine.
 
 Okay good. I was told it would be hard to understand true intentions today. Thought it might be regarding the phone. Anyhoo, its Me.
 
-*...Me?[] Ma'am, I'm sorry but i'll need your name to assist you today.
+	** ...Me?[] Ma'am, I'm sorry but I'll need your name to assist you today.
 
-Oh! I'm so sorry! I thought you were the other gentleman. Hello my new friend! My name is Chamomile. Like the Tea.
+	Oh! I'm so sorry! I thought you were the other gentleman. Hello my new friend! My name is Chamomile. Like the tea.
 
-*Hi Chamomile.[] How can I help you today?
+		*** Hi Chamomile.[] How can I help you today?
 
-Why, I can't log in to my prayer chain. I have to make sure my followers know their futures today. What ever shall they do with the uncertainty?? 
+		Why, I can't log in to my prayer chain. I have to make sure my followers know their futures today. What ever shall they do with the uncertainty?? 
 
-*Well Ma'am, the first step[] is to test the validity of your account.
+			**** Well Ma'am, the first step[] is to test the validity of your account.
 
-I'm sorry, but I dont know what that means.
+			I'm sorry, but I dont know what that means.
 
-*Okay, so[] Im going to send you a short list of your security questions. Please fill them out while I look at your details.
+				***** Okay, so[] Im going to send you a short list of your security questions. Please fill them out while I look at your details.
 
-//start the game
-->Start
+				//start the game
+				~ temp gameType = "chimps"
+				~ runTask(gameType)
+				-> END
 
 === TaskFailed ===
+{ 
+- TURNS_SINCE(-> FirstFail) >= 0:
+	Oh my, today really isn't my day it seems. I am just not getting these. You know, is your day going just as bad as mine?
+	-> AskQuestions
+- else:
+	-> FirstFail
+}
+-> END
 
-//if you fail - start with Chamomile
+
+=== FirstFail ===
 It doesn't seem to be working. Am i doing these wrong? I swear it is MY account!
-
-//give player second try. if they still fail...
-oh my, today really isnt my day it seems. i'm am just not getting these. you know, is your day going just as bad as mine?
+~ temp gameType = "chimps"
+~ runTask(gameType)
+-> END
 
 
 === TaskSuccess ===
+~ bTaskSuccess = true
 
-//then if you succeed - start with Chammomile
+//then if you succeed - start with Chamomile
 I think thats all of them. Now, since we've just met, tell me about yourself. Hows your day going?
+-> AskQuestions
+
+=== AskQuestions ===
+*It's...[]Been quite the day. I am chained to my chair, and there is some shadow creature making sure I talk to you!
+-> AnswerQuestion
+
+ *I don't think I should discuss[] my day with you.
+-> AvoidQuestion
+
 
 
 //answer somthing about your actual day
- *It's...[]Been quite the day. i am chained to my chair, and there is some shadow creature making sure i talk to you!
+=== AnswerQuestion ===
+ 
  //discuss day response
  Oh my, thats quite the response! Keep going! What else?
+~ HelpCounter += 1
  
- *[]I.. okay, well id really like to get out of here! Please!
+ * I...[] okay, well I'd really like to get out of here! Please!
  
- Ha ha! There is so much energy there! So much gusto! My, thats perfect! Okay, and what can you do to change that? How can we help you to help yourself?
+ - Ha ha! There is so much energy there! So much gusto! My, thats perfect! Okay, and what can you do to change that? How can we help you to help yourself?
  
- *Help myself...[]
- *Are you listening to me?[]
+ * Help myself...
+ * Are you listening[?] to me?
  
- //no split here, she just keeps talking
- You have so much energy for your goals, and thats beautiful. Now you need to realise for yourself how you can bring ACTION to the words you are saying in your own way.
+ - You have so much energy for your goals, and thats beautiful. Now you need to realise for yourself how you can bring ACTION to the words you are saying in your own way.
  
- *My own way...?[]
- *You aren't even hearing me...[]
+ *My own way...?
+ *You aren't even hearing me[]...
  
- //again, no split
- Nobody can give you the power to change your life. Only you can do that. You have to decide for yourself that you want change, and take it!
+ - Nobody can give you the power to change your life. Only you can do that. You have to decide for yourself that you want change, and take it!
  
- *Ma'am, im sorry[], i think i made a mistake.
+ *Ma'am, I'm sorry[], I think I made a mistake.
  
- No no! You have begun the journey of healing.
+ - No no! You have begun the journey of healing.
  
- *Journey of...[] I just said i was... I am extreamly confused Ma'am.
+ * Journey of...[] I just said I was... I am extremely confused ma'am.
  
- Confused? That means you are doing well! But maybe you are right. Am i rushing you?
+ - Confused? That means you are doing well! But maybe you are right. Am I rushing you?
  
- *Personally, i feel[] you are pushing me.
+ * Personally[...], I feel you are pushing me.
  
- But if you aren't pushed, would you ever make progress?
+ - But if you aren't pushed, would you ever make progress?
  
- *i...[]
+ * I...
  
- Perhaps some more encouragement? some proof of change being possible?
+ - Perhaps some more encouragement? some proof of change being possible?
  
- *i mean... []
+ * I mean...
  
- A reading!
+ - A reading!
  
- *what?[]
- ->tarotReading
- //rejoin conversation
+ * What?
+ -> TarotReadingQuestion
+
  
- 
- 
- *I don't think i should discuss my day with you.[]
- 
+ === AvoidQuestion ===
+
  //dont discuss day response
- Oh... Oh well, okay then. May i tell you about my day?
+ Oh... Oh well, okay then. May I tell you about my day?
  
- *We can't hang up before you do ma'am.[]
+ * We can't hang up[] before you do, ma'am.
  
- Okay well, thats something at least. So, I wake up right, and Imagine my suprise when i cant start my morning forcast. So i check the cards, and they say there is a "Data Leek" and my "Account" cant be "Used". As you can imagine, i was very frustraited.
+ - Okay well, thats something at least. So, I wake up right, and imagine my suprise when I cant start my morning forcast. So I check the cards, and they say there is a "Data Leak" and my "Account" cant be "Used". As you can imagine, I was very frustrated.
  
- *That sounds very frustraiting Ma'am.[]
+ * That sounds[] very frustrating ma'am.
  
- Indeed it was! And so i of course had to ask the cards. You know what i mean. Straighten things out a bit in my head... You Do know what i mean right?
+ - Indeed it was! And so I of course had to ask the cards. You know what I mean. Straighten things out a bit in my head... You DO know what I mean right?
  
- Ask the Cards...? I... I mean not really. im sorry.
- 
+ * Ask the cards[?]...? I... I mean not really. I'm sorry.
+ -> TarotReadingQuestion
  
 
- === tarotReading ===
- // ---------conversation rejoins here------------
+ === TarotReadingQuestion ===
+
+ Oh! Well, I of course mean the Tarot. Normally I use a Thelema selection, but I don't imagine that would be pertinant to assume the use of here. a Smith-Waite Major Arcana Deck is ideal for introductions.
  
- Oh! Well, i of course mean the Tarot. Normally i use a Thelema selection, but i don't imagine that would be pertinant to assume the use of here. a Smith-Waite Major Arcana Deck is ideal for introductions.
+ *[Over the phone?] And you wish to do this over the phone Ma'am?
  
- *And you wish to do this over the phone Ma'am?[]
+ - Of course! Then it can guide you forward. Now, I'm just shuffling the deck here. Then I'm going to do a short draw of three cards, okay? 
  
- of course! Then it can guide you forward. Now, im just shuffling the deck here. Then im going to do a short draw of three cards, okay? and then the cards i draw will have meaning, depending on the card and the order. Does that make sense?
+ And then the cards I draw will have meaning, depending on the card and the order. One for morning, the past, one for midday, the present, and one for evening, the future. Does that make sense?
  
- *i mean in theory, but...[]
+ * I mean in theory[], but...
  
- Don't worry. It'll all make sense in just a minute.
+ - Don't worry. It'll all make sense in just a minute.
  
- //actual check. Does the player want t tarot reading?
- *I'd rather we just stopped all this Ma'am. Please.[]
+ * I'd rather we just stopped[] all this Ma'am. Please.
+ Well... I can't say I'm not dissapointed. You were making such good progress. But I of course will respect your intentions and your privacy. I hope you have a long think about what you want.
+ 	
+	**I will. Thank you[]...
  
- Well... I can't say im not dissapointed. You were making such good progress. But i of course will respect your intentions and your privacy. I hope you have a long think about what you want.
+ 	Call me Chamomile.
  
- *I will. Thank you...[]
+ 		*** Thank you[] Chamomile.
  
- Call me Chamomile.
+ 		It was a pleasure.
  
- *Thank you Chamomile[]
- 
- It was a pleasure.
- 
- -> END
+ 		-> END
  
  
  
  *Okay. []I trust you.
+-> TarotReading
+
+=== TarotReading ===
  
- Well thank you. Thats very kind.
+ Well thats rather sweet. Okay. I am done shuffling. So I am going to draw three cards for you from this deck I have here. 
  
- *I think its even true.[]
+ This first card will be signifying your past. Something to speak towards where you have come from. Trials that have passed over you. Make sense?
  
- Well thats rather sweet. Okay. i am done shuffling. So i am going to draw three cards for you from this deck i have here. This first card will be signifying your past. something to speak towards where you have come from. trials that have passed over you. Make sense?
+ * I think so.
  
- *I think so.[]
+ - Good, and ...Oh my...
  
- Good, and ...Oh my...
+ * Oh my? What?
  
- *Oh my? What?[]
+ - The Tower. Something signifying Distress and Adversity. A Large change. It can be good, but not as a flat first draw. You have seen misery leading you to here. Pain and suffering? Something looming over you?
  
- The Tower. Something signifying Distress and Adversity. A Large change. it can be good, but not as a flat first draw. You have seen misery leding you to here. pain and suffering? something looming over you?
+ * I mean[...], that...
  
- *I mean, that...[]
+ - Oh my, that isnt a good start is it. Lets move on. Its got to get better... 
+
+ Oh okay. So here is the High priestess. Now she is interesting, especially in your present. 
  
- Oh my, that isnt a good start is it. Lets move on. Its got to get better... Oh okay. So here is the High priestess. Now she is interesting, especially in your present. She can mean many things, not as binary as the Tower. She is full of mystery, and secretive. You are surrounded by confusion? things unknown to you, yet known to others. You are unknown, even to yourself...
+ She can mean many things, not as binary as the Tower. She is full of mystery, and secretive. 
  
- *Well that doesnt better...[]
+ You are surrounded by confusion? Things unknown to you, yet known to others. You are unknown, even to yourself...
  
- You are full of sadness and mystery my friend. what an interesting read. two of the major arcana as well. hmm...
+ * Well[...] that doesn't sound better...
  
- *What? What does that mean?[]
+ You are full of sadness and mystery my friend. What an interesting read. Wwo of the major arcana as well. 
+ Hmm...
  
- Hmm? oh im sorry dear. Lets see your third one then...Oooh swords...
+ * What?[] What does that mean?
  
- *A sword??? i cant use a sword...[]
+ - Huh? Oh I'm sorry dear. Lets see your third one then... Oooh swords...
  
- Oh no! Hahah Not a real sword no. The Seven of Swords. a card from the deck again.
+ *A sword?[]?? I can't use a sword...
  
- *i..oh...heh sorry...[] i feel a little silly now.
+ - Oh no! Hahah Not a real sword no. The Seven of Swords. A card from the deck again.
  
- Don't beat your self up. its hard without being able to see the cards. the art is rather pretty on these ones too.
+ * I.. Oh...[] Heh sorry... I feel a little silly now.
  
- *Ah, so...the seven of swords?[]
+ - Don't beat your self up. It's hard without being able to see the cards. The art is rather pretty on these ones too. A shame...
  
- oh Yes of course! So, the seven of swords is a card about uncertainty and planning. In your future is a plan or design that has a strong maybe in it. Something that will succeed. It hangs in the balance, easily swayed with pushes either way. It speaks of attemping things, with hope and confidance, but also of quarrelling, arguing, and annoyance. its a future of perhaps.
+ * Ah[], so the seven of swords?
  
- *a future of perhaps...hmm, thats incredibly cryptic[]
+ - Oh Yes of course! So, the seven of swords is a card about uncertainty and planning. In your future is a plan or design that has a strong maybe in it. 
  
- Well, thats quite the future you have there.
+ Something that may succeed. It hangs in the balance, easily swayed with pushes either way. 
  
- *i mean... thank you?[] i guess?
+ It speaks of attemping things, with hope and confidance, but also of quarrelling, arguing, and annoyance. 
+ It's a future of perhaps.
+~ HelpCounter += 1
  
- oh, its not a compliment. it sounds like you have a lot going on. In your head and your heart. Where did you say you worked again?
+ * A future of perhaps?[] Hmm... Thats incredibly cryptic.
  
- *Well, i work for OSOS[] obviously. The local branch, i believe.
+ - Well, thats quite the future you have there.
  
- Great. I have written that down. Maybe i'll see in person some day?
+ * I mean...[] Thank you? I guess?
  
- *i... what?[]
- //if failed at helping, go fail, else go sucess
- ->SucessGameEnding
- ->FailGameEnding
+ - Oh, its not a compliment. It sounds like you have a lot going on. In your head and your heart. Where did you say you worked again?
  
- //if succeed on minigame
- === SucessGameEnding ===
- Well, i have to go. iv missed my first stream, but the second one is just as important. Im finding the latent energies of the internet and calming them for the masses. Thank you again for the help
+ * [I work for OSOS] Well, I work for OSOS obviously. The local branch, I believe.
  
- *It...it was my pleasure[]. Thank you Chammomile.
+ - Great. I have written that down. Perhaps I'll see you in person some day?
+ 
+ * I... what?
+{ 
+  - bTaskSuccess == true:
+	-> SuccessGameEnding
+  - else:
+	-> FailGameEnding
+}
+
+->END
+
+
+ 
+ === SuccessGameEnding ===
+ Well, I have to go. I've missed my first stream, but the second one is just as important. I'm finding the latent energies of the internet and calming them for the masses. Thank you again for the help.
+ 
+ * Thank you Chamomile.
  
  Bye!
- ->END
+
+~ HelpCounter += 4
+
+ -> END
  
+
  === FailGameEnding ===
- //else, if fail on minigame
- Well, i have to go pick flowers. If i make a tincture of lambs bredth and foxglove, and bathe my modem, maybe my account will fix itself. Thank you for the lovely chat, and for trying to help.
+ Well, I have to go pick flowers. If I make a tincture of lambs breath and foxglove, and bathe my modem, maybe my account will fix itself. Thank you for the lovely chat, and for trying to help.
 
-*I think it was truly my pleasure.[]
+* I hope that works.
 
-Heh, i think so too. Be well!
-    -> END
+Heh, it worked last time. Be well!
+
+~ HelpCounter += 2
+
+-> END
+
+
+
+
+
+
