@@ -231,7 +231,8 @@ public class InkManager : MonoBehaviour
                 ExitDialogue();
                 dialogueListIndex++;
                 currentDialogue = DialogueJsons[dialogueListIndex];
-                Invoke("StartStory", 5);
+                Invoke("ClearChat", 3);
+                Invoke("StartStory", 3);
                 m_bWaitingBetweenPeople = true;
             }
         }

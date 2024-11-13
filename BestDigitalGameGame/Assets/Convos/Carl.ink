@@ -1,4 +1,4 @@
-﻿INCLUDE globals.ink
+INCLUDE globals.ink
 EXTERNAL runTask(taskType)
 EXTERNAL bossSpotted(bossSeen)
 VAR bTaskFail = false
@@ -80,7 +80,7 @@ I'm sorry for getting upset. I'm very stressed with all this policework. I'm goi
 
 * Sir, let me try again[], I need your help.
 Alright, but I don't have much time. 
-	~ temp gameType = "chimps"
+	~ temp gameType = "numberPuzzle"
 	~ runTask(gameType)
 	->END
 
