@@ -42,6 +42,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: NonFocusedWindows
+    uniqueID: 1144362615
+    locked: 0
+  - name: FocusedWindow
+    uniqueID: 209069043
   - name: Vingette
     uniqueID: 146404183
     locked: 0
