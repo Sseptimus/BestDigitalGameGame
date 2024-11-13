@@ -31,14 +31,14 @@ public class PostProcessingManager : MonoBehaviour
         //if boss is watching the player, lerp the post processing to make it scawy
         if(MainBossManager.CurrentLocation == BossManager.BossLocation.Right_Behind_YOU)
         {
-            LerpTimer += FadeSpeed * Time.deltaTime;
-            ScenePostProcessLayer.profile.GetSetting<Vignette>().intensity.value = math.lerp(VingetteIntensity, BossVingetteInt, LerpTimer);
-            ScenePostProcessLayer.profile.GetSetting<Grain>().intensity.value = math.lerp(GrainIntentisy, BossGrainInt, LerpTimer);
-            ScenePostProcessLayer.profile.GetSetting<Grain>().size.value = math.lerp(GrainSize, BossGrainSize, LerpTimer);
+            if(LerpTimer < 1){LerpTimer += FadeSpeed * Time.deltaTime;}
         }
         else
         {
-            LerpTimer = 0; 
+            if(LerpTimer > 0){LerpTimer -= FadeSpeed * Time.deltaTime;}
         }
+        ScenePostProcessLayer.profile.GetSetting<Vignette>().intensity.value = math.lerp(VingetteIntensity, BossVingetteInt, LerpTimer);
+        ScenePostProcessLayer.profile.GetSetting<Grain>().intensity.value = math.lerp(GrainIntentisy, BossGrainInt, LerpTimer);
+        ScenePostProcessLayer.profile.GetSetting<Grain>().size.value = math.lerp(GrainSize, BossGrainSize, LerpTimer);
     }
 }

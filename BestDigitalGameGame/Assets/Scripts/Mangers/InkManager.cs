@@ -129,7 +129,6 @@ public class InkManager : MonoBehaviour
         {
             fTotalChatHeight += ChatController.NPCMessageContainer.transform.GetChild(i).GetComponent<RectTransform>().sizeDelta.y;
         }
-        Debug.Log(fTotalChatHeight);
         if (fTotalChatHeight > 0.8f)
         {
             //When window is full removes the top message
