@@ -1019,11 +1019,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6306114260674186782, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.81
+      value: -3.27
       objectReference: {fileID: 0}
     - target: {fileID: 6306114260674186782, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.6
+      value: 3.84
       objectReference: {fileID: 0}
     - target: {fileID: 6306114260674186782, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2913,11 +2913,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3380951817653368507, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.28
+      value: -4.53
       objectReference: {fileID: 0}
     - target: {fileID: 3380951817653368507, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.88
+      value: 0.89
       objectReference: {fileID: 0}
     - target: {fileID: 3380951817653368507, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4585,6 +4585,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 411484048}
     m_Modifications:
+    - target: {fileID: 1367057120693928007, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_IsActive
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.74
+      objectReference: {fileID: 0}
     - target: {fileID: 3790646091518163656, guid: 83a1e266afc824aa5ae88fbf876797f2, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -4672,14 +4680,6 @@ PrefabInstance:
     - target: {fileID: 8778399253896003397, guid: 83a1e266afc824aa5ae88fbf876797f2, type: 3}
       propertyPath: m_Name
       value: Exit Arrow
-      objectReference: {fileID: 0}
-    - target: {fileID: 1367057120693928007, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
-      propertyPath: m_IsActive
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.74
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
