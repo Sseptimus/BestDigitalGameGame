@@ -1,5 +1,6 @@
 ﻿INCLUDE globals.ink
 EXTERNAL runTask(taskType)
+EXTERNAL bossSpotted(bossSeen)
 VAR bTaskFail = false
 VAR bTaskSuccess = false
 
@@ -54,7 +55,8 @@ Oh, a sliding puzzle. You should be able to complete this easily. Just click on 
 Why aren't you going to help me? That's your job. Do your job or I will report you.
  * Please help me[]. I have to escape my job. I can't do this any longer. 
 Well, I'll certainly help you! Get fired! You're supposed to fix my problem, not beg to me!
-~BossSuspicionCounter += 1
+	~ bossSpotted("seen")
+	~BossSuspicionCounter += 3
 -> END
 * Fine, I'll help you.
 Great, see, that wasn't so hard. 
@@ -71,4 +73,5 @@ Well... thanks. I've just been given access. I can recover my Bitcoin. But I wan
 Why not? I've been a loyal customer and you should give me a new one. I asked nicely.
 ** Unfortunately[...], sir, I can't do that. I have recovered your Bitcoin for you. Have a good day, sir.
 Fine. Thanks for your help.
+~ HelpCounter += 1
 -> END

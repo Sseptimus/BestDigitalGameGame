@@ -18,7 +18,8 @@ public class WindowController :  BaseWindowClass
     private Canvas m_WindowCanvas;
     private BoxCollider2D m_ColTitleBar;
 
-    public WindowType m_WindowType;
+    public GameManager.WindowType m_WindowType;
+    public string m_CurrentLayer;
 
     private void Start()
     {
@@ -26,13 +27,21 @@ public class WindowController :  BaseWindowClass
         m_sprContent = gameObject.transform.Find("Content").GetComponent<SpriteRenderer>();
         m_sprTitleBar = gameObject.transform.Find("TitleBar").GetComponent<SpriteRenderer>();
         m_GameManager = FindObjectOfType<GameManager>();
-        m_GameManager.AddWindow(this);
+        if (m_WindowType != GameManager.WindowType.PopUp)
+        {
+            m_GameManager.AddWindow(this);
+        }
         m_ColTitleBar = transform.GetComponent<BoxCollider2D>();
+        OnGrabFocus();
+        
     }
 
     private void OnDestroy()
     {
-        m_GameManager.OpenWindows.Remove(this);
+        if (m_WindowType != GameManager.WindowType.PopUp)
+        {
+            m_GameManager.OpenWindows.Remove(this);
+        }
     }
 
     private void OnMouseDown()
@@ -54,6 +63,7 @@ public class WindowController :  BaseWindowClass
         if (gameObject)
         {
             m_GameManager.WindowInFocus = this;
+            m_CurrentLayer = "FocusedWindow";
         
             //Changing collision box to just title bar
             m_ColTitleBar.size = new Vector2(5,0.5f);
@@ -81,6 +91,7 @@ public class WindowController :  BaseWindowClass
 
     public void LoseFocus()
     {
+        m_CurrentLayer = "NonFocusedWindows";
         //Changing collision box to whole window
         if (m_ColTitleBar)
         {
@@ -117,7 +128,16 @@ public class WindowController :  BaseWindowClass
         //Minimise Button
         LoseFocus();
         gameObject.SetActive(false);
+        m_GameManager.MinimiseWindow(this);
     }
+
+    public void Close()
+    {
+        LoseFocus();
+        Destroy(gameObject);
+    }
+    
+    
     private void Update()
     {
         if (m_bHeld && (ConvertToWorldUnitsX(Input.mousePosition.x) > m_GameManager.ComputerScreen.transform.position.x + m_GameManager.Background.GetComponent<SpriteRenderer>().bounds.size.x

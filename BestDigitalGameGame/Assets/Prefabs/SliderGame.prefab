@@ -58,7 +58,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 0.5, y: 0.5}
+  m_CellSize: {x: 0.1, y: 0.1}
   m_Spacing: {x: 1, y: 1}
   m_Constraint: 1
   m_ConstraintCount: 3
@@ -78,6 +78,7 @@ MonoBehaviour:
   m_SlideObjPrefab: {fileID: 8041162980404672429, guid: c4d9c2f66eb40834a9c14fcf6199a195, type: 3}
   m_EmptySpace: {fileID: 0}
   ownedManager: {fileID: 0}
+  ownWindow: {fileID: 0}
 --- !u!223 &9004738905456875327
 Canvas:
   m_ObjectHideFlags: 0

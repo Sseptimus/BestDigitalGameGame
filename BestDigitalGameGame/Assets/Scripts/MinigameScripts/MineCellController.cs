@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using MinigameScripts;
 using TMPro;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ public class MineCellController : MonoBehaviour
     public bool m_bIsMine;
     private bool m_bFlagged = false;
     private bool m_bHidden = true;
-
+    
     public Sprite m_sprDefault;
     public Sprite m_sprDefaultHover;
     public Sprite m_sprFlagged;
@@ -27,7 +28,6 @@ public class MineCellController : MonoBehaviour
     {
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
     }
-
     public void SetGame(MineSweeperGameController _OwnedGame)
     {
         m_OwnedGame = _OwnedGame;
@@ -76,20 +76,42 @@ public class MineCellController : MonoBehaviour
 
     public void ClickCell()
     {
-        if (m_bIsMine)
+        if (!m_bFlagged)
         {
-            GetComponent<SpriteRenderer>().color = Color.red;
-            return;
-        }
-        m_bHidden = false;
-        GetComponent<TextMeshProUGUI>().enabled = true;
-        if (m_iMineCount == 0)
-        {
-            foreach (var CurrentCell in m_NeighbourCells)
+            if (m_bIsMine && m_OwnedGame.GetFirstClickOccured())
             {
-                if (CurrentCell && CurrentCell.m_bHidden)
+                GetComponent<SpriteRenderer>().color = Color.red;
+                m_OwnedGame.GameFailed();
+                Debug.Log("Game failed");
+                return;
+            }
+            else if (m_bIsMine && !m_OwnedGame.GetFirstClickOccured())
+            {
+                //If lose on first click move mine to first free space
+                m_bIsMine = false;
+                for (int i = 0; i < transform.childCount; i++)
                 {
-                    CurrentCell.ClickCell();
+                    if (!transform.parent.GetChild(i).GetComponent<MineCellController>().m_bIsMine)
+                    {
+                        transform.parent.GetChild(i).GetComponent<MineCellController>().m_bIsMine = true;
+                    }
+                }
+                m_OwnedGame.ResetMineCounts();
+            }
+            if (!m_OwnedGame.GetFirstClickOccured())
+            {
+                m_OwnedGame.SetFirstClickOccured();
+            }
+            m_bHidden = false;
+            GetComponent<TextMeshProUGUI>().enabled = true;
+            if (m_iMineCount == 0)
+            {
+                foreach (var CurrentCell in m_NeighbourCells)
+                {
+                    if (CurrentCell && CurrentCell.m_bHidden)
+                    {
+                        CurrentCell.ClickCell();
+                    }
                 }
             }
         }
@@ -102,7 +124,7 @@ public class MineCellController : MonoBehaviour
         {
             FlagCell();
         }
-        else if (Input.GetMouseButtonDown(0) && !m_bFlagged)
+        else if (Input.GetMouseButtonDown(0))
         {
             ClickCell();
         }

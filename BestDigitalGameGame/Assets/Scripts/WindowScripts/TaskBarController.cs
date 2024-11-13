@@ -11,8 +11,9 @@ public class TaskBarController : MonoBehaviour
 
     [Header("TaskBar Icons")] 
     public Sprite m_sprChat;
+    public Sprite m_sprChatMin;
     public Sprite m_sprChimpGame;
-
+    public Sprite m_sprChimpGameMin;
     private void Start()
     {
         if (!m_gameManager)
@@ -25,21 +26,54 @@ public class TaskBarController : MonoBehaviour
 
     public void ReopenWindow(GameObject _IconPressed)
     {
-        Debug.Log(_IconPressed.transform.GetSiblingIndex());
-        Debug.Log(m_gameManager.OpenWindows.Count);
-        m_gameManager.OpenWindows[_IconPressed.transform.GetSiblingIndex()].gameObject.SetActive(true);
-        m_gameManager.OpenWindows[_IconPressed.transform.GetSiblingIndex()].OnGrabFocus();
+        if (!m_gameManager.OpenWindows[_IconPressed.transform.GetSiblingIndex()].gameObject.activeSelf)
+        {
+            m_gameManager.OpenWindows[_IconPressed.transform.GetSiblingIndex()].gameObject.SetActive(true);
+            m_gameManager.OpenWindows[_IconPressed.transform.GetSiblingIndex()].OnGrabFocus();
+            switch (m_gameManager.OpenWindows[_IconPressed.transform.GetSiblingIndex()].m_WindowType)
+            {
+                case GameManager.WindowType.Chat:
+                    transform.GetChild(_IconPressed.transform.GetSiblingIndex()).GetComponent<SpriteRenderer>()
+                        .sprite = m_sprChat;
+                    break;
+                case GameManager.WindowType.ChimpGame:
+                    transform.GetChild(_IconPressed.transform.GetSiblingIndex()).GetComponent<SpriteRenderer>()
+                        .sprite = m_sprChimpGame;
+                    break;
+                case GameManager.WindowType.SliderGame:
+                    transform.GetChild(_IconPressed.transform.GetSiblingIndex()).GetComponent<SpriteRenderer>()
+                        .sprite = m_sprChimpGame;
+                    break;
+                case GameManager.WindowType.MineSweeper:
+                    transform.GetChild(_IconPressed.transform.GetSiblingIndex()).GetComponent<SpriteRenderer>()
+                        .sprite = m_sprChimpGame;
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            m_gameManager.OpenWindows[_IconPressed.transform.GetSiblingIndex()].Minimise();
+        }
+        
     }
     
     public void WindowOpened(WindowController _newWindow)
     {
         GameObject newIcon = Instantiate(m_TaskIconPrefab, transform);
-        switch (_newWindow.GetComponent<WindowController>().m_WindowType)
+        switch (_newWindow.m_WindowType)
         {
-            case WindowType.Chat:
+            case GameManager.WindowType.Chat:
                 newIcon.GetComponent<SpriteRenderer>().sprite = m_sprChat;
                 break;
-            case WindowType.ChimpGame:
+            case GameManager.WindowType.ChimpGame:
+                newIcon.GetComponent<SpriteRenderer>().sprite = m_sprChimpGame;
+                break;
+            case GameManager.WindowType.SliderGame:
+                newIcon.GetComponent<SpriteRenderer>().sprite = m_sprChimpGame;
+                break;
+            case GameManager.WindowType.MineSweeper:
                 newIcon.GetComponent<SpriteRenderer>().sprite = m_sprChimpGame;
                 break;
             default:
@@ -47,6 +81,32 @@ public class TaskBarController : MonoBehaviour
                 break;
         }
         newIcon.GetComponent<SpriteRenderer>().sprite = m_sprChat;
+    }
+
+    public void WindowMinimised(WindowController _minimisedWindow)
+    {
+        switch (_minimisedWindow.m_WindowType)
+        {
+            case GameManager.WindowType.Chat:
+                transform.GetChild(m_gameManager.OpenWindows.IndexOf(_minimisedWindow)).GetComponent<SpriteRenderer>()
+                    .sprite = m_sprChatMin;
+                break;
+            case GameManager.WindowType.ChimpGame:
+                transform.GetChild(m_gameManager.OpenWindows.IndexOf(_minimisedWindow)).GetComponent<SpriteRenderer>()
+                    .sprite = m_sprChimpGameMin;
+                break;
+            case GameManager.WindowType.MineSweeper:
+                transform.GetChild(m_gameManager.OpenWindows.IndexOf(_minimisedWindow)).GetComponent<SpriteRenderer>()
+                    .sprite = m_sprChimpGameMin;
+                break;
+            case GameManager.WindowType.SliderGame:
+                transform.GetChild(m_gameManager.OpenWindows.IndexOf(_minimisedWindow)).GetComponent<SpriteRenderer>()
+                    .sprite = m_sprChimpGameMin;
+                break;
+            default:
+                break;
+        }
+        
     }
 
     public void WindowClosed(int _iIndex)

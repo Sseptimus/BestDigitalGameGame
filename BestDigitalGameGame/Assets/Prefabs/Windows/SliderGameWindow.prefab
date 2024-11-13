@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SliderGameWindow
       objectReference: {fileID: 0}
+    - target: {fileID: 1500059508339014611, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500059508339014611, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1144362615
+      objectReference: {fileID: 0}
     - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -52,9 +60,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2108550932257770422, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108550932257770422, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108550932257770422, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1144362615
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566989704640524262, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1144362615
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 777240238921050699, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8248087155599760111, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       insertIndex: -1
@@ -166,6 +189,10 @@ PrefabInstance:
     - target: {fileID: 3752140257622149126, guid: cef0dc462a7fd42428d85e4545049584, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004738905456875327, guid: cef0dc462a7fd42428d85e4545049584, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1144362615
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
