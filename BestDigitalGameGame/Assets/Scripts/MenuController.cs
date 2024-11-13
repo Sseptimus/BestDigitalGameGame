@@ -13,6 +13,7 @@ public class MenuController : MonoBehaviour
     public GameObject logoObject;
     public Texture startIMG;
     public Texture animationVid;
+    public sceneCrossfade sceneCrossfade;
     private RawImage img;
 
     void Start()
@@ -33,13 +34,23 @@ public class MenuController : MonoBehaviour
     public void StartGame() // Starts game by loading main scene
     {
         videoPlayer.Play();
-        Debug.Log("Starting Game");
-        SceneManager.LoadScene("SampleScene");
+        sceneCrossfade.ToggleFading();
+        Invoke("ChangeScene", 1);
     }
 
     public void ExitGame() // Quits Application, and editor if still editing
     {
-        Debug.Log("Quitting Game");
+        sceneCrossfade.ToggleFading();
+        Invoke("Quit", 4);
+    }
+
+    void ChangeScene()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    void Quit()
+    {
         Application.Quit();
     }
 }
