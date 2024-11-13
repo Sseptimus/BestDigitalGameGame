@@ -1,36 +1,44 @@
+INCLUDE globals.ink
+EXTERNAL runTask(taskType)
+EXTERNAL bossSpotted(bossSeen)
+VAR bTaskFail = false
+VAR bTaskSuccess = false
+
+-> Start
+
 === Start ===
 
 Hello? Is this okay?
  
- * Hello and welcome to ASOS[] How can i help you today?
+ * Hello and welcome to ASOS[] How can I help you today?
  * Is what okay?[]
  
- My voice i mean. Can you hear me okay?
+ My voice I mean. Can you hear me okay?
 
-*Yes, i can hear you fine.[]
+*Yes, I can hear you fine.[]
 
 Okay good. I was told it would be hard to understand true intentions today. Thought it might be regarding the phone. Anyhoo, its Me.
 
-*...Me?[] Maam, im sorry but i'll need your name to assist you today.
+*...Me?[] Ma'am, I'm sorry but i'll need your name to assist you today.
 
-Oh! I'm so sorry! I thought you were the other gentleman. Hello my new friend! My name is Chammomile. Like the Tea.
+Oh! I'm so sorry! I thought you were the other gentleman. Hello my new friend! My name is Chamomile. Like the Tea.
 
-*Hi Chammomile.[] How can i help you today?
+*Hi Chamomile.[] How can I help you today?
 
-Why, i can't log in to my prayer chain. I have to make sure my followers know their futures today. What every shall they do with the uncertainty?? 
+Why, I can't log in to my prayer chain. I have to make sure my followers know their futures today. What ever shall they do with the uncertainty?? 
 
 *Well Ma'am, the first step[] is to test the validity of your account.
 
-I'm sorry, but i dont know what that means.
+I'm sorry, but I dont know what that means.
 
-*Okay, so[] Im going to send you a short list of your security questions. Please fill them out while i look at your details.
+*Okay, so[] Im going to send you a short list of your security questions. Please fill them out while I look at your details.
 
 //start the game
 ->Start
 
 === TaskFailed ===
 
-//if you fail - start with Chammomile
+//if you fail - start with Chamomile
 It doesn't seem to be working. Am i doing these wrong? I swear it is MY account!
 
 //give player second try. if they still fail...
@@ -48,7 +56,7 @@ I think thats all of them. Now, since we've just met, tell me about yourself. Ho
  //discuss day response
  Oh my, thats quite the response! Keep going! What else?
  
- *[]i.. okay, well id really like to get out of here! Please!
+ *[]I.. okay, well id really like to get out of here! Please!
  
  Ha ha! There is so much energy there! So much gusto! My, thats perfect! Okay, and what can you do to change that? How can we help you to help yourself?
  
@@ -127,9 +135,9 @@ I think thats all of them. Now, since we've just met, tell me about yourself. Ho
  
  *I will. Thank you...[]
  
- Call me Chammomile.
+ Call me Chamomile.
  
- *Thank you Chammomile[]
+ *Thank you Chamomile[]
  
  It was a pleasure.
  

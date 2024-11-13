@@ -2929,6 +2929,10 @@ PrefabInstance:
       propertyPath: minesweeperWindow
       value: 
       objectReference: {fileID: 8238491391272469025, guid: 1de2fa868fd1e424c916a72c88f2a8ee, type: 3}
+    - target: {fileID: 1664957401256307343, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
+      propertyPath: ChamomileJsonAsset
+      value: 
+      objectReference: {fileID: 4900000, guid: adc541cdafe88f048885c5b9d2eeee9e, type: 3}
     - target: {fileID: 2860570616990877628, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
       propertyPath: m_Name
       value: ChatWindow
