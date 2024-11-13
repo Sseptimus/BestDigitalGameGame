@@ -101,11 +101,9 @@ public class WindowController :  BaseWindowClass
         
         //Reset window elements to NonFocused Layer
         SpriteRenderer[] ChildRenderers = GetComponentsInChildren<SpriteRenderer>();
-        Debug.Log(ChildRenderers.Length);
         foreach (var Renderer in ChildRenderers)
         {
             Renderer.sortingLayerName = "NonFocusedWindows";
-            Debug.Log(Renderer.name);
         }
         
         Canvas[] ChildCanvas = GetComponentsInChildren<Canvas>();

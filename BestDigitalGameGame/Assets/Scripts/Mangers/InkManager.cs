@@ -16,6 +16,8 @@ using Vector2 = UnityEngine.Vector2;
 
 public class InkManager : MonoBehaviour
 {
+    public GameManager mGameManager;
+
     [Header("Dialogue Assets")]
     [SerializeField]
     private TextAsset JaniceJsonAsset;
@@ -77,6 +79,8 @@ public class InkManager : MonoBehaviour
     private void Awake()
     {
         dialogueVariablesObserver = new DialogueObserver(loadGlobalsJSON);
+        dialogueVariablesObserver.m_GameManager = mGameManager;
+        dialogueVariablesObserver.m_InkManager = this;
     }
 
     void Start()

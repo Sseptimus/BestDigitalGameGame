@@ -2929,6 +2929,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1664957401256307343, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
+      propertyPath: mGameManager
+      value: 
+      objectReference: {fileID: 1860181517}
+    - target: {fileID: 1664957401256307343, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
+      propertyPath: m_GameManager
+      value: 
+      objectReference: {fileID: 1860181517}
     - target: {fileID: 2860570616990877628, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
       propertyPath: m_Name
       value: ChatWindow
@@ -4156,6 +4164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 125eb006dbb8e9847b84e94c2b129fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_iHelperCounter: 0
+  m_iSuspicion: 0
   ComputerScreen: {fileID: 1789068415}
   Background: {fileID: 1552337371}
   WindowInFocus: {fileID: 0}
