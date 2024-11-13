@@ -141,7 +141,7 @@ public class InkManager : MonoBehaviour
         {
             fTotalChatHeight += ChatController.NPCMessageContainer.transform.GetChild(i).GetComponent<RectTransform>().sizeDelta.y;
         }
-        if (fTotalChatHeight > 0.8f)
+        if (fTotalChatHeight > 0.65f)
         {
             //When window is full removes the top message
             Destroy(ChatController.PlayerMessageContainer.transform.GetChild(0).gameObject);
@@ -254,6 +254,7 @@ public class InkManager : MonoBehaviour
             ChatController.CurrentMessage.text = newText;
             ChatController.NPCMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.NPCMessageContainer.transform, false).GetComponent<TextMeshProUGUI>());
             ChatController.CurrentMessage.alignment = TextAlignmentOptions.Right;
+            ChatController.CurrentMessage.color = Color.black;
             m_bPlayerIsTalking = true;
         }
         else
@@ -262,6 +263,7 @@ public class InkManager : MonoBehaviour
             ChatController.NPCMessages.Append(ChatController.CurrentMessage.GetComponent<TextMeshProUGUI>());
             ChatController.PlayerMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.PlayerMessageContainer.transform, false).GetComponent<TextMeshProUGUI>());
             ChatController.CurrentMessage.alignment = TextAlignmentOptions.Left;
+            ChatController.CurrentMessage.color = Color.white;
             m_bPlayerIsTalking = false;
         }
 

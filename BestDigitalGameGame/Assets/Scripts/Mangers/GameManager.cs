@@ -49,8 +49,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
-
-        
     }
 
     // Update is called once per frame
