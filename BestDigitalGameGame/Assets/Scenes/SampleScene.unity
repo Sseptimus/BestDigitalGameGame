@@ -708,6 +708,17 @@ MonoBehaviour:
   GrainSize: 1.27
   BossGrainSize: 1.68
   FadeSpeed: 0.1
+--- !u!114 &297562089 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2431530719776910177, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
+  m_PrefabInstance: {fileID: 402948152}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 339587c68eafd8745b850a7c879c9067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &312643098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1050,17 +1061,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2675436894830514360, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 209069043
+      objectReference: {fileID: 0}
+    - target: {fileID: 3682436791225179207, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 209069043
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864044346284782824, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864044346284782824, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864044346284782824, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 209069043
+      objectReference: {fileID: 0}
     - target: {fileID: 6306114260674186782, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.27
+      value: -3.07
       objectReference: {fileID: 0}
     - target: {fileID: 6306114260674186782, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.84
+      value: 1.08
       objectReference: {fileID: 0}
     - target: {fileID: 6306114260674186782, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 6306114260674186782, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1089,6 +1120,14 @@ PrefabInstance:
     - target: {fileID: 6306114260674186782, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409500272380626061, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409500272380626061, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 209069043
       objectReference: {fileID: 0}
     - target: {fileID: 6834939831837753113, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
       propertyPath: m_Name
@@ -3029,13 +3068,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChatWindow
       objectReference: {fileID: 0}
+    - target: {fileID: 2860570616990877628, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3380951817653368507, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.53
       objectReference: {fileID: 0}
     - target: {fileID: 3380951817653368507, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.89
+      value: 3.16
       objectReference: {fileID: 0}
     - target: {fileID: 3380951817653368507, guid: d2cc05cc154a4154aa3acdf671a01692, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3248,7 +3291,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.06, y: -4.43, z: 0}
-  m_LocalScale: {x: 1.2, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 0.96, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1789068416}
@@ -4267,7 +4310,7 @@ MonoBehaviour:
   m_iSuspicion: 0
   ComputerScreen: {fileID: 1789068415}
   Background: {fileID: 1552337371}
-  WindowInFocus: {fileID: 0}
+  WindowInFocus: {fileID: 297562089}
   OpenWindows: []
   m_TaskBarController: {fileID: 1735382175}
 --- !u!4 &1860181518
@@ -4716,6 +4759,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 411484048}
     m_Modifications:
+    - target: {fileID: 1367057120693928007, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_IsActive
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.74
+      objectReference: {fileID: 0}
     - target: {fileID: 3790646091518163656, guid: 83a1e266afc824aa5ae88fbf876797f2, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -4803,14 +4854,6 @@ PrefabInstance:
     - target: {fileID: 8778399253896003397, guid: 83a1e266afc824aa5ae88fbf876797f2, type: 3}
       propertyPath: m_Name
       value: Exit Arrow
-      objectReference: {fileID: 0}
-    - target: {fileID: 1367057120693928007, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
-      propertyPath: m_IsActive
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.74
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4937,8 +4980,8 @@ SceneRoots:
   - {fileID: 293097480}
   - {fileID: 1258634223}
   - {fileID: 1860181518}
-  - {fileID: 402948152}
   - {fileID: 1439482723}
+  - {fileID: 402948152}
   - {fileID: 950856091}
   - {fileID: 1961179505}
   - {fileID: 1713688805}
