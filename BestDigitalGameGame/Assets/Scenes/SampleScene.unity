@@ -636,6 +636,7 @@ GameObject:
   m_Component:
   - component: {fileID: 293097480}
   - component: {fileID: 293097479}
+  - component: {fileID: 293097481}
   m_Layer: 2
   m_Name: Post Processing
   m_TagString: Untagged
@@ -675,6 +676,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &293097481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293097478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6a89bd3768d4ff08e04207f4479968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainBossManager: {fileID: 1713688804}
+  ScenePostProcessLayer: {fileID: 293097479}
+  VingetteIntensity: 0.16
+  BossVingetteInt: 0.28
+  GrainIntentisy: 0.46
+  BossGrainInt: 1.5
+  GrainSize: 1.27
+  BossGrainSize: 1.68
+  FadeSpeed: 0.1
 --- !u!1001 &312643098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3793,8 +3815,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5440fcb816540629515fa44332006c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxMoveTimer: 15
-  MinMoveTimer: 5
+  MaxMoveTimer: 1000
+  MinMoveTimer: 1000
   CurrentLocation: 0
   BOSS_IS_WATCHING: 1
   UpPeek: {fileID: 1305448780}
