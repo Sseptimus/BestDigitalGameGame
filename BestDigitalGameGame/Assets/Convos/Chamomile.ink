@@ -168,6 +168,8 @@ I think thats all of them. Now, since we've just met, tell me about yourself. Ho
 -> TarotReading
 
 === TarotReading ===
+ ~ bossSpotted("seen")
+ ~ BossSuspicionCounter += 2
  
  Well thats rather sweet. Okay. I am done shuffling. So I am going to draw three cards for you from this deck I have here. 
  

@@ -24,15 +24,18 @@ public class InkManager : MonoBehaviour
     [SerializeField]
     private TextAsset GunnerJsonAsset;
     [SerializeField]
-    private TextAsset CarlJsonAsset;
-    [SerializeField]
     private TextAsset ChamomileJsonAsset;
+    [SerializeField]
+    private TextAsset CarlJsonAsset;
 
     private List<TextAsset> DialogueJsons = new List<TextAsset>();
     private TextAsset currentDialogue;
     private int dialogueListIndex = 0;
 
     private Story _story;
+    
+    public int m_CustomersLeft = 4; //TODO update with new conversations
+    private HoldCounterController m_CounterInstance;
     
     [Header ("Buttons and Prefabs")]
     [SerializeField]
@@ -83,14 +86,15 @@ public class InkManager : MonoBehaviour
         dialogueVariablesObserver = new DialogueObserver(loadGlobalsJSON);
         dialogueVariablesObserver.m_GameManager = mGameManager;
         dialogueVariablesObserver.m_InkManager = this;
+        m_CounterInstance = FindObjectOfType<HoldCounterController>();
     }
 
     void Start()
     {
         DialogueJsons.Add(JaniceJsonAsset);
         DialogueJsons.Add(GunnerJsonAsset);
-        DialogueJsons.Add(CarlJsonAsset);
         DialogueJsons.Add(ChamomileJsonAsset);
+        DialogueJsons.Add(CarlJsonAsset);
 
         currentDialogue = DialogueJsons[dialogueListIndex];
         StartStory();
@@ -137,7 +141,7 @@ public class InkManager : MonoBehaviour
         {
             fTotalChatHeight += ChatController.NPCMessageContainer.transform.GetChild(i).GetComponent<RectTransform>().sizeDelta.y;
         }
-        if (fTotalChatHeight > 0.8f)
+        if (fTotalChatHeight > 0.65f)
         {
             //When window is full removes the top message
             Destroy(ChatController.PlayerMessageContainer.transform.GetChild(0).gameObject);
@@ -149,7 +153,8 @@ public class InkManager : MonoBehaviour
     {
         m_bWaitingBetweenPeople = false;
         _story = new Story(currentDialogue.text);
-
+        m_CustomersLeft--;
+        m_CounterInstance.UpdateNumber(m_CustomersLeft);
         dialogueVariablesObserver.StartListening(_story);
 
         _story.BindExternalFunction("runTask", (string taskName) => {
@@ -249,6 +254,7 @@ public class InkManager : MonoBehaviour
             ChatController.CurrentMessage.text = newText;
             ChatController.NPCMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.NPCMessageContainer.transform, false).GetComponent<TextMeshProUGUI>());
             ChatController.CurrentMessage.alignment = TextAlignmentOptions.Right;
+            ChatController.CurrentMessage.color = Color.black;
             m_bPlayerIsTalking = true;
         }
         else
@@ -257,6 +263,7 @@ public class InkManager : MonoBehaviour
             ChatController.NPCMessages.Append(ChatController.CurrentMessage.GetComponent<TextMeshProUGUI>());
             ChatController.PlayerMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.PlayerMessageContainer.transform, false).GetComponent<TextMeshProUGUI>());
             ChatController.CurrentMessage.alignment = TextAlignmentOptions.Left;
+            ChatController.CurrentMessage.color = Color.white;
             m_bPlayerIsTalking = false;
         }
 

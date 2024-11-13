@@ -54,7 +54,7 @@ public class MineCellController : MonoBehaviour
 
     private void FlagCell()
     {
-        if (!m_bFlagged)
+        if (!m_bFlagged && m_bHidden)
         {
             m_bFlagged = true;
             GetComponent<SpriteRenderer>().sprite = m_sprFlaggedHover;
@@ -63,7 +63,7 @@ public class MineCellController : MonoBehaviour
                 m_OwnedGame.IncrementMinesFound();
             }
         }
-        else
+        else if(m_bFlagged && m_bHidden)
         {
             m_bFlagged = false;
             GetComponent<SpriteRenderer>().sprite = m_sprDefaultHover;
@@ -132,10 +132,13 @@ public class MineCellController : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        a.Stop();
-        a.Play();
+        if (m_bHidden)
+        {
+            a.Stop();
+            a.Play();
 
-        m_SpriteRenderer.sprite = m_bFlagged ? m_sprFlaggedHover : m_sprDefaultHover;
+            m_SpriteRenderer.sprite = m_bFlagged ? m_sprFlaggedHover : m_sprDefaultHover;
+        }
     }
 
     private void OnMouseExit()

@@ -47,6 +47,10 @@ TagManager:
     locked: 0
   - name: FocusedWindow
     uniqueID: 209069043
+    locked: 0
+  - name: Screen
+    uniqueID: 2977463317
+    locked: 0
   - name: Vingette
     uniqueID: 146404183
     locked: 0

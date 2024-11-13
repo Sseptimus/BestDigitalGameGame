@@ -18,8 +18,7 @@ Oh thank you my dear, I do really appreciate it.
 	What do you mean sorry dear? I'm not sure I understand. I need help with my emails.
 	~ HelpCounter += 1
 
-	** [Don't ask for help] Of course, it's no problem!
-
+	** [Don't ask for help] It's no problem.
 * What's your problem?
 Oh, I'm sorry to bother you, it's just it's quite a big problem.
 

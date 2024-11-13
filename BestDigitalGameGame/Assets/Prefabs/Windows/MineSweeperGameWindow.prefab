@@ -49,6 +49,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3752140257622149126, guid: fb3bb0c046e4cda4dafcac68f96277d1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3752140257622149126, guid: fb3bb0c046e4cda4dafcac68f96277d1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.53475004
+      objectReference: {fileID: 0}
+    - target: {fileID: 3752140257622149126, guid: fb3bb0c046e4cda4dafcac68f96277d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -82,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3752140257622149126, guid: fb3bb0c046e4cda4dafcac68f96277d1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0.084
       objectReference: {fileID: 0}
     - target: {fileID: 3752140257622149126, guid: fb3bb0c046e4cda4dafcac68f96277d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -199,12 +207,32 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2108550932257770422, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_Size.x
+      value: 5.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108550932257770422, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_Size.y
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108550932257770422, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 85ebc4595efacd5468b0955fa35787d3, type: 3}
+    - target: {fileID: 2108550932257770422, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2108550932257770422, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_SortingLayerID
       value: 1144362615
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401295105946352784, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_text
+      value: MINE SWEEPER
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401295105946352784, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2754917956682681954, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_iGridSize
@@ -225,6 +253,18 @@ PrefabInstance:
     - target: {fileID: 7898432950616364095, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_WindowType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248087155599760111, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248087155599760111, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248087155599760111, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
