@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8470680639914082388, guid: 91d91f3c41ebb9d4a833be306f0b1500, type: 3}
+      propertyPath: m_WindowType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
