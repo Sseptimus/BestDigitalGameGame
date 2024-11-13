@@ -20,20 +20,23 @@ public class ChimpsGame : MonoBehaviour
     public GameObject GameWindowContent;
 
     public GameObject ownWindow;
+    public GameManager GameManager;
 
     private int totalWins = 0;
 
     public int[,] possiblePositions = new int[5, 4];
     
-    public BaseWindowClass GameWindow;
-    public Canvas GameCanvas;
-    private int m_currentScore = 0; 
+    public int m_currentScore = 0; //TODO Make private
     private int m_mistakesMade = 0;
     private bool m_numbersVisible = true;
+
+    public InkManager ownedManager; 
+
 
     // Start is called before the first frame update
     void Start()
     {
+        GameManager = FindObjectOfType<GameManager>();
         setupGame(5);
     }
 
@@ -44,6 +47,8 @@ public class ChimpsGame : MonoBehaviour
         if (m_mistakesMade >= 3)
         {
             Debug.Log("Task Failed.");
+            ownedManager.GameFailed();
+            GameManager.WindowInFocus = null;
             Destroy(ownWindow);
             // insert other consequence here
         }
@@ -54,7 +59,10 @@ public class ChimpsGame : MonoBehaviour
             if (totalWins >= 2)
             {
                 Debug.Log("Task Complete.");
+                ownedManager.GameWon();
+                GameManager.WindowInFocus = null;
                 Destroy(ownWindow);
+                Destroy(this);
                 // hooray task complete reflect this in dialogue etc
             }
             else

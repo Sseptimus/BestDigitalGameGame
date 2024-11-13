@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.UIElements;
@@ -17,17 +18,29 @@ public class WindowController :  BaseWindowClass
     private Canvas m_WindowCanvas;
     private BoxCollider2D m_ColTitleBar;
 
+    public GameManager.WindowType m_WindowType;
+    public string m_CurrentLayer;
+
     private void Start()
     {
         //Initialising variables
         m_sprContent = gameObject.transform.Find("Content").GetComponent<SpriteRenderer>();
         m_sprTitleBar = gameObject.transform.Find("TitleBar").GetComponent<SpriteRenderer>();
         m_GameManager = FindObjectOfType<GameManager>();
-        m_ColTitleBar = transform.GetComponent<BoxCollider2D>();
-        
-        if (!Camera)
+        if (m_WindowType != GameManager.WindowType.PopUp)
         {
-            Camera = Camera.main;
+            m_GameManager.AddWindow(this);
+        }
+        m_ColTitleBar = transform.GetComponent<BoxCollider2D>();
+        OnGrabFocus();
+        
+    }
+
+    private void OnDestroy()
+    {
+        if (m_WindowType != GameManager.WindowType.PopUp)
+        {
+            m_GameManager.OpenWindows.Remove(this);
         }
     }
 
@@ -41,34 +54,50 @@ public class WindowController :  BaseWindowClass
 
     public void OnGrabFocus()
     {
-        m_GameManager.WindowInFocus.LoseFocus();
+        if (m_GameManager.WindowInFocus != null)
+        {
+            m_GameManager.WindowInFocus.LoseFocus();
+        }
         
         //Reset reference to current focused window
-        m_GameManager.WindowInFocus = this;
-        
-        //Changing collision box to just title bar
-        m_ColTitleBar.size = new Vector2(5,0.5f);
-        m_ColTitleBar.offset = new Vector2(2.5f, -0.25f);
-        
-        //Moving window elements to FocusedWindow layout
-        
-        SpriteRenderer[] ChildRenderers = GetComponentsInChildren<SpriteRenderer>();
-        foreach (var Renderer in ChildRenderers)
+        if (gameObject)
         {
-             Renderer.sortingLayerName = "FocusedWindow";
+            m_GameManager.WindowInFocus = this;
+            m_CurrentLayer = "FocusedWindow";
+        
+            //Changing collision box to just title bar
+            m_ColTitleBar.size = new Vector2(5,0.5f);
+            m_ColTitleBar.offset = new Vector2(2.5f, -0.25f);
+        
+            //Moving window elements to FocusedWindow layout
+        
+            SpriteRenderer[] ChildRenderers = GetComponentsInChildren<SpriteRenderer>();
+            foreach (var Renderer in ChildRenderers)
+            {
+                Renderer.sortingLayerName = "FocusedWindow";
+            }
+            Canvas[] ChildCanvas = GetComponentsInChildren<Canvas>();
+            foreach (var Canvas in ChildCanvas)
+            {
+                Canvas.sortingLayerName = "FocusedWindow";
+            }
         }
-        Canvas[] ChildCanvas = GetComponentsInChildren<Canvas>();
-        foreach (var Canvas in ChildCanvas)
+        else
         {
-           Canvas.sortingLayerName = "FocusedWindow";
+            m_GameManager.WindowInFocus = null;
         }
+        
     }
 
     public void LoseFocus()
     {
+        m_CurrentLayer = "NonFocusedWindows";
         //Changing collision box to whole window
-        m_ColTitleBar.size = new Vector2(5,4.5f);
-        m_ColTitleBar.offset = new Vector2(2.5f, -2.25f);
+        if (m_ColTitleBar)
+        {
+            m_ColTitleBar.size = new Vector2(5,4.5f);
+            m_ColTitleBar.offset = new Vector2(2.5f, -2.25f);
+        }
         
         //Reset window elements to NonFocused Layer
         SpriteRenderer[] ChildRenderers = GetComponentsInChildren<SpriteRenderer>();
@@ -84,6 +113,8 @@ public class WindowController :  BaseWindowClass
         {
             Canvas.sortingLayerName = "NonFocusedWindows";
         }
+
+        m_GameManager.WindowInFocus = null;
     }
 
     private void OnMouseUp()
@@ -95,8 +126,18 @@ public class WindowController :  BaseWindowClass
     public void Minimise()
     {
         //Minimise Button
+        LoseFocus();
         gameObject.SetActive(false);
+        m_GameManager.MinimiseWindow(this);
     }
+
+    public void Close()
+    {
+        LoseFocus();
+        Destroy(gameObject);
+    }
+    
+    
     private void Update()
     {
         if (m_bHeld && (ConvertToWorldUnitsX(Input.mousePosition.x) > m_GameManager.ComputerScreen.transform.position.x + m_GameManager.Background.GetComponent<SpriteRenderer>().bounds.size.x
@@ -116,7 +157,12 @@ public class WindowController :  BaseWindowClass
             moveVec.z = 0;
             transform.SetPositionAndRotation(moveVec,Quaternion.identity);
             m_vec3MousePos = Input.mousePosition;
-        }
+       } 
+        Vector3 clampVec;
+        clampVec.x = Mathf.Clamp(transform.position.x,m_GameManager.ComputerScreen.transform.position.x,m_GameManager.ComputerScreen.transform.position.x + m_GameManager.Background.GetComponent<SpriteRenderer>().bounds.size.x-m_sprTitleBar.bounds.size.x);
+        clampVec.y = Mathf.Clamp(transform.position.y,m_GameManager.ComputerScreen.transform.position.y - m_GameManager.Background.GetComponent<SpriteRenderer>().bounds.size.y+m_sprContent.bounds.size.y+m_sprTitleBar.bounds.size.y,m_GameManager.ComputerScreen.transform.position.y);
+        clampVec.z = 0;
+        transform.SetPositionAndRotation(clampVec,Quaternion.identity);
     }
     
 }
