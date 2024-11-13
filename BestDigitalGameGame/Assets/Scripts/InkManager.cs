@@ -16,6 +16,8 @@ using Vector2 = UnityEngine.Vector2;
 
 public class InkManager : MonoBehaviour
 {
+    public GameManager mGameManager;
+
     [Header("Dialogue Assets")]
     [SerializeField]
     private TextAsset JaniceJsonAsset;
@@ -23,6 +25,8 @@ public class InkManager : MonoBehaviour
     private TextAsset GunnerJsonAsset;
     [SerializeField]
     private TextAsset CarlJsonAsset;
+    [SerializeField]
+    private TextAsset ChamomileJsonAsset;
 
     private List<TextAsset> DialogueJsons = new List<TextAsset>();
     private TextAsset currentDialogue;
@@ -73,6 +77,8 @@ public class InkManager : MonoBehaviour
     private void Awake()
     {
         dialogueVariablesObserver = new DialogueObserver(loadGlobalsJSON);
+        dialogueVariablesObserver.m_GameManager = mGameManager;
+        dialogueVariablesObserver.m_InkManager = this;
     }
 
     void Start()
@@ -80,6 +86,7 @@ public class InkManager : MonoBehaviour
         DialogueJsons.Add(JaniceJsonAsset);
         DialogueJsons.Add(GunnerJsonAsset);
         DialogueJsons.Add(CarlJsonAsset);
+        DialogueJsons.Add(ChamomileJsonAsset);
 
         currentDialogue = DialogueJsons[dialogueListIndex];
         StartStory();
@@ -126,7 +133,6 @@ public class InkManager : MonoBehaviour
         {
             fTotalChatHeight += ChatController.NPCMessageContainer.transform.GetChild(i).GetComponent<RectTransform>().sizeDelta.y;
         }
-        Debug.Log(fTotalChatHeight);
         if (fTotalChatHeight > 0.8f)
         {
             //When window is full removes the top message

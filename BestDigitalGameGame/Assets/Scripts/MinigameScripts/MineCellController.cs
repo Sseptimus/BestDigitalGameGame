@@ -17,7 +17,7 @@ public class MineCellController : MonoBehaviour
     public bool m_bIsMine;
     private bool m_bFlagged = false;
     private bool m_bHidden = true;
-    
+
     public Sprite m_sprDefault;
     public Sprite m_sprDefaultHover;
     public Sprite m_sprFlagged;
@@ -88,16 +88,17 @@ public class MineCellController : MonoBehaviour
             else if (m_bIsMine && !m_OwnedGame.GetFirstClickOccured())
             {
                 //If lose on first click move mine to first free space
-                m_bIsMine = false;
-                for (int i = 0; i < transform.childCount; i++)
-                {
-                    if (!transform.parent.GetChild(i).GetComponent<MineCellController>().m_bIsMine)
-                    {
-                        transform.parent.GetChild(i).GetComponent<MineCellController>().m_bIsMine = true;
-                    }
-                }
-                m_OwnedGame.ResetMineCounts();
+               m_bIsMine = false;
+               for (int i = 0; i < transform.childCount; i++)
+               {
+                   if (!transform.parent.GetChild(i).GetComponent<MineCellController>().m_bIsMine)
+                   {
+                       transform.parent.GetChild(i).GetComponent<MineCellController>().m_bIsMine = true;
+                   }
+               }
+               m_OwnedGame.ResetMineCounts();
             }
+            
             if (!m_OwnedGame.GetFirstClickOccured())
             {
                 m_OwnedGame.SetFirstClickOccured();
@@ -119,7 +120,6 @@ public class MineCellController : MonoBehaviour
 
     private void OnMouseOver()
     {
-        
         if (Input.GetMouseButtonDown(1))
         {
             FlagCell();

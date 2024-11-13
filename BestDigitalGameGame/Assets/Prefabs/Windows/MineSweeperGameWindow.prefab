@@ -96,6 +96,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4684869125508447524, guid: fb3bb0c046e4cda4dafcac68f96277d1, type: 3}
+      propertyPath: ownWindow
+      value: 
+      objectReference: {fileID: 8238491391272469025}
+    - target: {fileID: 4684869125508447524, guid: fb3bb0c046e4cda4dafcac68f96277d1, type: 3}
+      propertyPath: MineObjPrefab
+      value: 
+      objectReference: {fileID: 8041162980404672429, guid: 39605ab1fc6e4ba4785344d6ccef6576, type: 3}
     - target: {fileID: 9004738905456875327, guid: fb3bb0c046e4cda4dafcac68f96277d1, type: 3}
       propertyPath: m_SortingLayerID
       value: 1144362615
@@ -214,8 +222,11 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 209069043
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2754917956682681954, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+    - target: {fileID: 7898432950616364095, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_WindowType
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8248087155599760111, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}

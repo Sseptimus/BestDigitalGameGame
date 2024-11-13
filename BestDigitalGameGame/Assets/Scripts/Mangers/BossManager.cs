@@ -21,6 +21,7 @@ public class BossManager : MonoBehaviour
         Right_Behind_YOU
     }
 
+
     [Header ("Move Variables")]
     // Moving Variables
     public float MaxMoveTimer;
@@ -138,4 +139,5 @@ public class BossManager : MonoBehaviour
         Debug.Log("Boss Moved! woo!!");
         Debug.Log(CurrentLocation);
     }
+
 }
