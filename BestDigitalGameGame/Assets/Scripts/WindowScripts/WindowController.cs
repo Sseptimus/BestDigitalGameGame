@@ -42,7 +42,7 @@ public class WindowController :  BaseWindowClass
     {
         if (m_WindowType != GameManager.WindowType.PopUp && m_WindowType != GameManager.WindowType.Counter)
         {
-            m_GameManager.OpenWindows.Remove(this);
+            m_GameManager.RemoveWindow(this);
         }
     }
 
