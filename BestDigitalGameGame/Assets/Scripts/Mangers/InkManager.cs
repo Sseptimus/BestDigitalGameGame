@@ -254,7 +254,7 @@ public class InkManager : MonoBehaviour
             ChatController.CurrentMessage.text = newText;
             ChatController.NPCMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.NPCMessageContainer.transform, false).GetComponent<TextMeshProUGUI>());
             ChatController.CurrentMessage.alignment = TextAlignmentOptions.Right;
-            ChatController.CurrentMessage.color = Color.black;
+            ChatController.CurrentMessage.color = Color.grey;
             m_bPlayerIsTalking = true;
         }
         else
@@ -263,7 +263,7 @@ public class InkManager : MonoBehaviour
             ChatController.NPCMessages.Append(ChatController.CurrentMessage.GetComponent<TextMeshProUGUI>());
             ChatController.PlayerMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.PlayerMessageContainer.transform, false).GetComponent<TextMeshProUGUI>());
             ChatController.CurrentMessage.alignment = TextAlignmentOptions.Left;
-            ChatController.CurrentMessage.color = Color.white;
+            ChatController.CurrentMessage.color = Color.black;
             m_bPlayerIsTalking = false;
         }
 

@@ -60,7 +60,7 @@ What do you mean, dear, is everything alright?
 
 	I'm so sorry dear, I don't think I understand. 
 	How is my email coming along?
-	*** I just need to complete this sequence.[] I won't be long...
+	*** I just need[] to complete this sequence. I won't be long...
 
 - Oh thank you so much my dear, I'll be so glad to get rid of these emails!
 ~ temp gameType = "chimps"
