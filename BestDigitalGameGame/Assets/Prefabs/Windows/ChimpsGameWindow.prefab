@@ -248,6 +248,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: a79dd7edb6082874282244b7d6dbdf41, type: 3}
+    - target: {fileID: 2401295105946352784, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_text
+      value: SEQUENCER
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401295105946352784, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401295105946352784, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7566989704640524262, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_SortingLayerID
       value: 1144362615

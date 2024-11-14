@@ -228,7 +228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2401295105946352784, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_text
-      value: MINE SWEEPER
+      value: MINESWEEPER
       objectReference: {fileID: 0}
     - target: {fileID: 2401295105946352784, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
       propertyPath: m_HorizontalAlignment
