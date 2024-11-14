@@ -321,19 +321,19 @@ public class InkManager : MonoBehaviour
 
     void ClearChat()
     {
-        for (int i = 0; i < ChatController.PlayerMessageContainer.transform.childCount; i++)
+        foreach (Transform child in ChatController.PlayerMessageContainer.transform)
         {
-            Destroy(ChatController.PlayerMessageContainer.transform.GetChild(0).gameObject);
-            ChatController.PlayerMessages.RemoveRange(0,1);
+            Destroy(child.gameObject);
         }
         ChatController.PlayerMessages.Clear();
-        
-        for (int i = 0; i < ChatController.NPCMessageContainer.transform.childCount; i++)
+
+        foreach (Transform child in ChatController.NPCMessageContainer.transform)
         {
-            Destroy(ChatController.NPCMessageContainer.transform.GetChild(0).gameObject);
-            ChatController.NPCMessages.RemoveRange(0,1);
+            Destroy(child.gameObject);
         }
+
         ChatController.NPCMessages.Clear();
+        
         sQueuedText = "";
         sOutputText = "";
         ChatController.CurrentMessage = null;

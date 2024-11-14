@@ -14,6 +14,8 @@ public class TaskBarController : MonoBehaviour
     public Sprite m_sprChatMin;
     public Sprite m_sprChimpGame;
     public Sprite m_sprChimpGameMin;
+    public Sprite m_sprMineGame;
+    public Sprite m_sprMineGameMin;
     private void Start()
     {
         if (!m_gameManager)
@@ -46,7 +48,7 @@ public class TaskBarController : MonoBehaviour
                     break;
                 case GameManager.WindowType.MineSweeper:
                     transform.GetChild(_IconPressed.transform.GetSiblingIndex()).GetComponent<SpriteRenderer>()
-                        .sprite = m_sprChimpGame;
+                        .sprite = m_sprMineGame;
                     break;
                 default:
                     break;
@@ -74,13 +76,9 @@ public class TaskBarController : MonoBehaviour
                 newIcon.GetComponent<SpriteRenderer>().sprite = m_sprChimpGame;
                 break;
             case GameManager.WindowType.MineSweeper:
-                newIcon.GetComponent<SpriteRenderer>().sprite = m_sprChimpGame;
-                break;
-            default:
-                newIcon.GetComponent<SpriteRenderer>().sprite = m_sprChat;
+                newIcon.GetComponent<SpriteRenderer>().sprite = m_sprMineGame;
                 break;
         }
-        newIcon.GetComponent<SpriteRenderer>().sprite = m_sprChat;
     }
 
     public void WindowMinimised(WindowController _minimisedWindow)
@@ -97,7 +95,7 @@ public class TaskBarController : MonoBehaviour
                 break;
             case GameManager.WindowType.MineSweeper:
                 transform.GetChild(m_gameManager.OpenWindows.IndexOf(_minimisedWindow)).GetComponent<SpriteRenderer>()
-                    .sprite = m_sprChimpGameMin;
+                    .sprite = m_sprMineGameMin;
                 break;
             case GameManager.WindowType.SliderGame:
                 transform.GetChild(m_gameManager.OpenWindows.IndexOf(_minimisedWindow)).GetComponent<SpriteRenderer>()

@@ -60,7 +60,7 @@ What do you mean, dear, is everything alright?
 
 	I'm so sorry dear, I don't think I understand. 
 	How is my email coming along?
-	*** I just need[] to complete this sequence. I won't be long...
+	*** I just need to [do this] complete this sequence. I won't be long...
 
 - Oh thank you so much my dear, I'll be so glad to get rid of these emails!
 ~ temp gameType = "chimps"
@@ -69,8 +69,7 @@ What do you mean, dear, is everything alright?
 -> END // this marks the end of the story
 
 === TaskFailed ===
-Oh! That didn't look good.
-Did you manage to complete it?
+Oh! That didn't look good. Did you manage to complete it?
 * No.[] I'm sorry. I failed the task. I won't be able to get rid of your spam emails.
 That's okay dear. You tried your best, and that's all that matters.
 ~ BossSuspicionCounter += 1

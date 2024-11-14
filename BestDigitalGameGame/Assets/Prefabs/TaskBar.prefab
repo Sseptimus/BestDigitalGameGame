@@ -56,6 +56,8 @@ MonoBehaviour:
   m_sprChatMin: {fileID: 21300000, guid: f3785832b9e978740b92c4c4a5007f64, type: 3}
   m_sprChimpGame: {fileID: 21300000, guid: 3835c1fce8bbf0e4a85e3710b8447c68, type: 3}
   m_sprChimpGameMin: {fileID: 21300000, guid: 613ad124bfeff2f4aa81ecbb18fe945a, type: 3}
+  m_sprMineGame: {fileID: 21300000, guid: 11576d503252e764bbafc445e55cef2e, type: 3}
+  m_sprMineGameMin: {fileID: 21300000, guid: 7bc5f6314dfc6c14f9b6adbdf3cc321f, type: 3}
 --- !u!223 &120774336851722157
 Canvas:
   m_ObjectHideFlags: 0

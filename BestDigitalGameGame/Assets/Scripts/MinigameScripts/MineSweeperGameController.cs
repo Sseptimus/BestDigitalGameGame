@@ -119,7 +119,6 @@ namespace MinigameScripts
         public void GameFailed()
         {
             ownedManager.GameFailed();
-            transform.parent.parent.GetComponent<WindowController>().DestroyWindow();
             Destroy(ownWindow);
         }
 

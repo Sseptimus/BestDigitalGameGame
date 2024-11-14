@@ -5,8 +5,8 @@ using UnityEngine;
 public class sceneCrossfade : MonoBehaviour
 {
     public float fadeSpeed;
-    float currentOpactity = 1.0f;
-    bool FadeIn = true;
+    public float currentOpactity = 1.0f;
+    public bool FadeIn = true;
     public SpriteRenderer fadeSprite;
 
     // Update is called once per frame
@@ -19,5 +19,8 @@ public class sceneCrossfade : MonoBehaviour
     }
 
     public void ToggleFading()
-    { FadeIn = !FadeIn; }
+    { 
+        FadeIn = !FadeIn;
+        Debug.Log("Toggled Crossfade");
+    }
 }
