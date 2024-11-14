@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ChimpsNumberSquare
   layers:
   - Default
   - TransparentFX
@@ -40,4 +41,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: NonFocusedWindows
+    uniqueID: 1144362615
+    locked: 0
+  - name: FocusedWindow
+    uniqueID: 209069043
+    locked: 0
+  - name: Screen
+    uniqueID: 2977463317
+    locked: 0
+  - name: Vingette
+    uniqueID: 146404183
     locked: 0
