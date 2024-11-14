@@ -123,9 +123,8 @@ public class ChimpsGame : MonoBehaviour
     // delete the squares ready for new set of squares to be instantiated
     void deleteGame()
     {
-        // reset static valuyes score and mistake counter
-        m_currentScore = 0;
-        m_mistakesMade = 0;
+        
+        transform.parent.parent.GetComponent<WindowController>().DestroyWindow();
 
         // iterate through array and destroy each object
         for (int i = 0; i < arrChimpSquares.Length; i++)
