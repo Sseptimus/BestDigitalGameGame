@@ -323,14 +323,14 @@ public class InkManager : MonoBehaviour
     {
         for (int i = 0; i < ChatController.PlayerMessageContainer.transform.childCount; i++)
         {
-            Destroy(ChatController.PlayerMessageContainer.transform.GetChild(0));
+            Destroy(ChatController.PlayerMessageContainer.transform.GetChild(0).gameObject);
             ChatController.PlayerMessages.RemoveRange(0,1);
         }
         ChatController.PlayerMessages.Clear();
         
         for (int i = 0; i < ChatController.NPCMessageContainer.transform.childCount; i++)
         {
-            Destroy(ChatController.NPCMessageContainer.transform.GetChild(0));
+            Destroy(ChatController.NPCMessageContainer.transform.GetChild(0).gameObject);
             ChatController.NPCMessages.RemoveRange(0,1);
         }
         ChatController.NPCMessages.Clear();
