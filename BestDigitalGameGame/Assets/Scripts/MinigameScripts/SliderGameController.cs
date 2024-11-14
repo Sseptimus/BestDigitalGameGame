@@ -28,7 +28,7 @@ public class SliderGameController : MonoBehaviour
         for (int i = 0; i < m_iGridSize-1; i++)
         {
             GameObject tempSlideObj = Instantiate(m_SlideObjPrefab, transform);
-            tempSlideObj.GetComponent<SliderObjController>().m_SliderNum = i;
+            tempSlideObj.GetComponent<SliderObjController>().m_SliderNum = i + 1;
             tempSlideObj.GetComponent<TextMeshProUGUI>().text = tempSlideObj.GetComponent<SliderObjController>().m_SliderNum.ToString();
             tempSlideObj.GetComponent<SliderObjController>().m_OwnedGame = this;
         }

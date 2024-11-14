@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
             if(sceneCrossfade.FadeIn == true)
             { sceneCrossfade.ToggleFading(); }
 
-            if(m_iHelperCounter >= m_iSuspicion)
+            if(m_iHelperCounter >= m_iSuspicion + 4)
             {
                 Invoke("GoodEnd", 2);//go to endings after slight delay and fade to black
             }

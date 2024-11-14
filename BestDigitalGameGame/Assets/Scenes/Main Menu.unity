@@ -304,6 +304,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeSpeed: 1
+  currentOpactity: 1
+  FadeIn: 1
   fadeSprite: {fileID: 337674862}
 --- !u!1 &401704752
 GameObject:

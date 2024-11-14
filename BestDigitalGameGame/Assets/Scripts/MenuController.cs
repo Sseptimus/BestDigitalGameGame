@@ -41,7 +41,7 @@ public class MenuController : MonoBehaviour
     public void ExitGame() // Quits Application, and editor if still editing
     {
         sceneCrossfade.ToggleFading();
-        Invoke("Quit", 4);
+        Invoke("Quit", 2);
     }
 
     void ChangeScene()

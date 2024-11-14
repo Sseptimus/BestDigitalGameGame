@@ -254,7 +254,7 @@ public class InkManager : MonoBehaviour
             ChatController.CurrentMessage.text = newText;
             ChatController.NPCMessages.Append(Instantiate(ChatController.MessagePrefab, ChatController.NPCMessageContainer.transform, false).GetComponent<TextMeshProUGUI>());
             ChatController.CurrentMessage.alignment = TextAlignmentOptions.Right;
-            ChatController.CurrentMessage.color = Color.grey;
+            ChatController.CurrentMessage.color = Color.white;
             m_bPlayerIsTalking = true;
         }
         else

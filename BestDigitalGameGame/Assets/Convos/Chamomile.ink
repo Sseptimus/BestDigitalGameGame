@@ -10,7 +10,7 @@ VAR bTaskSuccess = false
 
 Hello? Is this okay?
  
- * Hello and welcome to ASOS[] How can I help you today?
+ * Hello and welcome to OSOS[] How can I help you today?
  * Is what okay?[]
  My voice I mean. 
 
@@ -33,6 +33,7 @@ Okay good. I was told it would be hard to understand true intentions today. Thou
 			I'm sorry, but I dont know what that means.
 
 				***** Okay, so[] Im going to send you a short list of your security questions. Please fill them out while I look at your details.
+				Lovely, thank you so much.
 
 				//start the game
 				~ temp gameType = "chimps"
