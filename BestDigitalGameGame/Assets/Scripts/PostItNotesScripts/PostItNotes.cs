@@ -51,11 +51,11 @@ public class PostItNotes :  BaseWindowClass
         if (m_bHeld)
         {
             //Move window if the window is being dragged
-            Vector3 moveVec;
-            moveVec.x = Mathf.Clamp(transform.position.x + (ConvertToWorldUnitsX(Input.mousePosition.x) - ConvertToWorldUnitsX(m_vec3MousePos.x)),m_GameManager.ComputerScreen.transform.position.x,m_GameManager.ComputerScreen.transform.position.x + m_GameManager.Background.GetComponent<SpriteRenderer>().bounds.size.x-m_sprTitleBar.bounds.size.x);
-            moveVec.y = Mathf.Clamp(transform.position.y + (ConvertToWorldUnitsY(Input.mousePosition.y) - ConvertToWorldUnitsY(m_vec3MousePos.y)),m_GameManager.ComputerScreen.transform.position.y - m_GameManager.Background.GetComponent<SpriteRenderer>().bounds.size.y+m_sprContent.bounds.size.y+m_sprTitleBar.bounds.size.y,m_GameManager.ComputerScreen.transform.position.y);
-            moveVec.z = 0;
-            transform.SetPositionAndRotation(moveVec,Quaternion.identity);
+           // Vector3 moveVec;
+            //moveVec.x = Mathf.Clamp(transform.position.x + (ConvertToWorldUnitsX(Input.mousePosition.x) - ConvertToWorldUnitsX(m_vec3MousePos.x)),m_GameManager.ScreenBounds.transform.position.x,m_GameManager.ScreenBounds.transform.position.x + m_GameManager.ScreenBoundsSize.sizeDelta.x-m_sprTitleBar.bounds.size.x);
+           // moveVec.y = Mathf.Clamp(transform.position.y + (ConvertToWorldUnitsY(Input.mousePosition.y) - ConvertToWorldUnitsY(m_vec3MousePos.y)),m_GameManager.ScreenBounds.transform.position.y - m_GameManager.ScreenBoundsSize.sizeDelta.y+m_sprContent.bounds.size.y+m_sprTitleBar.bounds.size.y,m_GameManager.ScreenBounds.transform.position.y);
+          //  moveVec.z = 0;
+           // transform.SetPositionAndRotation(moveVec,Quaternion.identity);
             m_vec3MousePos = Input.mousePosition;
         }
     }
