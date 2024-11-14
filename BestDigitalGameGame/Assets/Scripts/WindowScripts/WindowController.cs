@@ -38,7 +38,7 @@ public class WindowController :  BaseWindowClass
         }
     }
 
-    private void OnDestroy()
+    public void DestroyWindow()
     {
         if (m_WindowType != GameManager.WindowType.PopUp && m_WindowType != GameManager.WindowType.Counter)
         {
@@ -157,6 +157,7 @@ public class WindowController :  BaseWindowClass
     public void Close()
     {
         LoseFocus();
+        DestroyWindow();
         Destroy(gameObject);
     }
     

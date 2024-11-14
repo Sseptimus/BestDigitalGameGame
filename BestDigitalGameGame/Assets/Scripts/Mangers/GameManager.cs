@@ -29,12 +29,15 @@ public class GameManager : MonoBehaviour
     [Header ("Things to Referance")]
     public GameObject ComputerScreen;
     public GameObject Background;
+    public sceneCrossfade sceneCrossfade;
+    public InkManager inkManager;
 
     public WindowController WindowInFocus;
 
     public List<WindowController> OpenWindows;
 
     public TaskBarController m_TaskBarController;
+
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +62,28 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Main Menu");
         }
 
+        if(inkManager.m_CustomersLeft <= 0)//if all chats have been had, compare helpers to boss suspicion.
+        {
+            sceneCrossfade.ToggleFading();
+            if(m_iHelperCounter >= m_iSuspicion)
+            {
+                Invoke("GoodEnd", 2);//go to endings after slight delay and fade to black
+            }
+            else
+            {
+                Invoke("BadEnd", 2);
+            }
+        }
+    }
+
+    public void GoodEnd()
+    {
+        SceneManager.LoadScene("OutroSceneGood");
+    }
+
+    public void BadEnd()
+    {
+        SceneManager.LoadScene("OutroSceneBad");
     }
 
     public void AddWindow(WindowController _newWindow)

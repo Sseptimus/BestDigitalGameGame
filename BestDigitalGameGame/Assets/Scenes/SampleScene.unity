@@ -4398,6 +4398,8 @@ MonoBehaviour:
   m_iSuspicion: 0
   ComputerScreen: {fileID: 1789068415}
   Background: {fileID: 1552337371}
+  sceneCrossfade: {fileID: 575077707}
+  inkManager: {fileID: 1439482724}
   WindowInFocus: {fileID: 1130565631}
   OpenWindows: []
   m_TaskBarController: {fileID: 1735382175}
