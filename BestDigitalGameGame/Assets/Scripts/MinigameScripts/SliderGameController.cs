@@ -54,7 +54,6 @@ public class SliderGameController : MonoBehaviour
         {
             // player has taken 2 minutes to complete puzzle, player loses game
             ownedManager.GameFailed();
-            transform.parent.parent.GetComponent<WindowController>().DestroyWindow();
             Destroy(ownWindow);
         }
         if (dialogueTimer <= 0)
