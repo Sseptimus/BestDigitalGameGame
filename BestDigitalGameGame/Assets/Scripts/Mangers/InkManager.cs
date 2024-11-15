@@ -75,6 +75,7 @@ public class InkManager : MonoBehaviour
     public GameObject BossWatching2;
     public GameObject BossWatching3;
     private List<GameObject> BossWatchingPopups = new List<GameObject>();
+    public int m_iCustomersServed = 0;
 
     // dialogue observer
     private DialogueObserver dialogueVariablesObserver;
@@ -233,6 +234,7 @@ public class InkManager : MonoBehaviour
             if (!m_bWaitingBetweenPeople)
             {
                 // story has ended
+                m_iCustomersServed++;
                 ExitDialogue();
                 dialogueListIndex++;
                 currentDialogue = DialogueJsons[dialogueListIndex];
