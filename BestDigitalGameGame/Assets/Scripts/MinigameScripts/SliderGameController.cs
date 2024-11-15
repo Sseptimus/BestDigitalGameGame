@@ -14,6 +14,7 @@ public class SliderGameController : MonoBehaviour
     public int m_iGridSize;
     private GridLayout m_GridLayout;
     public GameObject m_SlideObjPrefab;
+    private List<int> m_iAvailableNums = new List<int>();
     public SliderObjController m_EmptySpace;
     public InkManager ownedManager;
     public GameObject ownWindow;
@@ -24,11 +25,17 @@ public class SliderGameController : MonoBehaviour
     void Start()
     {
         gameTimer = 120.0f;
+        for (int i = 0; i < 8; i++)
+        {
+            m_iAvailableNums.Add(i + 1);
+        }
         m_GridLayout = GetComponent<GridLayout>();
         for (int i = 0; i < m_iGridSize-1; i++)
         {
             GameObject tempSlideObj = Instantiate(m_SlideObjPrefab, transform);
-            tempSlideObj.GetComponent<SliderObjController>().m_SliderNum = i + 1;
+            int iSlideNum = m_iAvailableNums[Random.Range(0, m_iAvailableNums.Count)];
+            tempSlideObj.GetComponent<SliderObjController>().m_SliderNum = iSlideNum;
+            m_iAvailableNums.Remove(iSlideNum);
             tempSlideObj.GetComponent<TextMeshProUGUI>().text = tempSlideObj.GetComponent<SliderObjController>().m_SliderNum.ToString();
             tempSlideObj.GetComponent<SliderObjController>().m_OwnedGame = this;
         }
@@ -37,15 +44,6 @@ public class SliderGameController : MonoBehaviour
         m_EmptySpace = tempEmptySlideObj.GetComponent<SliderObjController>();
         m_EmptySpace.m_OwnedGame = this;
 
-        for (int i = 0; i < Random.Range(30,60); i++)
-        {
-            int iRandCell = Random.Range(0, m_iGridSize);
-            while (m_GridLayout.transform.GetChild(iRandCell) == m_EmptySpace.transform || !m_GridLayout.transform
-                       .GetChild(iRandCell).GetComponent<SliderObjController>().SetUpClick())
-            {
-                iRandCell = Random.Range(0, m_iGridSize);
-            }
-        }
     }
 
     private void Update()

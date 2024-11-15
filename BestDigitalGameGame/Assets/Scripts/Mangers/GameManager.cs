@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Main Menu");
         }
 
-        if(inkManager.m_CustomersLeft < 0)//if all chats have been had, compare helpers to boss suspicion.
+        if(inkManager.m_iCustomersServed >= 4)//if all chats have been had, compare helpers to boss suspicion.
         {
             if(sceneCrossfade.FadeIn == true)
             { sceneCrossfade.ToggleFading(); }
