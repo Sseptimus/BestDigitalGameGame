@@ -1081,6 +1081,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2675436894830514360, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 209069043
+      objectReference: {fileID: 0}
+    - target: {fileID: 3682436791225179207, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 209069043
+      objectReference: {fileID: 0}
     - target: {fileID: 4801616780135729097, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
       propertyPath: m_Size.x
       value: 6.9
@@ -1096,6 +1104,14 @@ PrefabInstance:
     - target: {fileID: 4801616780135729097, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
       propertyPath: m_Offset.y
       value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864044346284782824, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864044346284782824, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 209069043
       objectReference: {fileID: 0}
     - target: {fileID: 6306114260674186782, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1136,6 +1152,14 @@ PrefabInstance:
     - target: {fileID: 6306114260674186782, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409500272380626061, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409500272380626061, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 209069043
       objectReference: {fileID: 0}
     - target: {fileID: 6834939831837753113, guid: 8c49421d9365c38449b095b8e3205201, type: 3}
       propertyPath: m_Name
@@ -4929,6 +4953,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 411484048}
     m_Modifications:
+    - target: {fileID: 1367057120693928007, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_IsActive
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.74
+      objectReference: {fileID: 0}
     - target: {fileID: 3790646091518163656, guid: 83a1e266afc824aa5ae88fbf876797f2, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -5028,14 +5060,6 @@ PrefabInstance:
     - target: {fileID: 8778399253896003397, guid: 83a1e266afc824aa5ae88fbf876797f2, type: 3}
       propertyPath: m_Name
       value: Exit Arrow
-      objectReference: {fileID: 0}
-    - target: {fileID: 1367057120693928007, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
-      propertyPath: m_IsActive
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1991021113860731200, guid: ba870aa927e38854aa0247295ed6b6d5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.74
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
